@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital TdeA</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2>Reporte Pacientes</h2>
+    <hr>
+    <form th:action="@{/reportepacientes}" method="get">
+        <table class="styled-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Ciudad</th>
+                <th>Motivo</th>
+                <th>Acompañante</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="paciente : ${pacientes}">
+                <td th:text="${paciente.getIdPaciente()}"></td>
+                <td th:text="${servicio.buscarPorId(paciente.getIdPaciente()).getNomPaciente()}"></td>
+                <td th:text="${paciente.getCiudad()}"></td>
+                <td th:text="${paciente.getMotivo()}"></td>
+                <td th:if="${paciente.getAcompañante()}" >Si</td>
+                <td th:if="!${paciente.getAcompañante()}" >No</td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" class="back-button" th:onclick="'location.href=\'/reportes\''">Volver</button>
+    </form>
+</div>
+</body>
+</html>

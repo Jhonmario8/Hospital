@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital </title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Buscar Articulo</h2>
+    <form th:action="@{/buscararticulo}" method="post" th:object="${articulo}">
+        <div th:if="${error}" class="error-message">
+            <p th:text="${error}"></p>
+        </div>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" name="idArticulo" id="id" placeholder="Ingrese el id" required>
+        </div>
+        <div>
+            <button type="submit">Buscar</button>
+            <button type="button"  th:onclick="'location.href=\'/gestionarticulos\''">Volver</button>
+        </div>
+        <div th:if="${articulo != null}">
+            <div>
+                <label for="nombre">Nombre:</label>
+                <p id="nombre" th:text="${nombre}"></p>
+            </div>
+            <div>
+                <label for="cantidad">Cantidad:</label>
+                <p id="cantidad" th:text="${cantidad}"></p>
+            </div>
+            <div>
+                <label for="descripcion">Descripcion:</label>
+                <p id="descripcion" th:text="${descripcion}"></p>
+            </div>
+            <div>
+                <h3>Habitaciones: </h3>
+                <div th:each="habitacion: ${habitaciones}">
+                    <p th:text="${habitacion.getNumHabitacion()+' - '+habitacion.getTipoHabitacion()}"></p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Adquirir Servicio</title>
+    <link rel="stylesheet" th:href="@{/LoginEstilo.css}">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div  class="login-container">
+    <h2 th:text="'Adquirir Servicio'"></h2>
+    <div th:if="${mensaje}">
+        <p th:text="${mensaje}"></p>
+    </div>
+    <div th:if="${error}!=null">
+        <p class="error-message" th:text="${error}"></p>
+    </div>
+    <form th:action="@{/adquirir}" method="post">
+        <input type="hidden" name="idServicio" th:value="${servicio.getCodServicio()}">
+        <div>
+            <label for="idPaciente">ID Paciente:</label>
+            <input type="number" name="idPaciente" id="idPaciente" required>
+        </div>
+        <button type="submit" >Adquirir Servicio</button>
+    </form>
+
+    <h3>Pacientes :</h3>
+    <ul>
+        <li th:each="paciente : ${servicio.pacientes}"
+            th:text="${paciente.nomPaciente}"></li>
+    </ul>
+
+    <a th:href="@{/servicios}">
+        <button >Volver</button>
+    </a>
+</div>
+</body>
+</html>

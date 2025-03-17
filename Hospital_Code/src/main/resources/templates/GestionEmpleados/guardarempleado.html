@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital </title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Guardar</h2>
+    <form th:action="@{/guardarempleado}" method="post" th:object="${empleado}">
+        <div th:if="mensaje">
+            <p th:text="${mensaje}"></p>
+        </div>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" th:field="*{idEmpleado}" id="id"  placeholder="Ingrese el id" required>
+        </div>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" th:field="*{nomEmpleado}" id="nombre" placeholder="Ingrese el nombre" required>
+        </div>
+        <div>
+            <label for="apellido">Apellido:</label>
+            <input type="text" th:field="*{apeEmpleado}" id="apellido" placeholder="Ingrese el apellido" required>
+        </div>
+        <div>
+            <label for="edad">Edad:</label>
+            <input type="number" th:field="*{edadEmpleado}" id="edad" placeholder="Ingrese la edad" required>
+        </div>
+        <div>
+            <label for="telefono">Telefono:</label>
+            <input type="number" th:field="*{telefonoEmpleado}" id="telefono" placeholder="Ingrese el telefono" required>
+        </div>
+        <div>
+            <label for="fecha">Fecha:</label>
+            <input type="date" th:field="*{fechaEmpleado}" id="fecha" placeholder="Ingrese la fecha de nacimiento" required>
+        </div>
+        <div class="button-container">
+            <button type="submit" >Guardar</button>
+            <button type="button"  th:onclick="'location.href=\'/gestionempleados\''">Volver</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

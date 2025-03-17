@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital </title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Guardar Cita</h2>
+    <form th:action="@{/guardarcita}" method="post" th:object="${cita}">
+        <div th:if="${mensaje}">
+            <p th:text="${mensaje}"></p>
+        </div>
+        <div th:if="${error}!=null" class="error-message">
+          <p th:text="${error}" >
+      </div>
+        <div>
+            <label for="fecha">Fecha:</label>
+            <input type="date" th:field="*{fechaCita}" id="fecha" required>
+        </div>
+        <div>
+            <label for="hora">Hora:</label>
+            <input type="time" th:field="*{horaCita}" id="hora" required>
+        </div>
+        <div>
+            <label for="idPaciente">ID Paciente:</label>
+            <input type="number" name="idPaciente" id="idPaciente" required>
+        </div>
+
+        <button type="submit" >Guardar</button>
+        <button th:onclick="'location.href=\'/gestioncitas\''">volver</button>
+    </form>
+</div>
+</body>
+</html>

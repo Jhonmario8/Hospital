@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Asignar Empleados</title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2 th:text="'Asignar Empleados a Cita ID: ' + ${cita.idCita}"></h2>
+
+    <div th:if="${mensaje}">
+        <p th:text="${mensaje}"></p>
+    </div>
+    <div th:if="${error}">
+        <p class="error-message" th:text="${error}"></p>
+    </div>
+
+    <form th:action="@{/asignaempleados}" method="post">
+        <input type="hidden" name="citaId" th:value="${cita.idCita}">
+        <div>
+            <label for="idEmpleado">ID Empleado:</label>
+            <input type="number" name="idEmpleado" id="idEmpleado" required>
+        </div>
+        <button type="submit" >Asignar Empleado</button>
+    </form>
+
+    <h3>Empleados Asignados:</h3>
+    <ul>
+        <li th:each="empleado : ${cita.empleados}"
+            th:text="${empleado.nomEmpleado} + ' ' + ${empleado.apeEmpleado}"></li>
+    </ul>
+
+    <a th:href="@{/gestioncitas}">
+        <button >Volver</button>
+    </a>
+</div>
+</body>
+</html>

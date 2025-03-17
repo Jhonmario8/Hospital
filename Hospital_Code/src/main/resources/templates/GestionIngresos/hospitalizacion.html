@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital </title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Registro Hospitalizacion</h2>
+    <form th:action="@{/hospitalizar}" method="post" th:object="${ingreso}">
+        <div th:if="${error}!=null" class="error-message">
+            <p th:text="${error}"></p>
+        </div>
+        <div>
+            <label for="id">ID Paciente:</label>
+            <input type="text" name="idPaciente" id="id" placeholder="Ingrese el id" required>
+        </div>
+        <div>
+            <label for="motivo">Motivo de hospitalizacion:</label>
+            <input type="text" name="motivo" id="motivo" placeholder="Ingrese el motivo" required>
+        </div>
+        <div>
+            <button type="submit">Hospitalizar</button>
+        </div>
+        <button type="button"  th:onclick="'location.href=\'/gestioningresos\''">Volver</button>
+    </form>
+</div>
+</body>
+</html>

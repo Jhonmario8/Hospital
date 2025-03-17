@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Quienes Somos</title>
+</head>
+<body>
+<header class="header">
+    <div class="header-container">
+        <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+        <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+    </div>
+</header>
+<aside class="sidebar">
+    <ul class="nav-list">
+        <li><a th:href="@{/}">Salir</a></li>
+        <li><a th:href="@{/index}" id="home">Inicio</a></li>
+        <li><a th:href="@{/gestionempleados}">Empleados</a></li>
+        <li><a th:href="@{/gestionpacientes}">Pacientes</a></li>
+        <li><a th:href="@{/gestionhabitaciones}">Habitaciones</a></li>
+        <li><a th:href="@{/gestioncitas}">Citas</a></li>
+        <li><a th:href="@{/gestionarticulos}">Artículos</a></li>
+        <li><a th:href="@{/gestionservicios}">Servicios</a></li>
+        <li><a th:href="@{/gestioningresos}">Ingresos</a></li>
+        <li><a th:href="@{/reportes}">Reportes</a></li>
+        <li><a th:href="@{/catalogo}">Catálogo</a></li>
+        <li><a th:href="@{/QuienesSomos}">Quienes somos</a></li>
+    </ul>
+</aside>
+<main class="main-content">
+    <section class="welcome-section">
+        <div class="welcome-container">
+            <div class="welcome-text">
+                <h1>¿Quiénes Somos?</h1>
+                <p><strong>Nuestra Misión:</strong> Brindar atención completa y accesible, asegurando que cada paciente reciba el tratamiento y el cuidado que merece. Creemos firmemente que la salud es un derecho esencial, y trabajamos de manera constante para fomentar el bienestar físico, mental y emocional de todos.</p>
+                <p><strong>Servicios:</strong> Contamos con un equipo de profesionales altamente cualificados y ofrecemos una variada gama de servicios, que incluyen atención de urgencias las 24 horas, especialidades médicas, hospitalización y programas de prevención.</p>
+                <p><strong>Compromiso con la Comunidad:</strong> Nos dedicamos a ser un soporte para la comunidad, colaborando con diversas organizaciones y desarrollando programas de salud comunitaria.</p>
+                <p><strong>Visión de Futuro:</strong> Nos esforzamos por liderar en el ámbito de la atención médica, adoptando nuevas tecnologías y prácticas innovadoras para mejorar continuamente la experiencia de nuestros pacientes.</p>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <p>© Todos los derechos reservados 2024</p>
+</footer>
+</body>
+</html>

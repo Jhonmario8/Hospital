@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital </title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Eliminar Cita</h2>
+    <form th:action="@{/eliminarcita}" method="post" th:object="${cita}">
+        <div th:if="${error}" class="error-message">
+            <p th:text="${error}"></p>
+        </div>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" name="idCita" id="id" placeholder="Ingrese el id" required>
+        </div>
+        <div>
+            <button type="submit" onclick="return confirm('¿Desea eliminar el registro?');">Eliminar</button>
+        </div>
+        <button type="button" th:onclick="'location.href=\'/gestioncitas\''">Volver</button>
+    </form>
+</div>
+</body>
+</html>
