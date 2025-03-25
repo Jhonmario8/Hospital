@@ -1,8 +1,6 @@
 package com.hospital.modelo.entidad;
 
-import com.hospital.modelo.servicio.PacienteServicio;
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "ingresos")
@@ -10,7 +8,7 @@ public class Ingresos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idIngreso;
-    private int IdPaciente;
+    private int IdPersona;
     private String ciudad;
     private String motivo;
     private Boolean acompañante;
@@ -30,12 +28,12 @@ public class Ingresos {
         this.idIngreso = idIngreso;
     }
 
-    public int getIdPaciente() {
-        return IdPaciente;
+    public int getIdPersona() {
+        return IdPersona;
     }
 
-    public void setIdPaciente(int idPaciente) {
-        IdPaciente = idPaciente;
+    public void setIdPersona(int idPersona) {
+        IdPersona = idPersona;
     }
 
     public String getCiudad() {

@@ -1,30 +1,30 @@
 package com.hospital.controlador;
 
 
-import com.hospital.modelo.entidad.Servicio;
-import com.hospital.modelo.servicio.IServicioServicio;
+import com.hospital.modelo.entidad.Persona;
+import com.hospital.modelo.servicio.IPersonaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class ServicionControlador {
+public class PersonaCotrolador {
     @Autowired
-    private IServicioServicio servicio;
+    private IPersonaServicio servicio;
 
     @GetMapping("servicios/mostrar")
-    public List<Servicio> mostrar() {
+    public List<Persona> mostrar() {
         return servicio.listarTodos();
     }
 
     @PostMapping("servicios/guardar")
-    public void guardar(@ModelAttribute Servicio ser) {
-        servicio.guardar(ser);
+    public void guardar(@ModelAttribute Persona persona) {
+        servicio.guardar(persona);
     }
 
     @PostMapping("servicios/buscar/{id}")
-    public Servicio buscar(@PathVariable int id) {
+    public Persona buscar(@PathVariable int id) {
         return servicio.buscarPorId(id);
     }
 
@@ -32,4 +32,5 @@ public class ServicionControlador {
     public void borrar(@PathVariable int id) {
         servicio.eliminar(id);
     }
+
 }

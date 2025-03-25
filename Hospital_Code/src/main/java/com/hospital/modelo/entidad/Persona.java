@@ -4,53 +4,53 @@ package com.hospital.modelo.entidad;
         import java.util.List;
 
 @Entity
-@Table(name = "paciente")
-public class Paciente {
+@Table(name = "persona")
+public class Persona {
     @Id
-    private int idPaciente;
-    private String nomPaciente;
-    private int edadPaciente;
+    private int idPersona;
+    private String nomPersona;
+    private int edadPersona;
     private String direccion;
-    private String telefonoPaciente;
+    private String telefonoPersona;
     private String eps;
 
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
     private List<Cita> citas;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "paciente_servicios",
-            joinColumns = @JoinColumn(name = "cod_paciente"),
+            name = "persona_servicios",
+            joinColumns = @JoinColumn(name = "cod_persona"),
             inverseJoinColumns = @JoinColumn(name = "id_servicio")
     )
     private List<Servicio> servicios;
 
-    public Paciente() {
+    public Persona() {
     }
 
     // Getters and Setters
-    public int getIdPaciente() {
-        return idPaciente;
+    public int getIdPersona() {
+        return idPersona;
     }
 
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
     }
 
-    public String getNomPaciente() {
-        return nomPaciente;
+    public String getNomPersona() {
+        return nomPersona;
     }
 
-    public void setNomPaciente(String nomPaciente) {
-        this.nomPaciente = nomPaciente;
+    public void setNomPersona(String nomPersona) {
+        this.nomPersona = nomPersona;
     }
 
-    public int getEdadPaciente() {
-        return edadPaciente;
+    public int getEdadPersona() {
+        return edadPersona;
     }
 
-    public void setEdadPaciente(int edadPaciente) {
-        this.edadPaciente = edadPaciente;
+    public void setEdadPersona(int edadPersona) {
+        this.edadPersona = edadPersona;
     }
 
     public String getDireccion() {
@@ -61,12 +61,12 @@ public class Paciente {
         this.direccion = direccion;
     }
 
-    public String getTelefonoPaciente() {
-        return telefonoPaciente;
+    public String getTelefonoPersona() {
+        return telefonoPersona;
     }
 
-    public void setTelefonoPaciente(String telefonoPaciente) {
-        this.telefonoPaciente = telefonoPaciente;
+    public void setTelefonoPersona(String telefonoPersona) {
+        this.telefonoPersona = telefonoPersona;
     }
 
     public String getEps() {

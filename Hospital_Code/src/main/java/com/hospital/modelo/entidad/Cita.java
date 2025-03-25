@@ -14,12 +14,8 @@ public class Cita {
     private String fechaCita;
     private String horaCita;
 
-    @ManyToOne
-    @JoinColumn(name = "cod_paciente", nullable = false)
-    private  Paciente paciente;
-
     @ManyToMany(mappedBy = "citas")
-    private Set<Empleado> empleados=new HashSet<>();
+    private Set<Persona> personas=new HashSet<>();
 
 
     public int getIdCita() {
@@ -46,20 +42,13 @@ public class Cita {
         this.horaCita = horaCita;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+
+    public Set<Persona> getPersonas() {
+        return personas;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
-    public Set<Empleado> getEmpleados() {
-        return empleados;
-    }
-
-    public void setEmpleados(Set<Empleado> empleados) {
-        this.empleados = empleados;
+    public void setPersonas(Set<Persona> personas) {
+        this.personas = personas;
     }
 
     @Override
@@ -68,7 +57,6 @@ public class Cita {
                 "idCita=" + idCita +
                 ", fechaCita='" + fechaCita + '\'' +
                 ", horaCita='" + horaCita + '\'' +
-                ", paciente=" + paciente +
                 '}';
     }
 }

@@ -15,7 +15,7 @@ public class Servicio {
     private double precioServicio;
     private String detallesServicio;
     @ManyToMany(mappedBy = "servicios", cascade = CascadeType.ALL)
-    private List<Paciente> pacientes;
+    private List<Persona> personas;
 
     public Servicio() {
     }
@@ -52,12 +52,12 @@ public class Servicio {
         this.detallesServicio = detallesServicio;
     }
 
-    public List<Paciente> getPacientes() {
-        return pacientes;
+    public List<Persona> getPersonas() {
+        return personas;
     }
 
-    public void setPacientes(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
+    public void setPersonas(List<Persona> pacientes) {
+        this.personas = personas;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class Servicio {
                 ", nomServicio='" + nomServicio + '\'' +
                 ", precioServicio=" + precioServicio +
                 ", detallesServicio='" + detallesServicio + '\'' +
-                ", pacientes=" + pacientes +
+                ", personas=" + personas +
                 '}';
     }
 }
