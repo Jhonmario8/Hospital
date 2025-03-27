@@ -13,22 +13,22 @@ public class PersonaCotrolador {
     @Autowired
     private IPersonaServicio servicio;
 
-    @GetMapping("servicios/mostrar")
+    @GetMapping("personas/mostrar")
     public List<Persona> mostrar() {
         return servicio.listarTodos();
     }
 
-    @PostMapping("servicios/guardar")
-    public void guardar(@ModelAttribute Persona persona) {
+    @PostMapping("personas/guardar")
+    public void guardar(@RequestBody Persona persona) {
         servicio.guardar(persona);
     }
 
-    @PostMapping("servicios/buscar/{id}")
+    @PostMapping("personas/buscar/{id}")
     public Persona buscar(@PathVariable int id) {
         return servicio.buscarPorId(id);
     }
 
-    @DeleteMapping("servicios/borrar/{id}")
+    @DeleteMapping("personas/borrar/{id}")
     public void borrar(@PathVariable int id) {
         servicio.eliminar(id);
     }

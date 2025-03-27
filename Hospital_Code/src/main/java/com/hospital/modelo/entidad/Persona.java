@@ -12,9 +12,15 @@ public class Persona {
     private int edadPersona;
     private String direccion;
     private String telefonoPersona;
-    private String eps;
+    private boolean tipoPersona;
 
-    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
+
+    @ManyToMany( cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "persona_cita",
+            joinColumns = @JoinColumn(name = "cod_persona"),
+            inverseJoinColumns = @JoinColumn(name="cod_habitacion")
+    )
     private List<Cita> citas;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -69,12 +75,12 @@ public class Persona {
         this.telefonoPersona = telefonoPersona;
     }
 
-    public String getEps() {
-        return eps;
+    public boolean isTipoPersona() {
+        return tipoPersona;
     }
 
-    public void setEps(String eps) {
-        this.eps = eps;
+    public void setTipoPersona(boolean tipoPersona) {
+        this.tipoPersona = tipoPersona;
     }
 
     public List<Cita> getCitas() {

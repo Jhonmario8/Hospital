@@ -1,6 +1,7 @@
 
 package com.hospital.modelo.entidad;
 
+
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class Servicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codServicio;
+    private int codServicio ;
     private String nomServicio;
     private double precioServicio;
     private String detallesServicio;

@@ -19,7 +19,7 @@ public class IngresoControlador {
     }
 
     @PostMapping("ingresos/guardar")
-    public void guardar(@ModelAttribute Ingresos ingreso) {
+    public void guardar(@RequestBody Ingresos ingreso) {
         servicio.guardar(ingreso);
     }
 

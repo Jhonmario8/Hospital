@@ -4,7 +4,8 @@
  */
 package com.hospital.modelo.servicio;
 
-import com.hospital.modelo.entidad.Paciente;
+
+import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.repositorio.PersonaRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,15 @@ public class PersonaServicio implements IPersonaServicio {
     @Autowired
     private PersonaRepositorio personaRepositorio;
     @Override
-    public List<Paciente> listarTodos(){
-        return (List<Paciente>) personaRepositorio.findAll();
+    public List<Persona> listarTodos(){
+        return (List<Persona>) personaRepositorio.findAll();
     }
     @Override
-    public void guardar(Paciente paciente){
-        personaRepositorio.save(paciente);
+    public void guardar(Persona persona){
+        personaRepositorio.save(persona);
     }
     @Override
-    public Paciente buscarPorId(Integer id){
+    public Persona buscarPorId(Integer id){
      return personaRepositorio.findById(id).orElse(null);
     }
     @Override

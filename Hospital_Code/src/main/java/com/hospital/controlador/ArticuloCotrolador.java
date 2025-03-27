@@ -18,7 +18,7 @@ public class ArticuloCotrolador {
         return servicio.listarTodos();
     }
     @PostMapping("articulos/guardar")
-    public void guardar(@ModelAttribute Articulo articulo){
+    public void guardar(@RequestBody Articulo articulo){
         servicio.guardar(articulo);
     }
     @PostMapping("articulos/buscar/{id}")

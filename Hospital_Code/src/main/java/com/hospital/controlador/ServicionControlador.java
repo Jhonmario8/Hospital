@@ -19,7 +19,7 @@ public class ServicionControlador {
     }
 
     @PostMapping("servicios/guardar")
-    public void guardar(@ModelAttribute Servicio ser) {
+    public void guardar(@RequestBody Servicio ser) {
         servicio.guardar(ser);
     }
 

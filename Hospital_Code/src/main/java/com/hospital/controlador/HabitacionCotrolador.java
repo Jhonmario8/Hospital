@@ -18,7 +18,7 @@ public class HabitacionCotrolador {
     }
 
     @PostMapping("habitaciones/guardar")
-    public void guardar(@ModelAttribute Habitacion habitacion) {
+    public void guardar(@RequestBody Habitacion habitacion) {
         servicio.guardar(habitacion);
     }
 

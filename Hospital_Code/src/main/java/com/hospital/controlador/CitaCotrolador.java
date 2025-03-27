@@ -19,7 +19,7 @@ public class CitaCotrolador {
     }
 
     @PostMapping("citas/guardar")
-    public void guardar(@ModelAttribute Cita cita) {
+    public void guardar(@RequestBody Cita cita) {
         servicio.guardar(cita);
     }
 
