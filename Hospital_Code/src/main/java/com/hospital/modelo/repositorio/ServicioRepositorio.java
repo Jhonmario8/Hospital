@@ -1,6 +1,6 @@
 package com.hospital.modelo.repositorio;
 
-import com.hospital.modelo.entidad.Habitacion;
+
 import com.hospital.modelo.entidad.Servicio;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

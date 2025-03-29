@@ -57,7 +57,7 @@ public class Servicio {
         return personas;
     }
 
-    public void setPersonas(List<Persona> pacientes) {
+    public void setPersonas(List<Persona> personas) {
         this.personas = personas;
     }
 

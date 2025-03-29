@@ -4,7 +4,7 @@ import com.hospital.modelo.entidad.Habitacion;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+
 
 @Repository
 public interface HabitacionRepositorio extends CrudRepository<Habitacion, Integer> {
