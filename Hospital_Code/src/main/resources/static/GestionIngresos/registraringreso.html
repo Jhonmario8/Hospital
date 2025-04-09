@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Registrar Ingreso</h2>
+
+    <form action="/ingresar" method="post">
+        <div>
+            <label for="id">ID Paciente:</label>
+            <input type="text" name="idPaciente" id="id" placeholder="Ingrese el ID" required>
+        </div>
+        <div>
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" name="ciudad" id="ciudad" placeholder="Ingrese la ciudad de domicilio" required>
+        </div>
+        <div>
+            <label for="motivo">Motivo:</label>
+            <input type="text" name="motivo" id="motivo" placeholder="Ingrese el motivo" required>
+        </div>
+        <div>
+            <label for="acompanante">Acompañante:</label>
+            <select name="acompanante" id="acompanante" class="styled-select" required>
+                <option value="" disabled selected>¿Tiene acompañante?</option>
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div class="button-container">
+            <button type="submit">Registrar</button>
+            <button type="button" onclick="location.href='/gestioningresos'">Volver</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

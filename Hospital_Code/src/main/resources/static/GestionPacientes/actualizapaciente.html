@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Editar Paciente</h2>
+
+    <!-- Este párrafo se puede usar para mostrar un mensaje de error si el backend lo inyecta -->
+    <div class="error-message">
+        <p><!-- Aquí puedes mostrar un mensaje de error manualmente si lo necesitas --></p>
+    </div>
+
+    <form action="/actualizarpaciente" method="post">
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" name="idPaciente" id="id" placeholder="Ingrese el ID" required>
+        </div>
+
+        <div>
+            <button type="submit">Buscar</button>
+            <button type="button" onclick="location.href='/gestionpacientes'">Volver</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

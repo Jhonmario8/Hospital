@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital TdeA</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2>Reporte Pacientes</h2>
+    <hr>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>Motivo</th>
+            <th>Acompañante</th>
+        </tr>
+        </thead>
+        <tbody id="tabla-pacientes-body">
+        <!-- Aquí el JS se encarga de poner los <tr> con los pacientes -->
+        </tbody>
+    </table>
+    <button type="button" class="back-button" onclick="location.href='/reportes'">Volver</button>
+</div>
+</body>
+</html>

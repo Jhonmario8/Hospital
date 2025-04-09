@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Actualizar</h2>
+    <form action="/guardarhabitacion" method="post">
+        <!-- Mensaje opcional, puedes insertarlo con JS si lo necesitas -->
+        <div class="mensaje">
+            <!-- <p>Aquí va el mensaje si lo necesitas</p> -->
+        </div>
+        <div>
+            <label for="id">Número:</label>
+            <input type="text" id="id" name="numHabitacion" placeholder="Ingrese el id" required>
+        </div>
+        <div>
+            <label for="tipo">Tipo:</label>
+            <input type="text" id="tipo" name="tipoHabitacion" placeholder="Ingrese el tipo" required>
+        </div>
+        <div>
+            <label for="ocupacion">Ocupación:</label>
+            <select id="ocupacion" name="ocupacion" class="styled-select" required>
+                <option value="" disabled selected>Seleccione el tipo de ocupación</option>
+                <option value="Individual">Individual</option>
+                <option value="Compartida">Compartida</option>
+            </select>
+        </div>
+        <div class="button-container">
+            <button type="submit">Guardar</button>
+            <button type="button" onclick="location.href='/gestionhabitaciones'">Volver</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

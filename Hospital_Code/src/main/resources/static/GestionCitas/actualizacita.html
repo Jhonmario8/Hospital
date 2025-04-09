@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Editar Cita</h2>
+    <form action="/actualizarcita" method="post">
+        <div class="error-message" style="display: none;">
+            <!-- Aquí puedes manejar los errores con JavaScript si quieres -->
+            <p>Error al buscar la cita.</p>
+        </div>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="idCita" placeholder="Ingrese el id" required>
+        </div>
+        <div>
+            <button type="submit">Buscar</button>
+        </div>
+        <div>
+            <a href="/gestioncitas"><button type="button">Volver</button></a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

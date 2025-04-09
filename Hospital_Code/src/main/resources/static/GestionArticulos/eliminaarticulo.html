@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+</head>
+<body>
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Eliminar Artículo</h2>
+
+    <form>
+        <div class="error-message" style="display: none;">
+            <p>Hubo un error al eliminar el artículo.</p>
+        </div>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" placeholder="Ingrese el id" required>
+        </div>
+        <div>
+            <button type="submit">Eliminar</button>
+            <a href="/gestionarticulos">
+                <button type="button">Volver</button>
+            </a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

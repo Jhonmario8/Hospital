@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asignar Empleados</title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2>Asignar Empleados a Cita ID: [ID]</h2>
+
+    <div class="mensaje" style="display: none;">
+        <p>Mensaje de éxito</p>
+    </div>
+    <div class="error-message" style="display: none;">
+        <p>Mensaje de error</p>
+    </div>
+
+    <form action="/asignaempleados" method="post">
+        <input type="hidden" name="citaId" value="[ID_CITA]">
+        <div>
+            <label for="idEmpleado">ID Empleado:</label>
+            <input type="number" name="idEmpleado" id="idEmpleado" required>
+        </div>
+        <button type="submit">Asignar Empleado</button>
+    </form>
+
+    <h3>Empleados Asignados:</h3>
+    <ul id="empleados-asignados">
+        <!-- Aquí puedes listar empleados manualmente o dinámicamente con JS -->
+        <li>Juan Pérez</li>
+        <li>María Rodríguez</li>
+    </ul>
+
+    <a href="/gestioncitas">
+        <button type="button">Volver</button>
+    </a>
+</div>
+</body>
+</html>

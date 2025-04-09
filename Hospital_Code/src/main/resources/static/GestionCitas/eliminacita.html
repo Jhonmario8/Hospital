@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="LoginEstilo.css">
+    <link rel="shortcut icon" href="/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <img src="/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Eliminar Cita</h2>
+    <form action="/eliminarcita" method="post">
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" name="idCita" id="id" placeholder="Ingrese el id" required>
+        </div>
+        <div>
+            <button type="submit" onclick="return confirm('¿Desea eliminar el registro?');">Eliminar</button>
+        </div>
+        <a href="/gestioncitas">
+            <button type="button">Volver</button>
+        </a>
+    </form>
+</div>
+</body>
+</html>
