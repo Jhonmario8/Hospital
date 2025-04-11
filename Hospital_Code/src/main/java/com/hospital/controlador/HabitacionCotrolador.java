@@ -1,8 +1,11 @@
 package com.hospital.controlador;
 
+import com.hospital.modelo.entidad.Cita;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.servicio.IHabitacionServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,9 +25,18 @@ public class HabitacionCotrolador {
         servicio.guardar(habitacion);
     }
 
+    @PostMapping("habitaciones/actualizar")
+    public void actualizar(@RequestBody Habitacion habitacion){
+        servicio.guardar(habitacion);
+    }
     @PostMapping("habitaciones/buscar/{id}")
-    public Habitacion buscar(@PathVariable int id) {
-        return servicio.buscarPorId(id);
+    public ResponseEntity<?> buscar(@PathVariable int id) {
+        Habitacion hab= servicio.buscarPorId(id);
+        if (hab!=null){
+            return ResponseEntity.ok(hab);
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Habitacion no encontrada");
+        }
     }
 
     @DeleteMapping("habitaciones/borrar/{id}")

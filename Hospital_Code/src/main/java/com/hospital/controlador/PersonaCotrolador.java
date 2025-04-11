@@ -4,6 +4,8 @@ package com.hospital.controlador;
 import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.servicio.IPersonaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +25,19 @@ public class PersonaCotrolador {
         servicio.guardar(persona);
     }
 
+    @PostMapping("personas/actualizar")
+    public void actualizar(@RequestBody Persona persona) {
+        servicio.guardar(persona);
+    }
+
     @PostMapping("personas/buscar/{id}")
-    public Persona buscar(@PathVariable int id) {
-        return servicio.buscarPorId(id);
+    public ResponseEntity<?> buscar(@PathVariable int id) {
+        Persona per= servicio.buscarPorId(id);
+        if (per!=null){
+            return ResponseEntity.ok(per);
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Persona no encontrada");
+        }
     }
 
     @DeleteMapping("personas/borrar/{id}")

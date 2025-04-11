@@ -3,7 +3,10 @@ package com.hospital.controlador;
 
 import com.hospital.modelo.entidad.Servicio;
 import com.hospital.modelo.servicio.IServicioServicio;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +26,18 @@ public class ServicionControlador {
         servicio.guardar(ser);
     }
 
+    @PostMapping("servicios/actualizar")
+    public void actualizar(@RequestBody Servicio ser){
+        servicio.guardar(ser);
+    }
     @PostMapping("servicios/buscar/{id}")
-    public Servicio buscar(@PathVariable int id) {
-        return servicio.buscarPorId(id);
+    public ResponseEntity<?> buscar(@PathVariable int id) {
+        Servicio ser= servicio.buscarPorId(id);
+        if (ser!=null){
+            return ResponseEntity.ok(ser);
+        }else {
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("Servicio no encontrado");
+        }
     }
 
     @DeleteMapping("servicios/borrar/{id}")
