@@ -9,17 +9,18 @@
 <body>
 <div class="login-container">
     <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
-    <h2>Eliminar Paciente</h2>
+    <h2>Eliminar Persona</h2>
     <form>
         <div>
             <label for="id">ID:</label>
             <input type="text" name="idPaciente" id="id" placeholder="Ingrese el ID" required>
         </div>
         <div>
-            <button type="submit" onclick="return confirm('¿Desea eliminar el registro?');">Eliminar</button>
+            <button type="submit" id="eliminarBtn">Eliminar</button>
             <button type="button" onclick="location.href='gestionpersona.html'">Volver</button>
         </div>
     </form>
 </div>
+<script src="../../Scripts/Personas/eliminarPersona.js"></script>
 </body>
 </html>

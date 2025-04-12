@@ -138,3 +138,8 @@ body {
 h3 {
     color: var(--text-color);
 }
+p{
+    text-align: start;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}

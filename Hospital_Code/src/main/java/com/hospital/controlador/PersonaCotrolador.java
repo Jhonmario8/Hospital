@@ -30,7 +30,7 @@ public class PersonaCotrolador {
         servicio.guardar(persona);
     }
 
-    @PostMapping("personas/buscar/{id}")
+    @GetMapping("personas/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id) {
         Persona per= servicio.buscarPorId(id);
         if (per!=null){

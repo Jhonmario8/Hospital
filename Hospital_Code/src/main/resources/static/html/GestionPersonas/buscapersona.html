@@ -9,7 +9,7 @@
 <body>
 <div class="login-container">
     <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
-    <h2>Buscar Paciente</h2>
+    <h2>Buscar Persona</h2>
     <form >
         <div>
             <label for="id">ID:</label>
@@ -17,34 +17,15 @@
         </div>
 
         <div>
-            <button type="submit">Buscar</button>
+            <button type="submit" id="buscarBtn">Buscar</button>
             <button type="button" onclick="location.href='gestionpersona.html'">Volver</button>
         </div>
 
-        <!-- Estos campos se llenarán manualmente o desde el backend -->
-        <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" placeholder="Nombre del paciente">
-        </div>
-        <div>
-            <label for="edad">Edad:</label>
-            <input type="text" id="edad" placeholder="Edad del paciente">
-        </div>
-        <div>
-            <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" placeholder="Dirección del paciente">
-        </div>
-        <div>
-            <label for="telefono">Teléfono:</label>
-            <input type="text" id="telefono" placeholder="Teléfono del paciente">
-        </div>
-        <div>
-            <label for="eps">EPS:</label>
-            <input type="text" id="eps" placeholder="EPS del paciente">
-        </div>
+       <p id="info"></p>
 
         <h3>Citas:</h3>
     </form>
 </div>
+<script src="../../Scripts/Personas/buscarPersona.js"></script>
 </body>
 </html>
