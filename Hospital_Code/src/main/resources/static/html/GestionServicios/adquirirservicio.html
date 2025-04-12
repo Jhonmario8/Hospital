@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Adquirir Servicio</title>
+    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="shortcut icon" href="/Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2>Adquirir Servicio</h2>
+
+    <form action="/adquirir" method="post">
+        <input type="hidden" id="idServicio" value="<!-- valor del servicio -->">
+
+        <div>
+            <label for="idPaciente">ID Paciente:</label>
+            <input type="number" id="idPaciente" placeholder="Ingrese el ID del paciente" required>
+        </div>
+
+        <button type="submit">Adquirir Servicio</button>
+    </form>
+
+    <h3>Pacientes:</h3>
+    <ul>
+        <!-- Lista de pacientes renderizada desde backend o JS -->
+        <li>Nombre del paciente 1</li>
+        <li>Nombre del paciente 2</li>
+        <!-- etc... -->
+    </ul>
+
+    <button onclick="location.href='gestionservicios.html'">Volver</button>
+</div>
+</body>
+</html>
