@@ -21,15 +21,15 @@ public class HabitacionCotrolador {
     }
 
     @PostMapping("habitaciones/guardar")
-    public void guardar(@RequestBody Habitacion habitacion) {
-        servicio.guardar(habitacion);
+    public Habitacion guardar(@RequestBody Habitacion habitacion) {
+       return servicio.guardar(habitacion);
     }
 
-    @PostMapping("habitaciones/actualizar")
+    @PutMapping("habitaciones/actualizar")
     public void actualizar(@RequestBody Habitacion habitacion){
         servicio.guardar(habitacion);
     }
-    @PostMapping("habitaciones/buscar/{id}")
+    @GetMapping("habitaciones/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id) {
         Habitacion hab= servicio.buscarPorId(id);
         if (hab!=null){

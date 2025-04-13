@@ -8,7 +8,10 @@ public class Ingresos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idIngreso;
-    private int IdPersona;
+
+    @OneToOne
+    @JoinColumn(name = "id_persona", referencedColumnName = "idPersona")
+    private Persona persona;
     private String ciudad;
     private String motivo;
     private Boolean acompañante;
@@ -28,12 +31,12 @@ public class Ingresos {
         this.idIngreso = idIngreso;
     }
 
-    public int getIdPersona() {
-        return IdPersona;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setIdPersona(int idPersona) {
-        IdPersona = idPersona;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public String getCiudad() {

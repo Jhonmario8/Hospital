@@ -10,30 +10,18 @@
 <div class="login-container">
     <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
     <h2>Buscar Habitación</h2>
-    <form action="/buscarhabitacion" method="post">
-        <!-- Mensaje de error opcional -->
-        <div class="error-message">
-            <!-- <p>Aquí va el error si aplica</p> -->
-        </div>
+    <form>
         <div>
             <label for="id">ID:</label>
-            <input type="text" name="numHabitacion" id="id" placeholder="Ingrese el id" required>
+            <input type="text" id="id" placeholder="Ingrese el id" required>
+            <p id="habitacion-info"></p>
         </div>
         <div>
-            <button type="submit">Buscar</button>
-        </div>
-        <div>
-            <label for="tipo">Tipo:</label>
-            <input type="text" id="tipo" placeholder="Tipo de habitación">
-        </div>
-        <div>
-            <label for="ocupacion">Ocupación:</label>
-            <input type="text" id="ocupacion" placeholder="Tipo de ocupación">
-        </div>
-        <div>
+            <button type="submit" id="buscarBtn">Buscar</button>
             <button type="button" onclick="location.href='gestionhabitaciones.html'">Volver</button>
         </div>
     </form>
 </div>
+<script src="../../Scripts/Habitaciones/buscarHabitacion.js"></script>
 </body>
 </html>

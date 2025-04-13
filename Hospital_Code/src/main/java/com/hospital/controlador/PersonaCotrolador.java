@@ -25,7 +25,7 @@ public class PersonaCotrolador {
         servicio.guardar(persona);
     }
 
-    @PostMapping("personas/actualizar")
+    @PutMapping("personas/actualizar")
     public void actualizar(@RequestBody Persona persona) {
         servicio.guardar(persona);
     }

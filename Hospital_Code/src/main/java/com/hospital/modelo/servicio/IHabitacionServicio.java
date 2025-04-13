@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IHabitacionServicio {
     List<Habitacion> listarTodos();
-    void guardar(Habitacion habitacion);
+    Habitacion guardar(Habitacion habitacion);
     Habitacion buscarPorId(Integer id);
     void eliminar(Integer id);
 }

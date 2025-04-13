@@ -19,8 +19,8 @@ public class HabitacionServicio implements IHabitacionServicio {
     }
 
     @Override
-    public void guardar(Habitacion habitacion) {
-        habitacionRepositorio.save(habitacion);
+    public Habitacion guardar(Habitacion habitacion) {
+       return habitacionRepositorio.save(habitacion);
     }
 
     @Override

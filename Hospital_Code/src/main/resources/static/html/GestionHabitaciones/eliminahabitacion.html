@@ -10,22 +10,17 @@
 <div class="login-container">
     <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
     <h2>Eliminar Habitación</h2>
-    <form action="/eliminarhabitacion" method="post">
-        <!-- Mensaje de error opcional -->
-        <div class="error-message">
-            <!-- <p>Aquí va el mensaje de error si aplica</p> -->
-        </div>
+    <form>
         <div>
             <label for="id">Número:</label>
-            <input type="text" name="numHabitacion" id="id" placeholder="Ingrese el número de la habitación" required>
+            <input type="text" id="id" placeholder="Ingrese el número de la habitación" required>
         </div>
         <div>
-            <button type="submit" onclick="return confirm('¿Desea eliminar el registro?');">Eliminar</button>
-        </div>
-        <div>
+            <button type="submit" id="eliminarBtn">Eliminar</button>
             <button type="button" onclick="location.href='gestionhabitaciones.html'">Volver</button>
         </div>
     </form>
 </div>
+<script src="../../Scripts/Habitaciones/eliminarHabitacion.js"></script>
 </body>
 </html>

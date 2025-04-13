@@ -66,7 +66,7 @@ buscarBtn.addEventListener("click",async e=>{
 
             try {
                 let res=await fetch("http://localhost:8080/personas/actualizar",{
-                    method:"POST",
+                    method:"PUT",
                     headers:{"Content-Type":"application/json"},
                     body:JSON.stringify({
                         idPersona: id,

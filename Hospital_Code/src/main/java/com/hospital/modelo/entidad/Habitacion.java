@@ -14,7 +14,7 @@ public class Habitacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numHabitacion;
     private String tipoHabitacion;
-    private String ocupacion;
+    private int capacidad;
 
     @ManyToMany(mappedBy = "habitaciones")
     private Set<Articulo> articulos=new HashSet<>();
@@ -41,12 +41,12 @@ public class Habitacion {
         this.tipoHabitacion = tipoHabitacion;
     }
 
-    public String getOcupacion() {
-        return ocupacion;
+    public int getCapacidad() {
+        return capacidad;
     }
 
-    public void setOcupacion(String individual) {
-        this.ocupacion = individual;
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 
     public Set<Articulo> getArticulos() {
