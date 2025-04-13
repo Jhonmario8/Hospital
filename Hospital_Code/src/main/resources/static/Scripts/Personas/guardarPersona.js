@@ -1,5 +1,22 @@
 const boton=document.getElementById("guardarBtn")
 
+document.getElementById("id").addEventListener("input",async e=>{
+    const id=e.target.value
+    let mensaje=document.getElementById("existeMensaje")
+    try {
+        let respuesta=await fetch(`http://localhost:8080/personas/buscar/${id}`)
+        if (respuesta.ok){
+            mensaje.textContent="Este id ya fue registrado"
+            mensaje.style.color="red"
+            mensaje.style.fontSize="12px"
+        }
+        else{
+            mensaje.textContent=""
+        }
+    }catch (e){
+    }
+})
+
 boton.addEventListener("click",async e=>{
     e.preventDefault()
     const id=document.getElementById("id").value
@@ -10,11 +27,6 @@ boton.addEventListener("click",async e=>{
     const tipo=document.getElementById("tipo").value
 
     try{
-        let response=await fetch(`http://localhost:8080/personas/buscar/${id}`)
-        if (response.ok){
-            alert("Este id ya fue registrado")
-            return
-        }
         let res=await fetch("http://localhost:8080/personas/guardar",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
