@@ -1,8 +1,11 @@
 package com.hospital.modelo.entidad;
 
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,10 +15,12 @@ public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCita;
-    private LocalDateTime fechaCita;
+    private LocalDate fechaCita;
+    private LocalTime horaCita;
     private String motivo;
 
     @ManyToMany(mappedBy = "citas" , cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Persona> personas=new HashSet<>();
 
 
@@ -27,12 +32,20 @@ public class Cita {
         this.idCita = codCita;
     }
 
-    public LocalDateTime getFechaCita() {
+    public LocalDate getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(LocalDateTime fechaCita) {
+    public void setFechaCita(LocalDate fechaCita) {
         this.fechaCita = fechaCita;
+    }
+
+    public LocalTime getHoraCita() {
+        return horaCita;
+    }
+
+    public void setHoraCita(LocalTime horaCita) {
+        this.horaCita = horaCita;
     }
 
     public String getMotivo() {
@@ -57,7 +70,9 @@ public class Cita {
         return "Cita{" +
                 "idCita=" + idCita +
                 ", fechaCita='" + fechaCita + '\'' +
-                ", horaCita='" + motivo + '\'' +
+                ", horaCita="+horaCita+
+                ", motivo='" + motivo + '\'' +
+                ", personas=" + personas+
                 '}';
     }
 }

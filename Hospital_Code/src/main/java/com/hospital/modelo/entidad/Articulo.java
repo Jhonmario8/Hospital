@@ -1,5 +1,6 @@
 package com.hospital.modelo.entidad;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 
@@ -21,6 +22,7 @@ public class Articulo {
             joinColumns = @JoinColumn(name = "cod_articulo"),
             inverseJoinColumns = @JoinColumn(name = "cod_habitacion")
     )
+    @JsonManagedReference
     private Set<Habitacion>habitaciones=new HashSet<>();
 
     public Articulo() {
@@ -70,9 +72,10 @@ public class Articulo {
     public String toString() {
         return "Articulo{" +
                 "idArticulo=" + idArticulo +
-                ", nomArticulo='" + nomArticulo + '\'' +
+                ", nomArticulo=" + nomArticulo +
                 ", cantidad=" + cantidad +
-                ", descripcion='" + descripcion + '\'' +
+                ", descripcion=" + descripcion +
+                ", habitaciones="+ habitaciones+
                 '}';
     }
 }

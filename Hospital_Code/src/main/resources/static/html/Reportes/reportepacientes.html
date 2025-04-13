@@ -10,7 +10,7 @@
 <div class="login-container">
     <h2>Reporte Pacientes</h2>
     <hr>
-    <table class="styled-table">
+    <table class="styled-table" id="tabla-pacientes">
         <thead>
         <tr>
             <th>ID</th>
@@ -20,11 +20,10 @@
             <th>Acompañante</th>
         </tr>
         </thead>
-        <tbody id="tabla-pacientes-body">
-        <!-- Aquí el JS se encarga de poner los <tr> con los pacientes -->
-        </tbody>
+
     </table>
     <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
 </div>
+<script src="../../Scripts/Reportes/reportePacientes.js"></script>
 </body>
 </html>

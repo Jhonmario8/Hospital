@@ -10,5 +10,8 @@ public interface IPersonaServicio {
     List<Persona> listarTodos();
     void guardar(Persona persona);
     Persona buscarPorId(Integer id);
+
+    List<Persona> listarEmpleados();
+    List<Persona> listarPacientes();
     void eliminar(Integer id);
 }

@@ -19,6 +19,15 @@ public class PersonaCotrolador {
     public List<Persona> mostrar() {
         return servicio.listarTodos();
     }
+    @GetMapping("personas/empleados")
+    public List<Persona> empleados(){
+        return servicio.listarEmpleados();
+    }
+
+    @GetMapping("persona/pacientes")
+    public List<Persona> pacientes(){
+        return servicio.listarPacientes();
+    }
 
     @PostMapping("personas/guardar")
     public void guardar(@RequestBody Persona persona) {

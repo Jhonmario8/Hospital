@@ -1,5 +1,5 @@
 package com.hospital.modelo.entidad;
-
+        import com.fasterxml.jackson.annotation.JsonBackReference;
         import jakarta.persistence.*;
         import java.util.List;
 
@@ -19,8 +19,9 @@ public class Persona {
     @JoinTable(
             name = "persona_cita",
             joinColumns = @JoinColumn(name = "cod_persona"),
-            inverseJoinColumns = @JoinColumn(name="cod_habitacion")
+            inverseJoinColumns = @JoinColumn(name="cod_cita")
     )
+    @JsonBackReference
     private List<Cita> citas;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -29,6 +30,7 @@ public class Persona {
             joinColumns = @JoinColumn(name = "cod_persona"),
             inverseJoinColumns = @JoinColumn(name = "id_servicio")
     )
+
     private List<Servicio> servicios;
 
     public Persona() {
@@ -99,4 +101,15 @@ public class Persona {
         this.servicios = servicios;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "idPersona=" + idPersona +
+                ", nomPersona='" + nomPersona + '\'' +
+                ", edadPersona=" + edadPersona +
+                ", direccion='" + direccion + '\'' +
+                ", telefonoPersona='" + telefonoPersona + '\'' +
+                ", tipoPersona=" + tipoPersona +
+                '}';
+    }
 }
