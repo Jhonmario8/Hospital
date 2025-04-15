@@ -1,16 +1,24 @@
 package com.hospital.modelo.entidad;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "cita")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idCita"
+)
 public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +27,8 @@ public class Cita {
     private LocalTime horaCita;
     private String motivo;
 
-    @ManyToMany(mappedBy = "citas" , cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Persona> personas=new HashSet<>();
+    @ManyToMany(mappedBy = "citas", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Persona> personas = new ArrayList<>();
 
 
     public int getIdCita() {
@@ -57,11 +64,11 @@ public class Cita {
     }
 
 
-    public Set<Persona> getPersonas() {
+    public List<Persona> getPersonas() {
         return personas;
     }
 
-    public void setPersonas(Set<Persona> personas) {
+    public void setPersonas(List<Persona> personas) {
         this.personas = personas;
     }
 

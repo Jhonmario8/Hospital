@@ -11,27 +11,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/citas")
 public class CitaCotrolador {
     @Autowired
     private ICitaServicio servicio;
 
-    @GetMapping("citas/mostrar")
+    @GetMapping("/mostrar")
     public List<Cita> mostrar() {
         return servicio.listarTodos();
     }
 
-    @PostMapping("citas/guardar")
-    public void guardar(@RequestBody Cita cita) {
-        servicio.guardar(cita);
+    @PostMapping("/guardar/{idPersona}")
+    public void guardar(@RequestBody Cita cita, @PathVariable int idPersona) {
+        servicio.guardar(cita, idPersona);
     }
 
-    @PostMapping("citas/actualizar")
-    public void actualizar(@RequestBody Cita cita){
-        servicio.guardar(cita);
+    @PostMapping("actualizar/{id}/persona/{idPersona}")
+    public void actualizar(@RequestBody Cita cita,@PathVariable int id, @PathVariable int idPersona){
+       Cita cit= servicio.buscarPorId(id);
+       cit.setFechaCita(cita.getFechaCita());
+       cit.setHoraCita(cita.getHoraCita());
+       cit.setMotivo(cita.getMotivo());
+       servicio.guardar(cit,idPersona);
     }
-
-
-    @PostMapping("citas/buscar/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id) {
         Cita cita= servicio.buscarPorId(id);
         if (cita!=null){
@@ -41,8 +44,9 @@ public class CitaCotrolador {
         }
     }
 
-    @DeleteMapping("citas/borrar/{id}")
+    @DeleteMapping("/borrar/{id}")
     public void borrar(@PathVariable int id) {
         servicio.eliminar(id);
     }
 }
+

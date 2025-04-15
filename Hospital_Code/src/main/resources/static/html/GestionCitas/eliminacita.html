@@ -10,18 +10,20 @@
 <div class="login-container">
     <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
     <h2>Eliminar Cita</h2>
-    <form action="/eliminarcita" method="post">
+    <form >
         <div>
-            <label for="id">ID:</label>
-            <input type="text" name="idCita" id="id" placeholder="Ingrese el id" required>
+            <label for="id">ID Cita:</label>
+            <input type="number" id="id" placeholder="Ingrese el id" required>
         </div>
         <div>
-            <button type="submit" onclick="return confirm('¿Desea eliminar el registro?');">Eliminar</button>
-        </div>
+            <button type="submit" id="eliminarBtn">Eliminar</button>
+
         <a href="gestioncitas.html">
             <button type="button">Volver</button>
         </a>
+        </div>
     </form>
 </div>
+<script src="../../Scripts/Citas/eliminarCitas.js"></script>
 </body>
 </html>

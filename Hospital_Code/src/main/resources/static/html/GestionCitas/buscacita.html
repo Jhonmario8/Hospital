@@ -10,44 +10,20 @@
 <div class="login-container">
   <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
   <h2>Buscar Cita</h2>
-  <form action="/buscarcita" method="post">
-    <div class="error-message" style="display: none;">
-      <p>Aquí va un mensaje de error si aplica.</p>
-    </div>
+  <form>
     <div>
-      <label for="id">ID:</label>
-      <input type="text" name="idCita" id="id" placeholder="Ingrese el id" required>
+      <label for="idPersona">ID Persona:</label>
+      <input type="text"  id="idPersona" placeholder="Ingrese el id" required>
     </div>
+    <p id="infoCita"></p>
     <div>
-      <button type="submit">Buscar</button>
-    </div>
-
-    <!-- Resultados de la cita, ocultos hasta que haya datos -->
-    <div id="resultado-cita" style="display: none;">
-      <div>
-        <label for="fecha">Fecha:</label>
-        <p id="fecha"></p>
-      </div>
-      <div>
-        <label for="hora">Hora:</label>
-        <p id="hora"></p>
-      </div>
-      <div>
-        <label for="paciente">Paciente:</label>
-        <p id="paciente">Juan Pérez</p>
-      </div>
-      <div>
-        <h3>Empleados:</h3>
-        <ul id="empleados-lista">
-
-        </ul>
-      </div>
-    </div>
-
+      <button type="submit" id="buscarBtn">Buscar</button>
     <a href="gestioncitas.html">
       <button type="button">Volver</button>
     </a>
+    </div>
   </form>
 </div>
+<script src="../../Scripts/Citas/buscarCitas.js"></script>
 </body>
 </html>

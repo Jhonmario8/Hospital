@@ -10,8 +10,10 @@ import java.util.List;
 
 public interface ICitaServicio {
     List<Cita> listarTodos();
-    void guardar(Cita cita);
+    void guardar(Cita cita,int idPersona);
     Cita buscarPorId(Integer id);
+
+
 
     void eliminar(Integer id);
 }
