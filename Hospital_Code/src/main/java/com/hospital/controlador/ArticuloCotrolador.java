@@ -11,23 +11,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("articulos")
 public class ArticuloCotrolador {
     @Autowired
     private IArticuloServicio servicio;
 
-    @GetMapping("articulos/mostrar")
+    @GetMapping("/mostrar")
     public List<Articulo> mostrar(){
         return servicio.listarTodos();
     }
-    @PostMapping("articulos/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Articulo articulo){
         servicio.guardar(articulo);
     }
-    @PostMapping("articulo/actualizar/")
+    @PostMapping("/actualizar")
     public void actualizar(@RequestBody Articulo articulo){
         servicio.guardar(articulo);
     }
-    @PostMapping("articulos/buscar/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id){
         Articulo art=servicio.buscarPorId(id);
         if (art!=null){
@@ -36,7 +37,11 @@ public class ArticuloCotrolador {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Articulo no encontrado");
         }
     }
-    @DeleteMapping("articulos/borrar/{id}")
+    @PostMapping("/asignar/{idArt}/habitacion/{idHab}/cantidad/{cantidad}")
+    public boolean asignar(@PathVariable int idArt,@PathVariable int idHab,@PathVariable int cantidad){
+       return servicio.asignar(idArt,idHab,cantidad);
+    }
+    @DeleteMapping("/borrar/{id}")
     public void borrar(@PathVariable int id){
         servicio.eliminar(id);
     }

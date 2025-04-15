@@ -2,6 +2,8 @@
 package com.hospital.modelo.entidad;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -10,6 +12,10 @@ import java.util.Set;
 
 @Entity
 @Table(name="habitacion")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "numHabitacion"
+)
 public class Habitacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +24,6 @@ public class Habitacion {
     private int capacidad;
 
     @ManyToMany(mappedBy = "habitaciones")
-    @JsonBackReference
     private Set<Articulo> articulos=new HashSet<>();
 
     @OneToMany(mappedBy = "habitacion", cascade= CascadeType.ALL)

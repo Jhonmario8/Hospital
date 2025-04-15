@@ -1,6 +1,8 @@
 package com.hospital.modelo.entidad;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 
@@ -9,6 +11,10 @@ import java.util.Set;
 
 @Entity
 @Table(name="articulo")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idArticulo"
+)
 public class Articulo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +28,6 @@ public class Articulo {
             joinColumns = @JoinColumn(name = "cod_articulo"),
             inverseJoinColumns = @JoinColumn(name = "cod_habitacion")
     )
-    @JsonManagedReference
     private Set<Habitacion>habitaciones=new HashSet<>();
 
     public Articulo() {
