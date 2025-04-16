@@ -10,5 +10,7 @@ public interface IServicioServicio {
     List<Servicio> listarTodos();
     void guardar(Servicio servicio);
     Servicio buscarPorId(Integer id);
+
+    void adquirir(int idServicio,int idPaciente);
     void eliminar(Integer id);
 }

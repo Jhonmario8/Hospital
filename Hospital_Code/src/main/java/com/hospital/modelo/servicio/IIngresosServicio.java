@@ -10,5 +10,7 @@ public interface IIngresosServicio {
     List<Ingresos> listarTodos();
     void guardar(Ingresos ingresos);
     Ingresos buscarPorId(Integer id);
+
+    Ingresos buscarPorPaciente(Integer id);
     void eliminar(Integer id);
 }

@@ -11,19 +11,17 @@
   <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
   <h2>Eliminar Servicio</h2>
 
-  <form action="/eliminarservicio" method="post">
-    <div class="error-message">
-      <p id="error"></p>
-    </div>
+  <form >
     <div>
       <label for="id">ID:</label>
       <input type="text" id="id" placeholder="Ingrese el ID" required>
     </div>
     <div>
-      <button type="submit" onclick="return confirm('¿Desea eliminar el registro?');">Eliminar</button>
+      <button type="submit" id="eliminarBtn">Eliminar</button>
+      <button type="button" onclick="location.href='gestionservicios.html'">Volver</button>
     </div>
-    <button type="button" onclick="location.href='gestionservicios.html'">Volver</button>
   </form>
 </div>
+<script src="../../Scripts/Servicios/eliminarServicios.js"></script>
 </body>
 </html>

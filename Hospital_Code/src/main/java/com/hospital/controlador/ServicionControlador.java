@@ -12,25 +12,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/servicios")
 public class ServicionControlador {
     @Autowired
     private IServicioServicio servicio;
 
-    @GetMapping("servicios/mostrar")
+    @GetMapping("/mostrar")
     public List<Servicio> mostrar() {
         return servicio.listarTodos();
     }
 
-    @PostMapping("servicios/guardar")
+    @PostMapping("/guardar")
     public void guardar(@RequestBody Servicio ser) {
         servicio.guardar(ser);
     }
 
-    @PostMapping("servicios/actualizar")
+    @PostMapping("/actualizar")
     public void actualizar(@RequestBody Servicio ser){
         servicio.guardar(ser);
     }
-    @PostMapping("servicios/buscar/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id) {
         Servicio ser= servicio.buscarPorId(id);
         if (ser!=null){
@@ -39,8 +40,12 @@ public class ServicionControlador {
             return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("Servicio no encontrado");
         }
     }
+    @PostMapping("/adquirir/{idServicio}/paciente/{idPaciente}")
+    public void adquirir(@PathVariable int idServicio,@PathVariable int idPaciente){
+        servicio.adquirir(idServicio,idPaciente);
+    }
 
-    @DeleteMapping("servicios/borrar/{id}")
+    @DeleteMapping("/borrar/{id}")
     public void borrar(@PathVariable int id) {
         servicio.eliminar(id);
     }

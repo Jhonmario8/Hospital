@@ -10,16 +10,17 @@
 <div class="login-container">
     <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
     <h2>Editar Servicio</h2>
-    <form >
+    <form id="form">
         <div>
             <label for="id">ID:</label>
             <input type="text" id="id" placeholder="Ingrese el ID del servicio" required>
         </div>
         <div>
-            <button type="submit">Buscar</button>
+            <button type="submit" id="buscarBtn">Buscar</button>
             <button type="button" onclick="location.href='gestionservicios.html'">Volver</button>
         </div>
     </form>
 </div>
+<script src="../../Scripts/Servicios/actualizarServicios.js"></script>
 </body>
 </html>

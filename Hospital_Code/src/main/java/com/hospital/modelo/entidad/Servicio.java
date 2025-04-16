@@ -2,12 +2,18 @@
 package com.hospital.modelo.entidad;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
 @Table(name="servicios")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "codServicio"
+)
 public class Servicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +22,7 @@ public class Servicio {
     private double precioServicio;
     private String detallesServicio;
     @ManyToMany(mappedBy = "servicios", cascade = CascadeType.ALL)
+
     private List<Persona> personas;
 
     public Servicio() {

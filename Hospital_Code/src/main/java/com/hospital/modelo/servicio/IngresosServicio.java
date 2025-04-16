@@ -21,6 +21,16 @@ public class IngresosServicio implements IIngresosServicio {
         ingresosRepositorio.save(ingreso);
     }
     @Override
+    public Ingresos buscarPorPaciente(Integer id){
+        List <Ingresos> lista=(List<Ingresos>) ingresosRepositorio.findAll();
+        for (Ingresos ing:lista){
+            if (ing.getPersona().getIdPersona()==id){
+                return ing;
+            }
+        }
+        return null;
+    }
+    @Override
     public Ingresos buscarPorId(Integer id){
         return ingresosRepositorio.findById(id).orElse(null);
     }

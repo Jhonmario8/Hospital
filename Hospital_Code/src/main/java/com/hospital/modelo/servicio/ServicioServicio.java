@@ -1,7 +1,9 @@
 package com.hospital.modelo.servicio;
 
 
+import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.entidad.Servicio;
+import com.hospital.modelo.repositorio.PersonaRepositorio;
 import com.hospital.modelo.repositorio.ServicioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import java.util.List;
 public class ServicioServicio implements  IServicioServicio{
     @Autowired
     private ServicioRepositorio servicioRepositorio;
+    @Autowired
+    private PersonaRepositorio personaRepositorio;
     @Override
     public List<Servicio> listarTodos(){
         return (List<Servicio>)servicioRepositorio.findAll();
@@ -19,6 +23,17 @@ public class ServicioServicio implements  IServicioServicio{
     @Override
     public void guardar(Servicio servicio){
         servicioRepositorio.save(servicio);
+    }
+    @Override
+    public void adquirir(int idServicio,int idPaciente){
+        Persona per=personaRepositorio.findById(idPaciente).orElse(null);
+        Servicio ser=servicioRepositorio.findById(idServicio).orElse(null);
+        if (per!=null && ser!=null){
+            per.getServicios().add(ser);
+            ser.getPersonas().add(per);
+            personaRepositorio.save(per);
+        }
+
     }
     @Override
     public Servicio buscarPorId(Integer id){
