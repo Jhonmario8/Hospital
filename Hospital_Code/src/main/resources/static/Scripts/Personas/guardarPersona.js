@@ -16,6 +16,18 @@ document.getElementById("id").addEventListener("input",async e=>{
     }catch (e){
     }
 })
+document.getElementById("telefono").addEventListener("input",async e=>{
+    const num=e.target.value
+    let message=document.getElementById("lengthMsg")
+    if (num.length!==10){
+        message.textContent="Ingrese un numero valido"
+        message.style.color="red"
+        message.style.fontSize="12px"
+    }
+    else{
+        message.textContent=""
+    }
+})
 
 boton.addEventListener("click",async e=>{
     e.preventDefault()

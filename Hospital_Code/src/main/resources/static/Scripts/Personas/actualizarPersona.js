@@ -12,6 +12,7 @@ function crearInput(id, labelText, value) {
 
     return [label, input];
 }
+
 const form=document.querySelector("form")
 buscarBtn.addEventListener("click",async e=>{
     e.preventDefault()
@@ -37,6 +38,7 @@ buscarBtn.addEventListener("click",async e=>{
         let edad=crearInput("edad","Edad: ",persona.edadPersona)
         let direccion= crearInput("direccion","Direccion: ",persona.direccion)
         let telefono=crearInput("telefono","Telefono: ",persona.telefonoPersona)
+        let message=document.createElement("p")
 
         const labelTipo=document.createElement("label")
         labelTipo.setAttribute("for","tipo")
@@ -62,6 +64,17 @@ buscarBtn.addEventListener("click",async e=>{
         volverBtn.setAttribute("href","../../html/GestionPersonas/actualizapersona.html")
         volverBtn.setAttribute("class","button")
         volverBtn.textContent="Volver"
+        telefono.at(1).addEventListener("input", e=>{
+            const num=e.target.value
+            if (num.length!==10){
+                message.textContent="Ingrese un numero valido"
+                message.style.color="red"
+                message.style.fontSize="12px"
+            }
+            else{
+                message.textContent=""
+            }
+        })
         
         actualizarBtn.addEventListener("click",async e=>{
             e.preventDefault()
@@ -96,6 +109,7 @@ buscarBtn.addEventListener("click",async e=>{
         form.appendChild(direccion.at(1))
         form.appendChild(telefono.at(0))
         form.appendChild(telefono.at(1))
+        form.appendChild(message)
         form.appendChild(labelTipo)
         form.appendChild(tipo)
         form.appendChild(actualizarBtn)
