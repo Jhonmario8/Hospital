@@ -12,5 +12,7 @@ public interface IServicioServicio {
     Servicio buscarPorId(Integer id);
 
     void adquirir(int idServicio,int idPaciente);
+
+    double cuenta(Integer idPaciente);
     void eliminar(Integer id);
 }

@@ -1,7 +1,9 @@
 package com.hospital.modelo.servicio;
 
 
+import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.entidad.Ingresos;
+import com.hospital.modelo.repositorio.HabitacionRepositorio;
 import com.hospital.modelo.repositorio.IngresosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import java.util.List;
 public class IngresosServicio implements IIngresosServicio {
     @Autowired
     private IngresosRepositorio ingresosRepositorio;
+    @Autowired
+    private HabitacionRepositorio habitacionRepositorio;
     @Override
     public List<Ingresos> listarTodos(){
         return (List<Ingresos>) ingresosRepositorio.findAll();
@@ -29,6 +33,16 @@ public class IngresosServicio implements IIngresosServicio {
             }
         }
         return null;
+    }
+    @Override
+    public void asignar(Integer idIngreso,Integer idHabitacion){
+        Habitacion hab=habitacionRepositorio.findById(idHabitacion).orElse(null);
+        Ingresos ing=ingresosRepositorio.findById(idIngreso).orElse(null);
+        if (hab!=null && ing!=null){
+            hab.getIngresos().add(ing);
+            ing.setHabitacion(hab);
+            ingresosRepositorio.save(ing);
+        }
     }
     @Override
     public Ingresos buscarPorId(Integer id){

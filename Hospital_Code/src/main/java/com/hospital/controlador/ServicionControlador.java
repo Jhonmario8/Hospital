@@ -44,7 +44,10 @@ public class ServicionControlador {
     public void adquirir(@PathVariable int idServicio,@PathVariable int idPaciente){
         servicio.adquirir(idServicio,idPaciente);
     }
-
+    @GetMapping("/cuenta/{idPersona}")
+    public double cuenta(@PathVariable int idPersona){
+        return servicio.cuenta(idPersona);
+    }
     @DeleteMapping("/borrar/{id}")
     public void borrar(@PathVariable int id) {
         servicio.eliminar(id);

@@ -12,8 +12,6 @@ public class Ingresos {
     @OneToOne
     @JoinColumn(name = "id_persona", referencedColumnName = "idPersona")
     private Persona persona;
-    private String ciudad;
-    private String motivo;
     private Boolean acompañante;
     private Boolean hospitalizado=false;
     @ManyToOne
@@ -37,22 +35,6 @@ public class Ingresos {
 
     public void setPersona(Persona persona) {
         this.persona = persona;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getMotivo() {
-        return motivo;
-    }
-
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
     }
 
     public Boolean getAcompañante() {

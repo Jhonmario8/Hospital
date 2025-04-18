@@ -11,47 +11,24 @@
 <div class="login-container">
     <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
     <h2>Registrar Salida</h2>
-
-    <!-- Mensaje de error dinámico -->
-    <div id="error" class="error-message" style="display: none;">
-        <p id="error-texto"></p>
-    </div>
-
-    <form action="/salir" method="post">
+    <form >
         <div>
             <label for="id">ID Paciente:</label>
-            <input type="text" name="idPaciente" id="id" placeholder="Ingrese el ID" required>
+            <input type="text"  id="id" placeholder="Ingrese el ID" required>
         </div>
 
         <div>
-            <button type="submit">Registrar</button>
+            <button type="submit" id="registrarBtn">Registrar</button>
+            <button type="button" onclick="location.href='gestioningresos.html'">Volver</button>
         </div>
 
-        <!-- Información del paciente, total y servicios -->
-        <div id="datosPaciente" style="display: none;">
-            <label for="paciente">Paciente:</label>
-            <input type="text" id="paciente" placeholder="Nombre del paciente" readonly>
+            <h3 for="total">Total a Pagar:</h3>
+            <p id="total"></p>
 
-            <label for="total">Total a Pagar:</label>
-            <p id="total">0</p>
-
-            <h3>Servicios:</h3>
-            <div id="servicios">
-                <!-- Se agregan dinámicamente con JS -->
-                <!-- Ejemplo:
-                <div class="servicio">
-                    <label>Nombre:</label>
-                    <p>Radiografía</p>
-                    <label>Valor:</label>
-                    <p>$50.000</p>
-                    <hr>
-                </div>
-                -->
-            </div>
-        </div>
-
-        <button type="button" onclick="location.href='gestioningresos.html'">Volver</button>
+            <h3>Servicios adquiridos:</h3>
+            <p id="servicios"></p>
     </form>
 </div>
+<script src="../../Scripts/Ingresos/registrarSalida.js"></script>
 </body>
 </html>

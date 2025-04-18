@@ -8,6 +8,7 @@ import com.hospital.modelo.repositorio.ServicioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,6 +36,24 @@ public class ServicioServicio implements  IServicioServicio{
         }
 
     }
+    @Override
+    public double cuenta(Integer idPaciente) {
+        Persona per = personaRepositorio.findById(idPaciente).orElse(null);
+        double cant = 0;
+
+        if (per != null) {
+            for (Servicio servicio : new ArrayList<>(per.getServicios())) {
+                cant += servicio.getPrecioServicio();
+                servicio.getPersonas().remove(per);
+            }
+            per.getServicios().clear();
+
+            personaRepositorio.save(per);
+        }
+
+        return cant;
+    }
+
     @Override
     public Servicio buscarPorId(Integer id){
         return servicioRepositorio.findById(id).orElse(null);

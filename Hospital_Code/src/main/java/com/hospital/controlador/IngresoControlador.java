@@ -51,6 +51,12 @@ public class IngresoControlador {
         }
     }
 
+    @PostMapping("/asignar/{idIngreso}/habitacion/{idHabitacion}")
+    public void asignar(@PathVariable int idIngreso,@PathVariable int idHabitacion){
+        servicio.asignar(idIngreso,idHabitacion);
+    }
+
+
     @DeleteMapping("/borrar/{id}")
     public void borrar(@PathVariable int id) {
         servicio.eliminar(id);

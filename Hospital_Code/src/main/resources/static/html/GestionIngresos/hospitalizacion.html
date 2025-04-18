@@ -11,20 +11,17 @@
     <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
     <h2>Registro Hospitalización</h2>
 
-    <form action="/hospitalizar" method="post">
+    <form >
         <div>
             <label for="id">ID Paciente:</label>
-            <input type="text" name="idPaciente" id="id" placeholder="Ingrese el ID" required>
+            <input type="text"  id="id" placeholder="Ingrese el ID" required>
         </div>
         <div>
-            <label for="motivo">Motivo de hospitalización:</label>
-            <input type="text" name="motivo" id="motivo" placeholder="Ingrese el motivo" required>
-        </div>
-        <div>
-            <button type="submit">Hospitalizar</button>
+            <button type="submit" id="hospitalizarBtn">Hospitalizar</button>
             <button type="button" onclick="location.href='gestioningresos.html'">Volver</button>
         </div>
     </form>
 </div>
+<script src="../../Scripts/Ingresos/hospitalizarBtn.js"></script>
 </body>
 </html>
