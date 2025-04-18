@@ -1,12 +1,11 @@
 const guardarBtn=document.getElementById("guardarBtn")
-
+const form=document.querySelector("form")
 guardarBtn.addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
-
     const tipo=document.getElementById("tipo").value
     const capacidad=document.getElementById("capacidad").value
 

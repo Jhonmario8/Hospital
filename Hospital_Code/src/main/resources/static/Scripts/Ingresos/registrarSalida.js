@@ -1,10 +1,10 @@
+const form=document.querySelector("form")
 document.getElementById("registrarBtn").addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
-
     const id=document.getElementById("id").value
     let pago=document.getElementById("total")
     let p=document.getElementById("servicios")

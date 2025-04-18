@@ -1,10 +1,10 @@
+const form=document.querySelector("form")
 document.getElementById("guardarBtn").addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
-
     const nombre=document.getElementById("nombre").value
     const precio=document.getElementById("precio").value
     const detalles=document.getElementById("detalles").value

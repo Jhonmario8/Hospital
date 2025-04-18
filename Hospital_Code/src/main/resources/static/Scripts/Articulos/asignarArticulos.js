@@ -1,9 +1,10 @@
+const form=document.querySelector("form")
 document.getElementById("asignarBtn").addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
     const idArt=document.getElementById("idArt").value
     const idHab=document.getElementById("idHab").value
     const cantidad=document.getElementById("cantidad").value

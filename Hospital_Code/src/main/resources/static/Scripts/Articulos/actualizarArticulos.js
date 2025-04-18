@@ -9,14 +9,15 @@ function crearInput(id,lblTxt,value){
 
     return [label,input]
 }
-
+const form=document.querySelector("form")
 document.getElementById("buscarBtn").addEventListener("click",async e=>{
-    if (!form.checkValidity()) {
-        return;
-    }
 
     e.preventDefault()
 
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
     const id=document.getElementById("id").value
 
     try{
@@ -29,7 +30,6 @@ document.getElementById("buscarBtn").addEventListener("click",async e=>{
             throw new Error("Error al buscar el articulo")
         }
         let articulo=await response.json()
-        let form=document.getElementById("form")
         form.innerHTML=""
         let [labelN,nombre]=crearInput("nombre","Nombre: ",articulo.nomArticulo)
         let [labelC,cantidad]=crearInput("cantidad","Cantidad: ",articulo.cantidad)

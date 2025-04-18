@@ -11,14 +11,13 @@ function crearInput(id,lblTxt,value){
 
     return [label,input]
 }
-
+const form=document.querySelector("form")
 buscarBtn.addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
-
     const id=document.getElementById("id").value
 
     try{
@@ -31,7 +30,6 @@ buscarBtn.addEventListener("click",async e=>{
             throw new Error("Error al buscar la habitacion")
         }
         let json=await response.json()
-        let form=document.getElementById("form")
         form.innerHTML=""
         let [labelT,tipo]=crearInput("tipo","Tipo: ",json.tipoHabitacion)
         let [labelC,capacidad]=crearInput("capacidad","Capacidad: ",json.capacidad)

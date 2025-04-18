@@ -1,6 +1,10 @@
+const form=document.querySelector("form")
 document.getElementById("hospitalizarBtn").addEventListener("click",async e=>{
     e.preventDefault()
-
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
     const id=document.getElementById("id").value
     try{
         let response=await fetch(`http://localhost:8080/personas/buscar/${id}`)

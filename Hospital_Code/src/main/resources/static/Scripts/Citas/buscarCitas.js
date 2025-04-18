@@ -1,10 +1,11 @@
+const form=document.querySelector("form")
 document.getElementById("buscarBtn").addEventListener("click",async e=>{
-    if (!form.checkValidity()) {
-        return;
-    }
-
     e.preventDefault()
 
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
     const id=document.getElementById("idPersona").value
     try{
         let response=await fetch(`http://localhost:8080/personas/buscar/${id}`)

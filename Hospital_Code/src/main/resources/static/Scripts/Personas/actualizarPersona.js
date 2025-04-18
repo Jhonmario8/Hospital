@@ -12,16 +12,14 @@ function crearInput(id, labelText, value) {
 
     return [label, input];
 }
-
+const form=document.querySelector("form")
 buscarBtn.addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
-
     const id=document.getElementById("id").value
-    let form=document.getElementById("form")
 
     try {
         let response=await fetch(`http://localhost:8080/personas/buscar/${id}`)

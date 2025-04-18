@@ -1,10 +1,10 @@
+const form=document.querySelector("form")
 document.getElementById("guardarBtn").addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
-
     const fecha=document.getElementById("fecha").value
     const hora=document.getElementById("hora").value
     const motivo=document.getElementById("motivo").value

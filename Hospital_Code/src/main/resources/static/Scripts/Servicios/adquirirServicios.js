@@ -1,16 +1,16 @@
 
+const form=document.querySelector("form")
 document.addEventListener("DOMContentLoaded",()=>{
     let idServicio=localStorage.getItem("idServicio")
     localStorage.removeItem("idServicio")
 
 
 document.getElementById("adquirirBtn").addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
-
     const id=document.getElementById("idPaciente").value
 
     try{

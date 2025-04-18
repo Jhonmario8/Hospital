@@ -1,5 +1,5 @@
 const boton=document.getElementById("guardarBtn")
-
+const form=document.querySelector("form")
 document.getElementById("id").addEventListener("input",async e=>{
     const id=e.target.value
     let mensaje=document.getElementById("existeMensaje")
@@ -18,11 +18,11 @@ document.getElementById("id").addEventListener("input",async e=>{
 })
 
 boton.addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
     const id=document.getElementById("id").value
     const nombre=document.getElementById("nombre").value
     const edad=document.getElementById("edad").value

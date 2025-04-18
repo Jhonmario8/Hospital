@@ -1,9 +1,10 @@
+const form=document.querySelector("form")
 document.getElementById("registrarBtn").addEventListener("click",async e=>{
+    e.preventDefault()
     if (!form.checkValidity()) {
+        form.reportValidity();
         return;
     }
-
-    e.preventDefault()
     const btn = document.getElementById("registrarBtn");
     btn.disabled = true;
     btn.textContent = "Registrando...";

@@ -10,13 +10,13 @@ function crearInput(id, labelText, value) {
 
   return [label, input];
 }
-
+const form=document.querySelector("form")
 document.getElementById("buscarBtn").addEventListener("click",async e=>{
+  e.preventDefault()
   if (!form.checkValidity()) {
+    form.reportValidity();
     return;
   }
-
-  e.preventDefault()
   const id=document.getElementById("id").value
     try{
       let res=await fetch(`http://localhost:8080/personas/buscar/${id}`)
@@ -30,7 +30,6 @@ document.getElementById("buscarBtn").addEventListener("click",async e=>{
           alert("No esta persona no tiene citas agendadas")
         }
         console.log(cita)
-        let form=document.getElementById("form")
         form.innerHTML=""
 
       let [labelF,fecha]=crearInput("fecha","Fecha: ",cita.fechaCita)
