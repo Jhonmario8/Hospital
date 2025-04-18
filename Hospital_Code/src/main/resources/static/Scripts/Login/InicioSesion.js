@@ -1,6 +1,10 @@
 const iniciarBtn=document.getElementById("iniciarBtn")
 
 iniciarBtn.addEventListener("click", async e => {
+    if (!form.checkValidity()) {
+        return;
+    }
+
     e.preventDefault()
     const usuario = document.getElementById("user").value
     const contraseña = document.getElementById("contraseña").value

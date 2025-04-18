@@ -1,6 +1,10 @@
 const boton=document.getElementById("buscarBtn")
 
 boton.addEventListener("click",async e=>{
+    if (!form.checkValidity()) {
+        return;
+    }
+
     e.preventDefault()
     const id=document.getElementById("id").value
     const info= document.getElementById("info")

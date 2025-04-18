@@ -14,6 +14,10 @@ function crearInput(id, labelText, value) {
 }
 
 buscarBtn.addEventListener("click",async e=>{
+    if (!form.checkValidity()) {
+        return;
+    }
+
     e.preventDefault()
 
     const id=document.getElementById("id").value

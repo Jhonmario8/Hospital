@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 document.getElementById("adquirirBtn").addEventListener("click",async e=>{
+    if (!form.checkValidity()) {
+        return;
+    }
+
     e.preventDefault()
 
     const id=document.getElementById("idPaciente").value

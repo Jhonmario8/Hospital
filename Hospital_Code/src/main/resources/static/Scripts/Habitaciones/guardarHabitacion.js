@@ -1,6 +1,10 @@
 const guardarBtn=document.getElementById("guardarBtn")
 
 guardarBtn.addEventListener("click",async e=>{
+    if (!form.checkValidity()) {
+        return;
+    }
+
     e.preventDefault()
 
     const tipo=document.getElementById("tipo").value

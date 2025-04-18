@@ -1,6 +1,10 @@
 const eliminarBtn=document.getElementById("eliminarBtn")
 
 eliminarBtn.addEventListener("click",async e=>{
+    if (!form.checkValidity()) {
+        return;
+    }
+
     e.preventDefault()
     const id=document.getElementById("id").value
     try {

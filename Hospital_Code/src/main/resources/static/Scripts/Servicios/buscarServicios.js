@@ -1,5 +1,9 @@
 document.getElementById("buscarBtn").addEventListener("click",async e=>{
-  e.preventDefault()
+    if (!form.checkValidity()) {
+        return;
+    }
+
+    e.preventDefault()
 
   const id=document.getElementById("id").value
     let p=document.getElementById("info-servicio")

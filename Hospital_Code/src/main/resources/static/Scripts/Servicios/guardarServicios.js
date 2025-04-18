@@ -1,4 +1,8 @@
 document.getElementById("guardarBtn").addEventListener("click",async e=>{
+    if (!form.checkValidity()) {
+        return;
+    }
+
     e.preventDefault()
 
     const nombre=document.getElementById("nombre").value

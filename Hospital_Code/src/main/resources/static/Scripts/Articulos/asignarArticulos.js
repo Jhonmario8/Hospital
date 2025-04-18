@@ -1,4 +1,8 @@
 document.getElementById("asignarBtn").addEventListener("click",async e=>{
+    if (!form.checkValidity()) {
+        return;
+    }
+
     e.preventDefault()
     const idArt=document.getElementById("idArt").value
     const idHab=document.getElementById("idHab").value
