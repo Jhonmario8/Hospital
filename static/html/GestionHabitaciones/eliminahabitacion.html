@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="shortcut icon" href="/Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Eliminar Habitación</h2>
+    <form action="/eliminarhabitacion" method="post">
+        <!-- Mensaje de error opcional -->
+        <div class="error-message">
+            <!-- <p>Aquí va el mensaje de error si aplica</p> -->
+        </div>
+        <div>
+            <label for="id">Número:</label>
+            <input type="text" name="numHabitacion" id="id" placeholder="Ingrese el número de la habitación" required>
+        </div>
+        <div>
+            <button type="submit" onclick="return confirm('¿Desea eliminar el registro?');">Eliminar</button>
+        </div>
+        <div>
+            <button type="button" onclick="location.href='gestionhabitaciones.html'">Volver</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

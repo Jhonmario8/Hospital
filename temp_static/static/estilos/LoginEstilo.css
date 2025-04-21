@@ -168,16 +168,17 @@ body::before {
     text-align: center;
 }
 
+/* Responsive design for small screens */
 @media (max-width: 400px) {
     .login-container {
         width: 280px;
         padding: 20px;
     }
-
+    
     .button-container {
         flex-direction: column;
     }
-
+    
     .login-container button,
     .login-container .button {
         width: 100%;

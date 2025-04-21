@@ -394,15 +394,15 @@ td a:hover {
     .sidebar {
         width: 200px;
     }
-
+    
     .main-content, .footer {
         margin-left: 200px;
     }
-
+    
     .welcome-text h1 {
         font-size: 2rem;
     }
-
+    
     .login-container {
         width: 80%;
     }
@@ -413,15 +413,15 @@ td a:hover {
         width: 0;
         opacity: 0;
     }
-
+    
     .main-content, .footer {
         margin-left: 0;
     }
-
+    
     .header-container {
         justify-content: center;
     }
-
+    
     .mobile-menu-toggle {
         display: block;
         position: absolute;
@@ -431,12 +431,12 @@ td a:hover {
         color: white;
         cursor: pointer;
     }
-
+    
     .sidebar.active {
         width: 200px;
         opacity: 1;
     }
-
+    
     .login-container {
         width: 90%;
         padding: 20px;

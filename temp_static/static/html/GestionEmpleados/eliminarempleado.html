@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital </title>
+    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="shortcut icon" href="/Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    <h2>Eliminar Empleado</h2>
+    <form action="/eliminarempleado" method="post">
+        <div class="error-message">
+            <p></p>
+        </div>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" placeholder="Ingrese el id" required>
+        </div>
+        <div>
+            <button type="submit">Eliminar</button>
+            <button type="button">Volver</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
