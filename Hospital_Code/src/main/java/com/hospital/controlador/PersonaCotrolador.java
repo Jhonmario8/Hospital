@@ -54,4 +54,14 @@ public class PersonaCotrolador {
         servicio.eliminar(id);
     }
 
+    @GetMapping("personas/inactivo/{id}")
+    public Persona inactivos(@PathVariable int id){
+        return servicio.buscarInactivo(id);
+    }
+
+    @PostMapping("personas/activar/{id}")
+    public void activos(@PathVariable int id){
+        servicio.activar(id);
+    }
+
 }

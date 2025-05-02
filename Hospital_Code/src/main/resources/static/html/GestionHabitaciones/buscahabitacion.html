@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Hospital</title>
-    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="stylesheet" href="../../estilos/estilo.css">
     <link rel="shortcut icon" href="/Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
 </head>
 <body>
@@ -17,10 +17,21 @@
             <p id="habitacion-info"></p>
         </div>
         <div>
-            <button type="submit" id="buscarBtn">Buscar</button>
-            <button type="button" onclick="location.href='gestionhabitaciones.html'">Volver</button>
+
         </div>
     </form>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Capacidad</th>
+        </tr>
+        </thead>
+        <tbody id="habitaciones-tabla">
+
+        </tbody>
+    </table>
 </div>
 <script src="../../Scripts/Habitaciones/buscarHabitacion.js"></script>
 </body>

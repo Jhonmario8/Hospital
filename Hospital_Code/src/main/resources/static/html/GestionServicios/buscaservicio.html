@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Hospital</title>
-    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="stylesheet" href="../../estilos/estilo.css">
     <link rel="shortcut icon" href="/Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
 </head>
 <body>
 <div class="login-container">
-
+    <img src="/Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
     <h2>Buscar Servicio</h2>
 
     <form action="/buscarservicio" method="post">
@@ -23,10 +23,23 @@
         </div>
 
         <div>
-            <button type="submit" id="buscarBtn">Buscar</button>
             <button type="button" onclick="location.href='gestionservicios.html'">Volver</button>
         </div>
     </form>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Detalles</th>
+            <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody id="servicios-tabla">
+
+        </tbody>
+    </table>
 </div>
 <script src="../../Scripts/Servicios/buscarServicios.js"></script>
 </body>

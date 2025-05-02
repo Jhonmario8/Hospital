@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Hospital</title>
-    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="stylesheet" href="../../estilos/estilo.css">
     <link rel="shortcut icon" href="/Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
 </head>
 <body>
@@ -13,17 +13,29 @@
     <form >
         <div>
             <label for="id">ID:</label>
-            <input type="text" name="idPaciente" id="id" placeholder="Ingrese el ID" required>
+            <input type="text"  id="id" placeholder="Ingrese el ID" required>
         </div>
 
         <div>
-            <button type="submit" id="buscarBtn">Buscar</button>
             <button type="button" onclick="location.href='gestionpersona.html'">Volver</button>
+            <p id="info"></p>
         </div>
-
-       <p id="info"></p>
-
     </form>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Teléfono</th>
+            <th>Direccion</th>
+            <th>Tipo</th>
+        </tr>
+        </thead>
+        <tbody id="personas-tabla">
+
+        </tbody>
+    </table>
 </div>
 <script src="../../Scripts/Personas/buscarPersona.js"></script>
 </body>

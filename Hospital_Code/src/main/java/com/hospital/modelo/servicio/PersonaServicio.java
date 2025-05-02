@@ -10,6 +10,8 @@ import com.hospital.modelo.repositorio.PersonaRepositorio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,8 @@ public class PersonaServicio implements IPersonaServicio {
     private PersonaRepositorio personaRepositorio;
     @Override
     public List<Persona> listarTodos(){
-        return (List<Persona>) personaRepositorio.findAll();
+        List<Persona> personas=(List<Persona>) personaRepositorio.findAll();
+        return personas.stream().filter(Persona::isActivo).toList();
     }
     @Override
     public void guardar(Persona persona){
@@ -33,7 +36,7 @@ public class PersonaServicio implements IPersonaServicio {
                 empleados.add(per);
             }
         }
-        return empleados;
+        return empleados.stream().filter(Persona::isActivo).toList();
     }
     @Override
     public List<Persona> listarPacientes(){
@@ -43,15 +46,33 @@ public class PersonaServicio implements IPersonaServicio {
                 pacientes.add(per);
             }
         }
-        return pacientes;
+        return pacientes.stream().filter(Persona::isActivo).toList();
     }
 
     @Override
     public Persona buscarPorId(Integer id){
-     return personaRepositorio.findById(id).orElse(null);
+        return personaRepositorio.findById(id).filter(Persona::isActivo).orElse(null);
     }
     @Override
     public void eliminar(Integer id){
-        personaRepositorio.deleteById(id);
+        Optional<Persona> personaOpt=personaRepositorio.findById(id);
+        if (personaOpt.isPresent()){
+            Persona persona = personaOpt.get();
+            persona.setActivo(false);
+            personaRepositorio.save(persona);
+        }
+    }
+    @Override
+    public Persona buscarInactivo(Integer id){
+        return personaRepositorio.findById(id).filter(persona -> !persona.isActivo()).orElse(null);
+    }
+    @Override
+    public void activar(Integer id){
+        Optional<Persona> personaOpt=personaRepositorio.findById(id);
+        if (personaOpt.isPresent()){
+            Persona per=personaOpt.get();
+            per.setActivo(true);
+            personaRepositorio.save(per);
+        }
     }
 }

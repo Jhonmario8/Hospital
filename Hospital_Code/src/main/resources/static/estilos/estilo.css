@@ -151,7 +151,7 @@ body::before {
     }
 }
 
-/* Aseguramos que el contenido principal tenga el margen correcto */
+
 .main-content {
     margin-left: 250px;
     padding: 100px 30px 30px;
@@ -219,7 +219,7 @@ body::before {
     line-height: 1.6;
 }
 
-/* Footer Styles */
+
 .footer {
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
@@ -242,7 +242,7 @@ body::before {
     margin: 0.5rem auto;
 }
 
-/* Login Styles */
+
 .login-container {
     width: 400px;
     margin: 100px auto;

@@ -1,67 +1,80 @@
-const form=document.querySelector("form")
-document.getElementById("buscarBtn").addEventListener("click",async e=>{
+let tabla=document.getElementById("citas-tabla")
+function crearFila(cita){
+    let hora = new Date(`1970-01-01T${cita.horaCita}`);
+    let horaFormateada = hora.toLocaleTimeString("es-CO", {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    });
+    let row= document.createElement("tr")
+    row.innerHTML=`
+            <td>${cita.idCita}</td>
+            <td>${cita.fechaCita}</td>
+            <td>${horaFormateada}</td>
+            <td>${cita.motivo}</td>
+            `
+    let cad=""
+    if (Array.isArray(cita.personas)) {
+        let i = 0
+        for (per of cita.personas) {
+
+            if (per.tipoPersona) {
+                if (i === cita.personas.length - 1) {
+                    cad += "ID: " + per.idPersona
+                    continue
+                }
+                cad += "ID: " + per.idPersona + " , "
+            }
+            i++
+        }
+    }
+    let paciente = cita.personas.find(p=>!p.tipoPersona)
+    row.innerHTML+=`
+                <td>${paciente===undefined?"No hay":paciente.idPersona}</td>
+                <td>${cad}</td>
+                `
+    return row
+}
+async function mostrar(){
+    try{
+        let res=await fetch("http://localhost:8080/citas/mostrar")
+        if (!res.ok){
+            throw new Error("Error al obtener las citas")
+        }
+        let citas=await res.json()
+        citas.slice(0,10).forEach(cita=>{
+            let row=crearFila(cita)
+            tabla.appendChild(row)
+        })
+    }catch(e){
+        console.error(e)
+    }
+}
+document.addEventListener("DOMContentLoaded",mostrar)
+document.getElementById("id").addEventListener("input",async e=>{
     e.preventDefault()
 
-    if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-    }
-    const id=document.getElementById("idPersona").value
+    tabla.innerHTML=""
+    const id=e.target.value
+
+    let info=document.getElementById("infoCita")
     try{
-        let response=await fetch(`http://localhost:8080/personas/buscar/${id}`)
-        if (response.status===404){
-            alert("El id ingresado no existe")
-            return
+        if (id===""){
+            mostrar()
         }
-        if (!response.ok){
-            throw new Error("Error al buscar la persona")
-        }
-        let persona=await response.json()
-        let info=document.getElementById("infoCita")
-        if (persona.citas.length===0){
-            info.textContent="La persona no tiene citas agendadas"
+        let res=await fetch(`http://localhost:8080/citas/buscar/${id}`)
+        if (res.status===404){
+            info.textContent="La cita no se encontro"
             info.style.color="red"
             return
         }
-        let informacion=""
-        let pacId
-        if (!persona.tipoPersona) {
-
-            persona.citas.forEach(cita => {
-                idEmp=cita.personas.find(p => p.tipoPersona)
-
-                informacion += `______________________<br>
-        Id: ${cita.idCita}<br>
-        Fecha: ${cita.fechaCita} <br>
-        Hora: ${cita.horaCita} <br>
-        Motivo: ${cita.motivo} <br>
-        Paciente: ${persona.idPersona}<br>
-        Empleado:${idEmp?idEmp.idPersona:"No asignado"}
-        
-`
-                info.innerHTML = informacion
-                info.style.color = "white"
-
-            })
+        if (!res.ok){
+            throw new Error("Error al buscar la cita")
         }
-        else{
-            persona.citas.forEach(cita => {
-
-                informacion += `______________________<br>
-        Id: ${cita.idCita}<br>
-        Fecha: ${cita.fechaCita} <br>
-        Hora: ${cita.horaCita} <br>
-        Motivo: ${cita.motivo} <br>
-        Paciente: ${cita.personas.find(p => !p.tipoPersona).idPersona}<br>
-        Empleado:${persona.idPersona}
-        
-`
-                info.innerHTML = informacion
-                info.style.color = "white"
-
-
-            })
-        }
+        let cita=await res.json()
+        let row=crearFila(cita)
+        tabla.appendChild(row)
+        info.textContent=""
 
     }catch (e){
         console.error(e)

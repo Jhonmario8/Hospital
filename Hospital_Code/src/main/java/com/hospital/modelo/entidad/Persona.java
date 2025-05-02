@@ -1,11 +1,11 @@
 package com.hospital.modelo.entidad;
 
-        import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-        import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-        import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "persona")
@@ -21,7 +21,7 @@ public class Persona {
     private String direccion;
     private String telefonoPersona;
     private boolean tipoPersona;
-
+    private boolean activo=true;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
@@ -92,6 +92,14 @@ public class Persona {
         this.tipoPersona = tipoPersona;
     }
 
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
     public List<Cita> getCitas() {
         return citas;
     }
@@ -117,6 +125,7 @@ public class Persona {
                 ", direccion='" + direccion + '\'' +
                 ", telefonoPersona='" + telefonoPersona + '\'' +
                 ", tipoPersona=" + tipoPersona +
+                ", activo=" + activo +
                 '}';
     }
 }

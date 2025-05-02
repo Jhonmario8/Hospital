@@ -43,6 +43,23 @@ boton.addEventListener("click",async e=>{
     const tipo=document.getElementById("tipo").value
 
     try{
+        let response=await fetch( `http://localhost:8080/personas/inactivo${id}`)
+        if (!response.ok && response.status!==404){
+            throw new Error("Error al buscar la persona")
+        }
+        let persona=await response.json()
+        if (persona!==null){
+            if (confirm("Persona inactiva, desea activarla?")){
+                let respuesta=await fetch(`http://localhost:8080/personas/activar/${id}`,{
+                    method:"POST"
+                })
+                if (!respuesta.ok){
+                    throw new Error("Error al activar la persona")
+                }
+                alert("Persona activada exitosamente")
+                return
+            }
+        }
         let res=await fetch("http://localhost:8080/personas/guardar",{
             method:"POST",
             headers:{"Content-Type":"application/json"},

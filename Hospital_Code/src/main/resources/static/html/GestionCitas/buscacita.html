@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Hospital</title>
-  <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+  <link rel="stylesheet" href="../../estilos/estilo.css">
   <link rel="shortcut icon" href="/Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
 </head>
 <body>
@@ -12,17 +12,29 @@
   <h2>Buscar Cita</h2>
   <form>
     <div>
-      <label for="idPersona">ID Persona:</label>
-      <input type="text"  id="idPersona" placeholder="Ingrese el id" required>
+      <label for="id">ID Persona:</label>
+      <input type="text"  id="id" placeholder="Ingrese el id" required>
     </div>
     <p id="infoCita"></p>
     <div>
-      <button type="submit" id="buscarBtn">Buscar</button>
-    <a href="gestioncitas.html">
-      <button type="button">Volver</button>
-    </a>
+      <button type="button" onclick="location.href='gestioncitas.html'">Volver</button>
     </div>
   </form>
+  <table class="styled-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Motivo</th>
+      <th>Paciente</th>
+      <th>Empleados</th>
+    </tr>
+    </thead>
+    <tbody id="citas-tabla">
+
+    </tbody>
+  </table>
 </div>
 <script src="../../Scripts/Citas/buscarCitas.js"></script>
 </body>

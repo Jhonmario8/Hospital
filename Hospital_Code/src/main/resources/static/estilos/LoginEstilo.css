@@ -155,7 +155,9 @@ body::before {
     width: calc(50% - 5px); /* Equal width accounting for gap */
     box-sizing: border-box; /* Make sure padding doesn't affect width */
 }
-
+.login-container .button{
+    padding: 9px 24px;
+}
 
 .login-container button:hover,
 .login-container .button:hover {
