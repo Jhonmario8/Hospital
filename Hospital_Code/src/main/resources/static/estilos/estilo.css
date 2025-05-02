@@ -85,8 +85,6 @@ body::before {
 
 .nav-list li {
     margin-bottom: 5px;
-    border-radius: 5px;
-    overflow: hidden;
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
@@ -94,9 +92,8 @@ body::before {
     display: block;
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-weight: 500;
-    border-radius: 5px;
     transition: all 0.3s ease;
     position: relative;
 }
@@ -107,30 +104,68 @@ body::before {
     transform: translateX(5px);
 }
 
+/* Eliminar el pseudo-elemento before que añade un icono */
 .nav-list a:before {
-    content: "\f105";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    margin-right: 10px;
-    color: var(--hover-color);
-    opacity: 0;
-    transition: all 0.3s ease;
+    content: "";
+    margin-right: 0;
 }
 
-.nav-list a:hover:before {
-    opacity: 1;
+/* Estilo específico para el elemento activo */
+.nav-list a.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--hover-color);
+    border-left: 4px solid var(--hover-color);
 }
 
 .nav-list li:hover {
-    box-shadow: 0 0 20px rgba(52, 152, 219, 0.7);
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.7);
 }
 
-/* Main Content Styles */
+/* Ajuste para dispositivos móviles */
+@media (max-width: 767.98px) {
+    .sidebar {
+        width: 0;
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        width: 200px;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 30px;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .header-container {
+        padding-left: 60px;
+    }
+}
+
+/* Aseguramos que el contenido principal tenga el margen correcto */
 .main-content {
     margin-left: 250px;
     padding: 100px 30px 30px;
-    min-height: calc(100vh - 80px);
-    flex-grow: 1;
+}
+
+.footer {
+    margin-left: 250px;
+}
+
+@media (max-width: 767.98px) {
+    .main-content, .footer {
+        margin-left: 0;
+        transition: margin-left 0.3s ease;
+    }
 }
 
 .welcome-section {

@@ -2,30 +2,49 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Hospital TdeA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital TdeA - Reporte Artículos</title>
     <link rel="stylesheet" href="../../estilos/estilo.css">
-    <link rel="shortcut icon" href="/Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="login-container">
-    <h2>Reporte Artículos</h2>
-    <hr>
 
-    <table class="styled-table" id="tabla-articulos">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Descripción</th>
-            <th>Habitaciones</th>
-        </tr>
-        </thead>
 
-    </table>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="welcome-section">
+            <div class="welcome-container">
+                <div class="welcome-text">
+                    <h1>Reporte Artículos</h1>
+                </div>
 
-    <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
-</div>
-<script src="../../Scripts/Reportes/reporteArticulos.js"></script>
+                <table class="styled-table" id="tabla-articulos">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>Descripción</th>
+                            <th>Habitaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se cargarán dinámicamente desde JavaScript -->
+                    </tbody>
+                </table>
+
+                <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <script src="../../Scripts/Reportes/reporteArticulos.js"></script>
 </body>
 </html>
