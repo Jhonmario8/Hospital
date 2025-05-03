@@ -45,6 +45,7 @@ buscarBtn.addEventListener("click",async e=>{
         labelTipo.textContent="Tipo: "
         const tipo = document.createElement("select");
         tipo.setAttribute("id", "tipo");
+        tipo.setAttribute("class","styled-select")
 
         const optionEmpleado = document.createElement("option");
         optionEmpleado.value = "true";
