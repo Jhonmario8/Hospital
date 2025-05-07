@@ -154,7 +154,6 @@ body::before {
 
 /* Para los botones de las imágenes */
 .gallery-item:hover .image-button:before {
-    content: "Ver detalles";
     position: absolute;
     top: 50%;
     left: 50%;

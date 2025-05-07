@@ -32,6 +32,7 @@ document.getElementById("registrarBtn").addEventListener("click",async e=>{
         if (!response.ok){
             throw new Error("Error al obtener la cuenta")
         }
+        document.querySelectorAll("h3").forEach(h=>h.style.display="block")
         let cuenta=await response.json()
         pago.textContent=cuenta.toFixed(2)
 

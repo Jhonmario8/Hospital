@@ -1,6 +1,5 @@
 package com.hospital.controlador;
 
-import com.hospital.modelo.entidad.Cita;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.servicio.IHabitacionServicio;
 import org.springframework.beans.factory.annotation.Autowired;
