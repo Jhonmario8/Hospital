@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 public class PersonaServicio implements IPersonaServicio {
     @Autowired
     private PersonaRepositorio personaRepositorio;
+    
     @Override
     public List<Persona> listarTodos(){
         List<Persona> personas=(List<Persona>) personaRepositorio.findAll();
@@ -72,6 +73,19 @@ public class PersonaServicio implements IPersonaServicio {
         if (personaOpt.isPresent()){
             Persona per=personaOpt.get();
             per.setActivo(true);
+            personaRepositorio.save(per);
+        }
+    }
+    @Override
+    public void actualizar(Persona persona){
+        Optional<Persona> perOpt=personaRepositorio.findById(persona.getIdPersona()).filter(Persona::isActivo);
+        if (perOpt.isPresent()) {
+            Persona per=perOpt.get();
+            per.setNomPersona(persona.getNomPersona());
+            per.setDireccion(persona.getDireccion());
+            per.setTelefonoPersona(persona.getTelefonoPersona());
+            per.setEdadPersona(persona.getEdadPersona());
+            per.setTipoPersona(persona.isTipoPersona());
             personaRepositorio.save(per);
         }
     }

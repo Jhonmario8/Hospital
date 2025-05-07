@@ -15,4 +15,5 @@ public interface IPersonaServicio {
     void eliminar(Integer id);
     Persona buscarInactivo(Integer id);
     void activar(Integer id);
+    void actualizar(Persona persona);
 }

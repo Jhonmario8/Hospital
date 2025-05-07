@@ -36,7 +36,7 @@ public class PersonaCotrolador {
 
     @PutMapping("personas/actualizar")
     public void actualizar(@RequestBody Persona persona) {
-        servicio.guardar(persona);
+        servicio.actualizar(persona);
     }
 
     @GetMapping("personas/buscar/{id}")
@@ -63,5 +63,6 @@ public class PersonaCotrolador {
     public void activos(@PathVariable int id){
         servicio.activar(id);
     }
+
 
 }
