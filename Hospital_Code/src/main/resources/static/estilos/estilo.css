@@ -477,3 +477,6 @@ td a:hover {
         padding: 20px;
     }
 }
+.salir:hover{
+    cursor: pointer;
+}

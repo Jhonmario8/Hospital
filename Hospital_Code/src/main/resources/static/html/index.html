@@ -18,11 +18,11 @@
 <div class="sidebar">
     <nav>
         <ul class="nav-list">
-            <li><a href="InicioSesion/inicioSesion.html">Salir</a></li>
+            <li><a class="salir">Salir</a></li>
             <li><a href="index.html" id="home">Inicio</a></li>
             <li><a href="GestionPersonas/gestionpersona.html">Personas</a></li>
             <li><a href="GestionHabitaciones/gestionhabitaciones.html">Habitaciones</a></li>
-            <li><a href=".GestionCitas/gestioncitas.html">Citas</a></li>
+            <li><a href="GestionCitas/gestioncitas.html">Citas</a></li>
             <li><a href="GestionArticulos/gestionarticulos.html">Artículos</a></li>
             <li><a href="GestionServicios/gestionservicios.html">Servicios</a></li>
             <li><a href="GestionIngresos/gestioningresos.html">Ingresos</a></li>
@@ -56,5 +56,12 @@
     <p>© Todos los derechos reservados 2024</p>
     <hr>
 </footer>
+<script>
+    document.querySelector(".salir").addEventListener("click",()=>{
+        if(confirm("Seguro que desdeas cerrar sesion?")){
+            window.location.href="InicioSesion/inicioSesion.html"
+        }
+    })
+</script>
 </body>
 </html>
