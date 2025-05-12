@@ -1,5 +1,6 @@
 package com.hospital.modelo.entidad;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -23,7 +24,8 @@ public class Persona {
     private boolean tipoPersona;
     private boolean activo=true;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonBackReference
+    @ManyToMany
     @JoinTable(
             name = "persona_cita",
             joinColumns = @JoinColumn(name = "cod_persona"),

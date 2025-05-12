@@ -3,6 +3,7 @@ package com.hospital.modelo.entidad;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
@@ -26,6 +27,7 @@ public class Cita {
     private LocalTime horaCita;
     private String motivo;
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "citas", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Persona> personas = new ArrayList<>();
 

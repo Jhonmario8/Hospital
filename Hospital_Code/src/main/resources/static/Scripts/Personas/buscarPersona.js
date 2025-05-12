@@ -16,6 +16,8 @@ async function mostrar(){
         throw new Error("Error al obtener las personas")
     }
     let personas=await response.json()
+    console.log(personas);
+    
     tabla.innerHTML=""
     personas.slice(0,10).forEach(per => {
         let row=crearFila(per)
@@ -41,6 +43,7 @@ document.getElementById("id").addEventListener("input",async e=>{
 
         if (id===""){
             mostrar()
+            return
         }
         let res = await fetch(`http://localhost:8080/personas/buscar/${id}`)
         if (res.status===404){
