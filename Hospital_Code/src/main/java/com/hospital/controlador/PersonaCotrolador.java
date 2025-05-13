@@ -1,6 +1,7 @@
 package com.hospital.controlador;
 
 
+import com.hospital.modelo.dto.PersonaDto;
 import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.servicio.IPersonaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +31,27 @@ public class PersonaCotrolador {
     }
 
     @PostMapping("personas/guardar")
-    public void guardar(@RequestBody Persona persona) {
-        servicio.guardar(persona);
+    public void guardar(@RequestBody PersonaDto persona) {
+        Persona per=new Persona();
+        per.setIdPersona(persona.getIdPersona());
+        per.setTelefonoPersona(persona.getTelefonoPersona());
+        per.setNomPersona(persona.getNomPersona());
+        per.setTipoPersona(persona.isTipoPersona());
+        per.setDireccion(persona.getDireccion());
+        per.setEdadPersona(persona.getEdadPersona());
+        servicio.guardar(per);
     }
 
     @PutMapping("personas/actualizar")
-    public void actualizar(@RequestBody Persona persona) {
-        servicio.actualizar(persona);
+    public void actualizar(@RequestBody PersonaDto persona) {
+        Persona per=new Persona();
+        per.setIdPersona(persona.getIdPersona());
+        per.setTelefonoPersona(persona.getTelefonoPersona());
+        per.setNomPersona(persona.getNomPersona());
+        per.setTipoPersona(persona.isTipoPersona());
+        per.setDireccion(persona.getDireccion());
+        per.setEdadPersona(persona.getEdadPersona());
+        servicio.guardar(per);
     }
 
     @GetMapping("personas/buscar/{id}")
@@ -55,7 +70,7 @@ public class PersonaCotrolador {
     }
 
     @GetMapping("personas/inactivo/{id}")
-    public Persona inactivos(@PathVariable int id){
+    public ResponseEntity<?> inactivos(@PathVariable int id){
         return servicio.buscarInactivo(id);
     }
 

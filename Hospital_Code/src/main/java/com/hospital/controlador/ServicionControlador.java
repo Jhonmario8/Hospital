@@ -1,6 +1,7 @@
 package com.hospital.controlador;
 
 
+import com.hospital.modelo.dto.ServicioDto;
 import com.hospital.modelo.entidad.Servicio;
 import com.hospital.modelo.servicio.IServicioServicio;
 
@@ -23,12 +24,21 @@ public class ServicionControlador {
     }
 
     @PostMapping("/guardar")
-    public void guardar(@RequestBody Servicio ser) {
+    public void guardar(@RequestBody ServicioDto servicioDto) {
+        Servicio ser=new Servicio();
+        ser.setNomServicio(servicioDto.getNomServicio());
+        ser.setDetallesServicio(servicioDto.getDetallesServicio());
+        ser.setPrecioServicio(servicioDto.getPrecioServicio());
         servicio.guardar(ser);
     }
 
     @PostMapping("/actualizar")
-    public void actualizar(@RequestBody Servicio ser){
+    public void actualizar(@RequestBody ServicioDto servicioDto) {
+        Servicio ser=new Servicio();
+        ser.setCodServicio(servicioDto.getCodServicio());
+        ser.setNomServicio(servicioDto.getNomServicio());
+        ser.setDetallesServicio(servicioDto.getDetallesServicio());
+        ser.setPrecioServicio(servicioDto.getPrecioServicio());
         servicio.guardar(ser);
     }
     @GetMapping("/buscar/{id}")

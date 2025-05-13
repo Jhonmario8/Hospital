@@ -31,6 +31,8 @@ public class Cita {
     @ManyToMany(mappedBy = "citas", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Persona> personas = new ArrayList<>();
 
+    public Cita() {
+    }
 
     public int getIdCita() {
         return idCita;

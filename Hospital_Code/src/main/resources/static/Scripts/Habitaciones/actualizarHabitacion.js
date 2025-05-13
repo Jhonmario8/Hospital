@@ -44,7 +44,7 @@ buscarBtn.addEventListener("click",async e=>{
         actualizarBtn.addEventListener("click",async e=>{
             e.preventDefault()
             try {
-                let res=await fetch("http://localhost:8080/habitaciones/actualizar",{
+                let res=await fetch(`http://localhost:8080/habitaciones/actualizar`,{
                     method:"PUT",
                     headers:{"Content-Type":"application/json"},
                     body:JSON.stringify({

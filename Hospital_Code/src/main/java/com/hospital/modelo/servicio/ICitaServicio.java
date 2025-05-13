@@ -13,7 +13,7 @@ public interface ICitaServicio {
     void guardar(Cita cita,int idPersona);
     Cita buscarPorId(Integer id);
 
-
+    void actualizar(Cita cita);
 
     void eliminar(Integer id);
 }

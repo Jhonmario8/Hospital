@@ -6,20 +6,15 @@ document.getElementById("guardarBtn").addEventListener("click",async e=>{
         return;
     }
     const fecha=document.getElementById("fecha").value
-    const hora=document.getElementById("hora").value
+    let hora=document.getElementById("hora").value
     const motivo=document.getElementById("motivo").value
     const idPaciente=parseInt(document.getElementById("idPaciente").value)
-
     try{
         let response=await fetch("http://localhost:8080/persona/pacientes")
         let pacientes=await response.json()
         let persona = pacientes.find(p => p.idPersona === idPaciente && !p.tipoPersona);
         if (!persona){
             alert("El idPaciente no existe")
-            return
-        }
-        if (persona.citas.find(()=>true)){
-            alert("Esta persona ya tiene una cita agendada")
             return
         }
         let res=await fetch(`http://localhost:8080/citas/guardar/${idPaciente}`,{

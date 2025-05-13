@@ -94,7 +94,7 @@ buscarBtn.addEventListener("click",async e=>{
                     })
                 })
                 if (!res.ok){
-                    throw new Error("Error al actualizar la tarea")
+                    throw new Error("Error al actualizar la persona")
                 }
                 alert("Persona actualizada con exito")
                 window.location.href="../../html/GestionPersonas/actualizapersona.html"

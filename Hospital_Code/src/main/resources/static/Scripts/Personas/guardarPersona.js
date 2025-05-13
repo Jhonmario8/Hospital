@@ -35,35 +35,38 @@ boton.addEventListener("click",async e=>{
         form.reportValidity();
         return;
     }
-    const id=document.getElementById("id").value
-    const nombre=document.getElementById("nombre").value
-    const edad=document.getElementById("edad").value
+    const id=parseInt( document.getElementById("id").value)
+    const nombre= document.getElementById("nombre").value
+    const edad=parseInt(document.getElementById("edad").value)
     const direccion=document.getElementById("direccion").value
     const telefono=document.getElementById("telefono").value
-    const tipo=document.getElementById("tipo").value
-
+    let tipo=document.getElementById("tipo").value === "true"
     try{
-        let response=await fetch( `http://localhost:8080/personas/inactivo${id}`)
+        let response=await fetch( `http://localhost:8080/personas/inactivo/${id}`)
         if (!response.ok && response.status!==404){
             throw new Error("Error al buscar la persona")
         }
-        let persona=await response.json()
-        if (persona!==null){
-            if (confirm("Persona inactiva, desea activarla?")){
-                let respuesta=await fetch(`http://localhost:8080/personas/activar/${id}`,{
-                    method:"POST"
+        if (response.status!==404) {
+            let persona = await response.json()
+
+        if (persona!==null) {
+            if (confirm("Persona inactiva, desea activarla?")) {
+                let respuesta = await fetch(`http://localhost:8080/personas/activar/${id}`, {
+                    method: "POST"
                 })
-                if (!respuesta.ok){
+                if (!respuesta.ok) {
                     throw new Error("Error al activar la persona")
                 }
                 alert("Persona activada exitosamente")
                 return
             }
         }
+        }
         let res=await fetch("http://localhost:8080/personas/guardar",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
-            body:JSON.stringify({idPersona: id,
+            body:JSON.stringify({
+                idPersona: id,
                 nomPersona: nombre,
                 edadPersona: edad,
                 direccion: direccion,

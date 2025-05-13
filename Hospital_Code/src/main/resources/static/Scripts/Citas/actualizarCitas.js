@@ -19,17 +19,15 @@ document.getElementById("buscarBtn").addEventListener("click",async e=>{
   }
   const id=document.getElementById("id").value
     try{
-      let res=await fetch(`http://localhost:8080/personas/buscar/${id}`)
+      let res=await fetch(`http://localhost:8080/citas/buscar/${id}`)
         if (res.status===404){
-            alert("No se encontro el paciente")
+            alert("No se encontro la cita")
             return
         }
-        let persona=await res.json()
-        let cita=persona.citas.find(()=>true)
-        if (!cita){
-          alert("No esta persona no tiene citas agendadas")
+        if (!res.ok){
+          throw new Error("Error al buscar la cita")
         }
-        console.log(cita)
+        let cita=await res.json()
         form.innerHTML=""
 
       let [labelF,fecha]=crearInput("fecha","Fecha: ",cita.fechaCita)
@@ -49,11 +47,11 @@ document.getElementById("buscarBtn").addEventListener("click",async e=>{
         e.preventDefault()
 
         try{
-          let response=await fetch(`http://localhost:8080/citas/actualizar/${cita.idCita}/persona/${id}`,{
+          let response=await fetch(`http://localhost:8080/citas/actualizar`,{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({
-
+              idCita: id,
               fechaCita: fecha.value,
               horaCita: hora.value,
               motivo: motivo.value

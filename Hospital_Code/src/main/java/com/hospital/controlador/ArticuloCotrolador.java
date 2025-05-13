@@ -1,6 +1,7 @@
 package com.hospital.controlador;
 
 
+import com.hospital.modelo.dto.ArticuloDto;
 import com.hospital.modelo.entidad.Articulo;
 import com.hospital.modelo.servicio.IArticuloServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,20 @@ public class ArticuloCotrolador {
         return servicio.listarTodos();
     }
     @PostMapping("/guardar")
-    public void guardar(@RequestBody Articulo articulo){
-        servicio.guardar(articulo);
+    public void guardar(@RequestBody ArticuloDto articulo){
+        Articulo art=new Articulo();
+        art.setNomArticulo(articulo.getNomArticulo());
+        art.setCantidad(articulo.getCantidad());
+        art.setDescripcion(articulo.getDescripcion());
+        servicio.guardar(art);
     }
     @PostMapping("/actualizar")
-    public void actualizar(@RequestBody Articulo articulo){
-        servicio.guardar(articulo);
+    public void actualizar(@RequestBody ArticuloDto articulo){
+        Articulo art=new Articulo();
+        art.setNomArticulo(articulo.getNomArticulo());
+        art.setCantidad(articulo.getCantidad());
+        art.setDescripcion(articulo.getDescripcion());
+        servicio.guardar(art);
     }
     @GetMapping("/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id){

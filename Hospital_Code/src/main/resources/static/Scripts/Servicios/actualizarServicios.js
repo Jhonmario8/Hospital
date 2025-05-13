@@ -46,7 +46,7 @@ document.getElementById("buscarBtn").addEventListener("click",async e=>{
         actualizarBtn.addEventListener("click",async e=>{
             e.preventDefault()
             try {
-                let res = await fetch(`http://localhost:8080/servicios/guardar`, {
+                let res = await fetch(`http://localhost:8080/servicios/actualizar`, {
                     method: "POST",
                     headers: {"Content-Type":"application/json"},
                     body: JSON.stringify({

@@ -1,6 +1,7 @@
 package com.hospital.controlador;
 
 
+import com.hospital.modelo.dto.CitaDto;
 import com.hospital.modelo.entidad.Cita;
 import com.hospital.modelo.servicio.ICitaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,25 @@ public class CitaCotrolador {
     }
 
     @PostMapping("/guardar/{idPersona}")
-    public void guardar(@RequestBody Cita cita, @PathVariable int idPersona) {
+    public void guardar(@RequestBody CitaDto citaDto, @PathVariable int idPersona) {
+        Cita cita=new Cita();
+        if (citaDto.getIdCita()!=0){
+            cita.setIdCita(citaDto.getIdCita());
+        }
+        cita.setFechaCita(citaDto.getFechaCita());
+        cita.setHoraCita(citaDto.getHoraCita());
+        cita.setMotivo(citaDto.getMotivo());
         servicio.guardar(cita, idPersona);
     }
 
-    @PostMapping("actualizar/{id}/persona/{idPersona}")
-    public void actualizar(@RequestBody Cita cita,@PathVariable int id, @PathVariable int idPersona){
-       Cita cit= servicio.buscarPorId(id);
-       cit.setFechaCita(cita.getFechaCita());
-       cit.setHoraCita(cita.getHoraCita());
-       cit.setMotivo(cita.getMotivo());
-       servicio.guardar(cit,idPersona);
+    @PostMapping("/actualizar")
+    public void actualizar(@RequestBody CitaDto citaDto){
+        Cita cita=servicio.buscarPorId(citaDto.getIdCita());
+        cita.setIdCita(citaDto.getIdCita());
+        cita.setFechaCita(citaDto.getFechaCita());
+        cita.setHoraCita(citaDto.getHoraCita());
+        cita.setMotivo(citaDto.getMotivo());
+        servicio.actualizar(cita);
     }
     @GetMapping("/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id) {

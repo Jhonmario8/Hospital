@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -64,8 +67,12 @@ public class PersonaServicio implements IPersonaServicio {
         }
     }
     @Override
-    public Persona buscarInactivo(Integer id){
-        return personaRepositorio.findById(id).filter(persona -> !persona.isActivo()).orElse(null);
+    public ResponseEntity<?> buscarInactivo(Integer id){
+        Persona per= personaRepositorio.findById(id).filter(persona -> !persona.isActivo()).orElse(null);
+        if (per!=null){
+            return ResponseEntity.ok(per);
+        }
+        else return ResponseEntity.status(HttpStatus.NOT_FOUND).body("La persona no se encontro");
     }
     @Override
     public void activar(Integer id){

@@ -1,5 +1,6 @@
 package com.hospital.controlador;
 
+import com.hospital.modelo.dto.HabitacionDto;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.servicio.IHabitacionServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,20 @@ public class HabitacionCotrolador {
     }
 
     @PostMapping("habitaciones/guardar")
-    public Habitacion guardar(@RequestBody Habitacion habitacion) {
-       return servicio.guardar(habitacion);
+    public Habitacion guardar(@RequestBody HabitacionDto habitacion) {
+        Habitacion hab=new Habitacion();
+        hab.setTipoHabitacion(habitacion.getTipoHabitacion());
+        hab.setCapacidad(habitacion.getCapacidad());
+       return servicio.guardar(hab);
     }
 
     @PutMapping("habitaciones/actualizar")
-    public void actualizar(@RequestBody Habitacion habitacion){
-        servicio.guardar(habitacion);
+    public void actualizar(@RequestBody HabitacionDto habitacion) {
+        Habitacion hab=new Habitacion();
+        hab.setNumHabitacion(habitacion.getNumHabitacion());
+        hab.setTipoHabitacion(habitacion.getTipoHabitacion());
+        hab.setCapacidad(habitacion.getCapacidad());
+        servicio.guardar(hab);
     }
     @GetMapping("habitaciones/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id) {

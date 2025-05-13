@@ -2,6 +2,7 @@
 package com.hospital.modelo.servicio;
 
 import com.hospital.modelo.entidad.Persona;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface IPersonaServicio {
     List<Persona> listarEmpleados();
     List<Persona> listarPacientes();
     void eliminar(Integer id);
-    Persona buscarInactivo(Integer id);
+    ResponseEntity buscarInactivo(Integer id);
     void activar(Integer id);
     void actualizar(Persona persona);
 }

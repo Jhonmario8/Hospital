@@ -26,11 +26,19 @@ public class CitaServicio implements ICitaServicio {
     public void guardar(Cita cita,int idPersona) {
         Persona per=personaRepositorio.findById(idPersona).orElse(null);
         if (per!=null){
-            cita.getPersonas().add(per);
+            citaRepositorio.save(cita);
+
             per.getCitas().add(cita);
+            cita.getPersonas().add(per);
+
             personaRepositorio.save(per);
+            citaRepositorio.save(cita);
         }
 
+    }
+    @Override
+    public void actualizar(Cita cita){
+        citaRepositorio.save(cita);
     }
 
     @Override
