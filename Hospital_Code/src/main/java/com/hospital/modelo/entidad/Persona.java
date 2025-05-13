@@ -1,8 +1,6 @@
 package com.hospital.modelo.entidad;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -10,10 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "persona")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idPersona"
-)
 public class Persona {
     @Id
     private int idPersona;
@@ -24,7 +18,7 @@ public class Persona {
     private boolean tipoPersona;
     private boolean activo=true;
 
-    @JsonBackReference
+
     @ManyToMany
     @JoinTable(
             name = "persona_cita",
@@ -32,6 +26,7 @@ public class Persona {
             inverseJoinColumns = @JoinColumn(name = "cod_cita")
     )
     private List<Cita> citas = new ArrayList<>();
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

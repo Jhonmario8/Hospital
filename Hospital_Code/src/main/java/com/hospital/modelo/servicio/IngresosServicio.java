@@ -1,14 +1,19 @@
 package com.hospital.modelo.servicio;
 
 
+import com.hospital.modelo.dto.IngresoDto;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.entidad.Ingresos;
+import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.repositorio.HabitacionRepositorio;
 import com.hospital.modelo.repositorio.IngresosRepositorio;
+import com.hospital.modelo.repositorio.PersonaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class IngresosServicio implements IIngresosServicio {
@@ -16,23 +21,37 @@ public class IngresosServicio implements IIngresosServicio {
     private IngresosRepositorio ingresosRepositorio;
     @Autowired
     private HabitacionRepositorio habitacionRepositorio;
+    @Autowired
+    private PersonaRepositorio personaRepositorio;
     @Override
-    public List<Ingresos> listarTodos(){
-        return (List<Ingresos>) ingresosRepositorio.findAll();
-    }
-    @Override
-    public void guardar(Ingresos ingreso){
-        ingresosRepositorio.save(ingreso);
-    }
-    @Override
-    public Ingresos buscarPorPaciente(Integer id){
-        List <Ingresos> lista=(List<Ingresos>) ingresosRepositorio.findAll();
-        for (Ingresos ing:lista){
-            if (ing.getPersona().getIdPersona()==id){
-                return ing;
-            }
+    public List<IngresoDto> listarTodos(){
+        List<IngresoDto> ingresoDtos=new ArrayList<>();
+        var ingresos= ingresosRepositorio.findAll();
+        for (Ingresos ingreso : ingresos) {
+            IngresoDto ingresoDto=new IngresoDto();
+            ingresoDto.setIdIngreso(ingreso.getIdIngreso());
+            ingresoDto.setHospitalizado(ingreso.getHospitalizado());
+            ingresoDto.setAcompañante(ingreso.getAcompañante());
+            ingresoDto.setIdPersona(ingreso.getPersona().getIdPersona());
+            ingresoDto.setIdHabitacion(ingreso.getHabitacion().getNumHabitacion());
+            ingresoDtos.add(ingresoDto);
         }
-        return null;
+        return ingresoDtos;
+    }
+    @Override
+    public void guardar(IngresoDto ingresoDto){
+        Ingresos ingresos=new Ingresos();
+        ingresos.setHospitalizado(ingresoDto.getHospitalizado());
+        Optional<Persona> byId = personaRepositorio.findById(ingresoDto.getIdPersona());
+        if (byId.isPresent()) {
+            ingresos.setPersona(byId.get());
+        }
+        ingresos.setAcompañante(ingresoDto.getAcompañante());
+        ingresosRepositorio.save(ingresos);
+    }
+    @Override
+    public IngresoDto buscarPorPaciente(Integer id){
+            return ingresosRepositorio.buscarPorPaciente(id);
     }
     @Override
     public void asignar(Integer idIngreso,Integer idHabitacion){
@@ -51,5 +70,19 @@ public class IngresosServicio implements IIngresosServicio {
     @Override
     public void eliminar(Integer id){
         ingresosRepositorio.deleteById(id);
+    }
+    @Override
+    public void actualizar(IngresoDto ingresoDto){
+        Optional<Ingresos> byId = ingresosRepositorio.findById(ingresoDto.getIdIngreso());
+        if (byId.isPresent()){
+            Ingresos ingresos=byId.get();
+            Optional<Persona> perOpt = personaRepositorio.findById(ingresoDto.getIdPersona());
+            if (perOpt.isPresent()) {
+                ingresos.setPersona(perOpt.get());
+            }
+            ingresos.setAcompañante(ingresoDto.getAcompañante());
+            ingresos.setHospitalizado(ingresoDto.getHospitalizado());
+            ingresosRepositorio.save(ingresos);
+        }
     }
 }

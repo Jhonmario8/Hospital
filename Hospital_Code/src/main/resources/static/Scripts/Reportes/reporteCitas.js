@@ -14,31 +14,16 @@ document.addEventListener("DOMContentLoaded",async ()=>{
                 hour12: true
             });
             let row= document.createElement("tr")
+            let paciente=cita.personas.find(p=>!p.tipoPersona)
+            let empleado=cita.personas.find(p=>p.tipoPersona)
             row.innerHTML=`
             <td>${cita.idCita}</td>
             <td>${cita.fechaCita}</td>
             <td>${horaFormateada}</td>
             <td>${cita.motivo}</td>
+            <td>${paciente.idPersona}</td>
+            <td>${empleado.idPersona}</td>
             `
-            let cad=""
-            if (Array.isArray(cita.personas)){
-                let i=0
-                for (per of cita.personas){
-
-                    if (per.tipoPersona){
-                        if (i===cita.personas.length-1){
-                            cad+="ID: "+per.idPersona
-                            continue
-                        }
-                        cad+="ID: "+per.idPersona+" , "
-                    }
-                    i++
-                }
-                row.innerHTML+=`
-                <td>${cita.personas.find(p=>!p.tipoPersona).idPersona}</td>
-                <td>${cad}</td>
-                `
-            }
             tabla.appendChild(row)
         })
     }catch (e){

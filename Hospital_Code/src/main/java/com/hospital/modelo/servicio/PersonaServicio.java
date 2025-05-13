@@ -5,6 +5,8 @@
 package com.hospital.modelo.servicio;
 
 
+import com.hospital.modelo.dto.PersonaDto;
+import com.hospital.modelo.dto.ServicioDto;
 import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.repositorio.PersonaRepositorio;
 
@@ -24,38 +26,25 @@ public class PersonaServicio implements IPersonaServicio {
     private PersonaRepositorio personaRepositorio;
     
     @Override
-    public List<Persona> listarTodos(){
-        List<Persona> personas=(List<Persona>) personaRepositorio.findAll();
-        return personas.stream().filter(Persona::isActivo).toList();
+    public List<PersonaDto> listarTodos(){
+        return personaRepositorio.findAllPersonaDto();
     }
     @Override
     public void guardar(Persona persona){
         personaRepositorio.save(persona);
     }
     @Override
-    public List<Persona> listarEmpleados(){
-        List<Persona> empleados=new ArrayList<>();
-        for (Persona per: personaRepositorio.findAll()){
-            if (per.isTipoPersona()){
-                empleados.add(per);
-            }
-        }
-        return empleados.stream().filter(Persona::isActivo).toList();
+    public List<PersonaDto> listarEmpleados(){
+        return personaRepositorio.findAllPersonaDto().stream().filter(PersonaDto::isTipoPersona).toList();
     }
     @Override
-    public List<Persona> listarPacientes(){
-        List<Persona> pacientes=new ArrayList<>();
-        for (Persona per: personaRepositorio.findAll()){
-            if (!per.isTipoPersona()){
-                pacientes.add(per);
-            }
-        }
-        return pacientes.stream().filter(Persona::isActivo).toList();
+    public List<PersonaDto> listarPacientes(){
+        return personaRepositorio.findAllPersonaDto().stream().filter(personaDto -> !personaDto.isTipoPersona()).toList();
     }
 
     @Override
-    public Persona buscarPorId(Integer id){
-        return personaRepositorio.findById(id).filter(Persona::isActivo).orElse(null);
+    public PersonaDto buscarPorId(Integer id){
+        return personaRepositorio.findByIdDto(id);
     }
     @Override
     public void eliminar(Integer id){
@@ -95,5 +84,15 @@ public class PersonaServicio implements IPersonaServicio {
             per.setTipoPersona(persona.isTipoPersona());
             personaRepositorio.save(per);
         }
+    }
+    @Override
+    public boolean tieneCita(Integer id){
+        int response= personaRepositorio.tieneCitas(id);
+        return response==1;
+    }
+
+    @Override
+    public List<ServicioDto> serviciosPersona(Integer id){
+        return personaRepositorio.serviciosPersona(id);
     }
 }

@@ -1,6 +1,7 @@
 package com.hospital.modelo.servicio;
 
 
+import com.hospital.modelo.dto.ServicioDto;
 import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.entidad.Servicio;
 import com.hospital.modelo.repositorio.PersonaRepositorio;
@@ -18,8 +19,8 @@ public class ServicioServicio implements  IServicioServicio{
     @Autowired
     private PersonaRepositorio personaRepositorio;
     @Override
-    public List<Servicio> listarTodos(){
-        return (List<Servicio>)servicioRepositorio.findAll();
+    public List<ServicioDto> listarTodos(){
+        return servicioRepositorio.listarServiciosDto();
     }
     @Override
     public void guardar(Servicio servicio){

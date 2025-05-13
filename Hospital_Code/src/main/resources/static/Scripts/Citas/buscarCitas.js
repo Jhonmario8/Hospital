@@ -7,32 +7,16 @@ function crearFila(cita){
         hour12: true
     });
     let row= document.createElement("tr")
+    let paciente = cita.personas.find(p => !p.tipoPersona);
+    let empleado = cita.personas.find(p => p.tipoPersona);
     row.innerHTML=`
             <td>${cita.idCita}</td>
             <td>${cita.fechaCita}</td>
             <td>${horaFormateada}</td>
             <td>${cita.motivo}</td>
+            <td>${paciente ? paciente.idPersona : "No hay"}</td>
+            <td>${empleado ? empleado.idPersona : "No hay"}</td>
             `
-    let cad=""
-    if (Array.isArray(cita.personas)) {
-        let i = 0
-        for (per of cita.personas) {
-
-            if (per.tipoPersona) {
-                if (i === cita.personas.length - 1) {
-                    cad += "ID: " + per.idPersona
-                    continue
-                }
-                cad += "ID: " + per.idPersona + " , "
-            }
-            i++
-        }
-    }
-    let paciente = cita.personas.find(p=>!p.tipoPersona)
-    row.innerHTML+=`
-                <td>${paciente===undefined?"No hay":paciente.idPersona}</td>
-                <td>${cad}</td>
-                `
     return row
 }
 async function mostrar(){
@@ -42,6 +26,7 @@ async function mostrar(){
             throw new Error("Error al obtener las citas")
         }
         let citas=await res.json()
+        tabla.innerHTML = ""
         citas.slice(0,10).forEach(cita=>{
             let row=crearFila(cita)
             tabla.appendChild(row)
@@ -61,6 +46,7 @@ document.getElementById("id").addEventListener("input",async e=>{
     try{
         if (id===""){
             mostrar()
+            return
         }
         let res=await fetch(`http://localhost:8080/citas/buscar/${id}`)
         if (res.status===404){
@@ -72,6 +58,7 @@ document.getElementById("id").addEventListener("input",async e=>{
             throw new Error("Error al buscar la cita")
         }
         let cita=await res.json()
+        console.log("Cita encontrada:", cita); // Añadir para depuración
         let row=crearFila(cita)
         tabla.appendChild(row)
         info.textContent=""

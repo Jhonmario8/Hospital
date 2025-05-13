@@ -6,6 +6,16 @@ public class ServicioDto {
     private double precioServicio;
     private String detallesServicio;
 
+    public ServicioDto() {
+    }
+
+    public ServicioDto(int codServicio, String nomServicio, double precioServicio, String detallesServicio) {
+        this.codServicio = codServicio;
+        this.nomServicio = nomServicio;
+        this.precioServicio = precioServicio;
+        this.detallesServicio = detallesServicio;
+    }
+
     public int getCodServicio() {
         return codServicio;
     }

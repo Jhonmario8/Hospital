@@ -1,13 +1,18 @@
 package com.hospital.modelo.dto;
 
+import com.hospital.modelo.entidad.Persona;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class CitaDto {
     private  int idCita;
     private LocalDate fechaCita;
     private LocalTime horaCita;
     private String motivo;
+    private List<PersonaDto> personas;
+
 
     public int getIdCita() {
         return idCita;
@@ -40,4 +45,13 @@ public class CitaDto {
     public void setMotivo(String motivo) {
         this.motivo = motivo;
     }
+
+    public List<PersonaDto> getPersonas() {
+        return personas;
+    }
+
+    public void setPersonas(List<PersonaDto> personas) {
+        this.personas = personas;
+    }
 }
+

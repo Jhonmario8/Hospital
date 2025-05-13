@@ -3,6 +3,7 @@ package com.hospital.controlador;
 
 import com.hospital.modelo.dto.CitaDto;
 import com.hospital.modelo.entidad.Cita;
+import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.servicio.ICitaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class CitaCotrolador {
     private ICitaServicio servicio;
 
     @GetMapping("/mostrar")
-    public List<Cita> mostrar() {
+    public List<CitaDto> mostrar() {
         return servicio.listarTodos();
     }
 

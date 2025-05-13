@@ -10,7 +10,7 @@ document.getElementById("registrarBtn").addEventListener("click",async e=>{
     btn.textContent = "Registrando...";
 
     const id=document.getElementById("id").value
-    const acompañante=document.getElementById("acompañante").value
+    const acompañante=document.getElementById("acompañante").value==="true"
 
     try{
        let resPcs=await fetch(`http://localhost:8080/personas/buscar/${id}`)
@@ -30,7 +30,12 @@ document.getElementById("registrarBtn").addEventListener("click",async e=>{
             btn.textContent = "Registrar";
             return
         }
-        if (per.citas.length===0){
+        let respuesta=await fetch(`http://localhost:8080/personas/tieneCita/${per.idPersona}`)
+        if (!respuesta.ok){
+            throw new Error("Error al validar si tiene citas")
+        }
+        let tieneCita=await respuesta.json()
+        if (!tieneCita){
             alert("El paciente no tiene citas agendadas")
             btn.disabled = false;
             btn.textContent = "Registrar";
@@ -42,7 +47,7 @@ document.getElementById("registrarBtn").addEventListener("click",async e=>{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body:JSON.stringify({
-                    persona:per,
+                    idPersona:per.idPersona,
                     acompañante: acompañante
                 })
             })

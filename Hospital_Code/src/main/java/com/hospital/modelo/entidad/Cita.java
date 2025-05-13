@@ -2,6 +2,7 @@ package com.hospital.modelo.entidad;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -15,10 +16,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "cita")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idCita"
-)
 public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +24,6 @@ public class Cita {
     private LocalTime horaCita;
     private String motivo;
 
-    @JsonManagedReference
     @ManyToMany(mappedBy = "citas", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Persona> personas = new ArrayList<>();
 

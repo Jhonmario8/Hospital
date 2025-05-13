@@ -2,6 +2,7 @@ package com.hospital.controlador;
 
 
 
+import com.hospital.modelo.dto.IngresoDto;
 import com.hospital.modelo.entidad.Ingresos;
 import com.hospital.modelo.servicio.IIngresosServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,22 +19,22 @@ public class IngresoControlador {
     private IIngresosServicio servicio;
 
     @GetMapping("/mostrar")
-    public List<Ingresos> mostrar() {
+    public List<IngresoDto> mostrar() {
         return servicio.listarTodos();
     }
 
     @PostMapping("/guardar")
-    public void guardar(@RequestBody Ingresos ingreso) {
+    public void guardar(@RequestBody IngresoDto ingreso) {
         servicio.guardar(ingreso);
     }
     @PostMapping("/actualizar")
-    public void actualizar(@RequestBody Ingresos ingreso){
-        servicio.guardar(ingreso);
+    public void actualizar(@RequestBody IngresoDto ingreso){
+        servicio.actualizar(ingreso);
     }
 
     @GetMapping("/buscarPaciente/{id}")
     public ResponseEntity<?> buscarPaciente(@PathVariable int id){
-        Ingresos ing=servicio.buscarPorPaciente(id);
+        IngresoDto ing=servicio.buscarPorPaciente(id);
         if (ing!=null){
             return ResponseEntity.ok(ing);
         }

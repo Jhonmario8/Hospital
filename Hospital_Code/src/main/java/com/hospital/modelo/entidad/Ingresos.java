@@ -1,9 +1,15 @@
 package com.hospital.modelo.entidad;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "ingresos")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idIngreso"
+)
 public class Ingresos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

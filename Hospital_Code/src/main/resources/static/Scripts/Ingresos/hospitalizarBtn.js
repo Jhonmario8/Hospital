@@ -15,6 +15,7 @@ document.getElementById("hospitalizarBtn").addEventListener("click",async e=>{
             throw new Error("Error al buscar la persona")
         }
         let per=await response.json()
+        console.log(per)
         if (per.tipoPersona){
             alert("Ingrese un paciente")
             return
@@ -28,14 +29,14 @@ document.getElementById("hospitalizarBtn").addEventListener("click",async e=>{
             throw new Error("Error al buscar el ingreso")
         }
         let ingreso=await respuesta.json()
-        let res=await fetch("http://localhost:8080/ingresos/guardar",{
+        let res=await fetch("http://localhost:8080/ingresos/actualizar",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({
                 idIngreso: ingreso.idIngreso,
+                idPersona: per.idPersona,
                 acompañante: ingreso.acompañante,
-                hospitalizado: true,
-                persona: per
+                hospitalizado: true
             })
         })
         if (!res.ok){

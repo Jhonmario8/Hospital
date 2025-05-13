@@ -19,7 +19,7 @@ public class ServicionControlador {
     private IServicioServicio servicio;
 
     @GetMapping("/mostrar")
-    public List<Servicio> mostrar() {
+    public List<ServicioDto> mostrar() {
         return servicio.listarTodos();
     }
 

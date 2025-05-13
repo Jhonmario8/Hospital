@@ -2,6 +2,7 @@ package com.hospital.controlador;
 
 
 import com.hospital.modelo.dto.PersonaDto;
+import com.hospital.modelo.dto.ServicioDto;
 import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.servicio.IPersonaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +18,16 @@ public class PersonaCotrolador {
     private IPersonaServicio servicio;
 
     @GetMapping("personas/mostrar")
-    public List<Persona> mostrar() {
+    public List<PersonaDto> mostrar() {
         return servicio.listarTodos();
     }
     @GetMapping("personas/empleados")
-    public List<Persona> empleados(){
+    public List<PersonaDto> empleados(){
         return servicio.listarEmpleados();
     }
 
     @GetMapping("persona/pacientes")
-    public List<Persona> pacientes(){
+    public List<PersonaDto> pacientes(){
         return servicio.listarPacientes();
     }
 
@@ -56,7 +57,7 @@ public class PersonaCotrolador {
 
     @GetMapping("personas/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id) {
-        Persona per= servicio.buscarPorId(id);
+        PersonaDto per= servicio.buscarPorId(id);
         if (per!=null){
             return ResponseEntity.ok(per);
         }else {
@@ -79,5 +80,14 @@ public class PersonaCotrolador {
         servicio.activar(id);
     }
 
+    @GetMapping("personas/tieneCita/{id}")
+    public boolean tieneCita(@PathVariable int id){
+        return servicio.tieneCita(id);
+    }
+
+    @GetMapping("personaas/getServicios/{id}")
+    public List<ServicioDto> getServicios(@PathVariable int id){
+        return servicio.serviciosPersona(id);
+    }
 
 }

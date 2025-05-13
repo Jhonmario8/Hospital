@@ -16,7 +16,6 @@ async function mostrar(){
         throw new Error("Error al obtener las personas")
     }
     let personas=await response.json()
-    console.log(personas);
     
     tabla.innerHTML=""
     personas.slice(0,10).forEach(per => {

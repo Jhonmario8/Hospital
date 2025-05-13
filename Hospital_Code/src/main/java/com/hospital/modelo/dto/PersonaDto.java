@@ -9,6 +9,18 @@ public class PersonaDto {
     private String telefonoPersona;
     private boolean tipoPersona;
 
+    public PersonaDto() {
+    }
+
+    public PersonaDto(int idPersona, String nomPersona, int edadPersona, String direccion, String telefonoPersona, boolean tipoPersona) {
+        this.idPersona = idPersona;
+        this.nomPersona = nomPersona;
+        this.edadPersona = edadPersona;
+        this.direccion = direccion;
+        this.telefonoPersona = telefonoPersona;
+        this.tipoPersona = tipoPersona;
+    }
+
     public int getIdPersona() {
         return idPersona;
     }
