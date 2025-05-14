@@ -8,7 +8,8 @@
 </head>
 <body>
 <div class="login-container">
-    <h2>Reporte Empleados</h2>
+    <h2>Reporte Medicos</h2>
+
     <hr>
 
     <table class="styled-table" id="tabla-empleados">
@@ -22,8 +23,10 @@
         </thead>
 
     </table>
-
+<div >
     <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
+    <button id="imprimir" class="print-button" onclick="window.print()">Imprimir</button>
+</div>
 </div>
 <script src="../../Scripts/Reportes/reporteEmpleados.js"></script>
 </body>

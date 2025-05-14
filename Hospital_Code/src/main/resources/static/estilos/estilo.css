@@ -104,13 +104,13 @@ body::before {
     transform: translateX(5px);
 }
 
-/* Eliminar el pseudo-elemento before que añade un icono */
+
 .nav-list a:before {
     content: "";
     margin-right: 0;
 }
 
-/* Estilo específico para el elemento activo */
+
 .nav-list a.active {
     background: rgba(255, 255, 255, 0.15);
     color: var(--hover-color);
@@ -121,7 +121,7 @@ body::before {
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.7);
 }
 
-/* Ajuste para dispositivos móviles */
+
 @media (max-width: 767.98px) {
     .sidebar {
         width: 0;
@@ -330,7 +330,7 @@ body::before {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Table Styles */
+
 .styled-table {
     width: 100%;
     border-collapse: collapse;
@@ -395,7 +395,6 @@ td a:hover {
 }
 
 .back-button {
-    display: block;
     width: 100px;
     margin: 20px auto;
     padding: 10px;
@@ -408,6 +407,24 @@ td a:hover {
     transition: all 0.3s ease;
 }
 
+.print-button {
+    width: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.print-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 .back-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -415,13 +432,23 @@ td a:hover {
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Styles */
@@ -477,6 +504,16 @@ td a:hover {
         padding: 20px;
     }
 }
-.salir:hover{
+
+.salir:hover {
     cursor: pointer;
 }
+
+@media print {
+    .back-button,
+    .print-button {
+        display: none;
+    }
+}
+
+

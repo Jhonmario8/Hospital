@@ -15,18 +15,20 @@ document.addEventListener("DOMContentLoaded",async ()=>{
             <td>${art.cantidad}</td>
             <td>${art.descripcion}</td>
             `
-            if (art.habitaciones!=null){
-                let cad=""
-                let i=0
-                for(hab of art.habitaciones){
-                    if (i===art.habitaciones.length-1){
-                        cad+="ID: "+hab.numHabitacion
-                        continue
+            if (art.habitaciones != null && art.habitaciones.length > 0) {
+                let cad = "";
+                let i = 0;
+                for (hab of art.habitaciones) {
+                    if (i === art.habitaciones.length - 1) {
+                        cad += "ID: " + hab.numHabitacion;
+                        continue;
                     }
-                   cad+="ID: "+hab.numHabitacion+" , "
-                    i++
+                    cad += "ID: " + hab.numHabitacion + " , ";
+                    i++;
                 }
-                row.innerHTML+=`<td>${cad}</td>`
+                row.innerHTML += `<td>${cad}</td>`;
+            } else {
+                row.innerHTML += `<td>No asignado</td>`;
             }
 
             tabla.appendChild(row)

@@ -6,13 +6,7 @@ function crearFilaArticulo(art) {
         <td>${art.nomArticulo}</td>
         <td>${art.cantidad}</td>
         <td>${art.descripcion}</td>
-    `;
-
-    if (art.habitaciones != null) {
-        let cad = art.habitaciones.map(h => "ID: " + h.numHabitacion).join(" , ");
-        row.innerHTML += `<td>${cad}</td>`;
-    }
-
+    `
     return row;
 }
 

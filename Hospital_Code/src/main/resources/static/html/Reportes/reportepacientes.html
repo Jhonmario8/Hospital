@@ -4,36 +4,30 @@
     <meta charset="UTF-8">
     <title>Hospital TdeA</title>
 
-    
+
     <link rel="stylesheet" href="../../estilos/estilo.css">
     <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
 </head>
-<div class="main-content">
-    <div class="welcome-section">
-        <div class="welcome-container">
-            <div class="welcome-text">
-                <h1>Reporte Pacientes Ingresados</h1>
-            </div>
-
-            <table class="styled-table" id="tabla-pacientes">
-                <thead>
-                    <tr>
-                        <th style="width: 5%;">ID</th>
-                        <th style="width: 5%;">Nombre</th>
-                        <th style="width: 5%;">Habitacion</th>
-                        <th style="width: 5%;">Acompañante</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Los datos se cargarán dinámicamente desde JavaScript -->
-                </tbody>
-            </table>
-
-            <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
-        </div>
+<div class="login-container">
+    <h1>Reporte Pacientes Hospitalizados</h1>
+    <table class="styled-table" id="tabla-pacientes">
+        <thead>
+        <tr>
+            <th style="width: 5%;">ID</th>
+            <th style="width: 5%;">Nombre</th>
+            <th style="width: 5%;">Habitacion</th>
+            <th style="width: 5%;">Acompañante</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div>
+        <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
+        <button id="imprimir" class="print-button" onclick="window.print()">Imprimir</button>
     </div>
 </div>
-    
+
 <script src="../../Scripts/Reportes/reportePacientes.js"></script>
 </body>
 </html>

@@ -7,33 +7,28 @@
     <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="main-content">
-        <div class="welcome-section">
-            <div class="welcome-container">
-                <div class="welcome-text">
-                    <h1>Reporte Citas</h1>
-                </div>
+<div class="login-container">
+    <h1>Reporte Citas</h1>
+    <table class="styled-table" id="tabla-citas">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Motivo</th>
+            <th>Paciente</th>
+            <th>Medico</th>
+        </tr>
+        </thead>
+        <tbody>
 
-                <table class="styled-table" id="tabla-citas">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Motivo</th>
-                            <th>Paciente</th>
-                            <th>Empleados</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Los datos se cargarán dinámicamente desde JavaScript -->
-                    </tbody>
-                </table>
-
-                <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
-            </div>
-        </div>
+        </tbody>
+    </table>
+    <div>
+        <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
+        <button id="imprimir" class="print-button" onclick="window.print()">Imprimir</button>
     </div>
+</div>
 
 <script src="../../Scripts/Reportes/reporteCitas.js"></script>
 </body>

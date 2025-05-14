@@ -6,7 +6,7 @@ function crearFila(per){
             <td>${per.edadPersona}</td>
             <td>${per.direccion}</td>
             <td>${per.telefonoPersona}</td>
-            <td>${per.tipoPersona?"Empleado":"Paciente"}</td>
+            <td>${per.tipoPersona?"Medico":"Paciente"}</td>
             `
     return row
 }

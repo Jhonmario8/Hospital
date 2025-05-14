@@ -14,8 +14,8 @@ function crearFila(cita){
             <td>${cita.fechaCita}</td>
             <td>${horaFormateada}</td>
             <td>${cita.motivo}</td>
-            <td>${paciente ? paciente.idPersona : "No hay"}</td>
-            <td>${empleado ? empleado.idPersona : "No hay"}</td>
+            <td>${paciente ? paciente.idPersona : "No hay"}: ${paciente.nomPersona}</td>
+            <td>${empleado ? empleado.idPersona : "No hay"}: ${empleado.nomPersona}</td>
             `
     return row
 }
