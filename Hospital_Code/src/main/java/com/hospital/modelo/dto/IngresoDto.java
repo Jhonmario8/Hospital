@@ -1,7 +1,7 @@
 package com.hospital.modelo.dto;
 
 
-import com.hospital.modelo.entidad.Habitacion;
+
 
 public class IngresoDto {
     private Integer idIngreso;

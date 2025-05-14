@@ -3,7 +3,7 @@ package com.hospital.controlador;
 
 import com.hospital.modelo.dto.CitaDto;
 import com.hospital.modelo.entidad.Cita;
-import com.hospital.modelo.entidad.Persona;
+
 import com.hospital.modelo.servicio.ICitaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

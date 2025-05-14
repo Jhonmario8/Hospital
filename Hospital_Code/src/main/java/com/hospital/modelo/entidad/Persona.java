@@ -1,6 +1,6 @@
 package com.hospital.modelo.entidad;
 
-import com.fasterxml.jackson.annotation.*;
+
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

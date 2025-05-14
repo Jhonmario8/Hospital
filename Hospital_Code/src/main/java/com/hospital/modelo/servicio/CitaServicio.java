@@ -6,7 +6,6 @@ import com.hospital.modelo.entidad.Cita;
 import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.repositorio.CitaRepositorio;
 import com.hospital.modelo.repositorio.PersonaRepositorio;
-import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

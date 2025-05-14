@@ -1,6 +1,6 @@
 package com.hospital.modelo.dto;
 
-import com.hospital.modelo.entidad.Persona;
+
 
 import java.time.LocalDate;
 import java.time.LocalTime;
