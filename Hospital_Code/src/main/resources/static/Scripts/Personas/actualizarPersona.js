@@ -12,7 +12,6 @@ function crearInput(id, labelText, value) {
 
     return [label, input];
 }
-
 const form=document.querySelector("form")
 buscarBtn.addEventListener("click",async e=>{
     e.preventDefault()
