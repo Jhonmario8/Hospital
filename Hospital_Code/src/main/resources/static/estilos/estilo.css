@@ -372,7 +372,7 @@ td a:hover {
     color: var(--hover-color);
 }
 
-/* Button Styles */
+
 .button {
     background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
     border: none;
@@ -430,7 +430,7 @@ td a:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Animations */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -451,7 +451,6 @@ td a:hover {
     }
 }
 
-/* Responsive Styles */
 @media (max-width: 991.98px) {
     .sidebar {
         width: 200px;
@@ -525,5 +524,8 @@ td a:hover {
     border-radius: 5px;
     border: 1px solid #b43cd1;
     background-color: #e6b5ef;
+}
+.image-container{
+    margin-left: 35%;
 }
 
