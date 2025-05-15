@@ -32,6 +32,7 @@ public class ArticuloCotrolador {
     @PostMapping("/actualizar")
     public void actualizar(@RequestBody ArticuloDto articulo){
         Articulo art=new Articulo();
+        art.setIdArticulo(articulo.getIdArticulo());
         art.setNomArticulo(articulo.getNomArticulo());
         art.setCantidad(articulo.getCantidad());
         art.setDescripcion(articulo.getDescripcion());
