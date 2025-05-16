@@ -56,7 +56,7 @@ function crearFila(cita){
             const actualizarBtn=document.createElement("button")
             actualizarBtn.textContent="Actualizar"
             const volverBtn=document.createElement("a")
-            volverBtn.setAttribute("href","../../html/GestionCitas/buscacita.html")
+            volverBtn.setAttribute("href","../../html/GestionCitas/gestioncitas.html")
             volverBtn.setAttribute("class","button")
             volverBtn.textContent="Volver"
 
