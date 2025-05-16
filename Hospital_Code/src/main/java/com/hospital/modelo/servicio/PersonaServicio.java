@@ -37,6 +37,10 @@ public class PersonaServicio implements IPersonaServicio {
     public List<PersonaDto> listarPacientes(){
         return personaRepositorio.findAllPersonaDto().stream().filter(personaDto -> !personaDto.isTipoPersona()).toList();
     }
+    @Override
+    public List<PersonaDto> findByIdContaining(String id){
+        return personaRepositorio.findAllByIdPersonaContaining(id);
+    }
 
     @Override
     public PersonaDto buscarPorId(Integer id){

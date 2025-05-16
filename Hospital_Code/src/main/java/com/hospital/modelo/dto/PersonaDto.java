@@ -21,6 +21,13 @@ public class PersonaDto {
         this.tipoPersona = tipoPersona;
     }
 
+    public PersonaDto(int idPersona, String nomPersona, int edadPersona, String telefonoPersona) {
+        this.idPersona = idPersona;
+        this.nomPersona = nomPersona;
+        this.edadPersona = edadPersona;
+        this.telefonoPersona = telefonoPersona;
+    }
+
     public int getIdPersona() {
         return idPersona;
     }

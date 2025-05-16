@@ -31,6 +31,15 @@ public class PersonaCotrolador {
         return servicio.listarPacientes();
     }
 
+    @GetMapping("personas/containing/{id}")
+    public ResponseEntity<?> findByIdContaining(@PathVariable String id){
+        List<PersonaDto> personaDtos= servicio.findByIdContaining(id);
+        if (personaDtos.size()>0){
+            return ResponseEntity.ok(personaDtos);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontro ningun paciente");
+        }
+    }
     @PostMapping("personas/guardar")
     public void guardar(@RequestBody PersonaDto persona) {
         Persona per=new Persona();

@@ -20,6 +20,9 @@ public interface PersonaRepositorio extends CrudRepository<Persona,Integer> {
 
     @Query("select new com.hospital.modelo.dto.PersonaDto(p.idPersona,p.nomPersona,p.edadPersona,p.direccion,p.telefonoPersona,p.tipoPersona) from Persona p where p.activo=true and p.idPersona=:id")
     PersonaDto findByIdDto(@Param("id") int id);
+    @Query("select new com.hospital.modelo.dto.PersonaDto(p.idPersona,p.nomPersona,p.edadPersona,p.telefonoPersona)" +
+           "from Persona p where p.tipoPersona=false and p.activo=true and str(p.idPersona) LIKE %:id%")
+    List<PersonaDto> findAllByIdPersonaContaining(String id);
 
     @Query(value = """
      SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END

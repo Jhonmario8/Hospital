@@ -15,6 +15,7 @@ public interface IPersonaServicio {
     PersonaDto buscarPorId(Integer id);
     List<PersonaDto> listarEmpleados();
     List<PersonaDto> listarPacientes();
+    List<PersonaDto> findByIdContaining(String id);
     void eliminar(Integer id);
     ResponseEntity<?> buscarInactivo(Integer id);
     void activar(Integer id);

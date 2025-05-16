@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Adquirir Servicio</title>
-    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="stylesheet" href="../../estilos/estilo.css">
     <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
 </head>
 <body>
@@ -13,8 +13,24 @@
     <form >
 
         <div>
-            <label for="idPaciente">ID Paciente:</label>
+            <label for="idPaciente">Nro. Documento Paciente:</label>
             <input type="number" id="idPaciente" placeholder="Ingrese el ID del paciente" required>
+            <p id="info"></p>
+        </div>
+        <div id="div" style="display: none" >
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Telefono</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
         </div>
     <div>
         <button type="submit" id="adquirirBtn">Adquirir</button>
