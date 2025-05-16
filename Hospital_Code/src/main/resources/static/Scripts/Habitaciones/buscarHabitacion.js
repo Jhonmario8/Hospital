@@ -33,7 +33,7 @@ function crearFila(hab){
             const volverBtn=document.createElement("a")
             volverBtn.textContent="Volver"
             volverBtn.setAttribute("class","button")
-            volverBtn.setAttribute("href","../../html/GestionHabitaciones/buscahabitacion.html")
+            volverBtn.setAttribute("href","../../html/GestionHabitaciones/gestionhabitaciones.html")
             actualizarBtn.addEventListener("click",async e=>{
                 e.preventDefault()
                 try {
