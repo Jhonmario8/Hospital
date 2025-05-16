@@ -16,8 +16,19 @@ public class HabitacionCotrolador {
     private IHabitacionServicio servicio;
 
     @GetMapping("habitaciones/mostrar")
-    public List<Habitacion> mostrar() {
+    public List<HabitacionDto> mostrar() {
         return servicio.listarTodos();
+    }
+
+    @GetMapping("/habitaciones/containing/{id}")
+    public ResponseEntity<?> findByIdContainig(@PathVariable String id){
+        List<HabitacionDto> habitacionDtos= servicio.findByIdContaining(id);
+        if (habitacionDtos.size()>0){
+            return ResponseEntity.ok(habitacionDtos);
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se ha encontrado ninguna habitacion");
+        }
     }
 
     @PostMapping("habitaciones/guardar")

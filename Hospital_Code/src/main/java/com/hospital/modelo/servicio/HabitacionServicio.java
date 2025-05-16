@@ -1,5 +1,6 @@
 package com.hospital.modelo.servicio;
 
+import com.hospital.modelo.dto.HabitacionDto;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.repositorio.HabitacionRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,12 @@ public class HabitacionServicio implements IHabitacionServicio {
     private HabitacionRepositorio habitacionRepositorio;
 
     @Override
-    public List<Habitacion> listarTodos() {
-        return (List<Habitacion>) habitacionRepositorio.findAll();
+    public List<HabitacionDto> listarTodos() {
+        return habitacionRepositorio.findAllDto();
+    }
+    @Override
+    public List<HabitacionDto> findByIdContaining(String id){
+        return habitacionRepositorio.findAllByIdContaining(id);
     }
 
     @Override

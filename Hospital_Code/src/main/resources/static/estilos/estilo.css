@@ -343,16 +343,19 @@ body::before {
 }
 
 .styled-table thead tr {
+    width: 100%;
     background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
     color: var(--text-color);
     text-align: center;
 }
 
 .styled-table th, .styled-table td {
+    width: 1fr;
     padding: 12px 15px;
     color: var(--text-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 
 .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid var(--secondary-color);
@@ -529,3 +532,42 @@ td a:hover {
     margin-left: 35%;
 }
 
+.styled-tables {
+    width: auto;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.styled-tables thead tr {
+    width: 100%;
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    color: var(--text-color);
+    text-align: center;
+}
+
+.styled-tables th, .styled-table td {
+    width: 100%;
+    padding: 12px 15px;
+    color: var(--text-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.styled-tables th:first-child, .styled-table td:first-child{
+    width: 20%;
+}
+
+.styled-tables tbody tr:last-of-type {
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.styled-tables tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+.styled-table tbody tr:focus{
+    background: rgba(255, 255, 255, 0.05);
+}

@@ -5,6 +5,15 @@ public class HabitacionDto {
     private String tipoHabitacion;
     private int capacidad;
 
+    public HabitacionDto() {
+    }
+
+    public HabitacionDto(int numHabitacion, String tipoHabitacion, int capacidad) {
+        this.numHabitacion = numHabitacion;
+        this.tipoHabitacion = tipoHabitacion;
+        this.capacidad = capacidad;
+    }
+
     public int getNumHabitacion() {
         return numHabitacion;
     }
