@@ -66,7 +66,7 @@ function crearFila(per){
             actualizarBtn.textContent="Actualizar"
 
             const volverBtn=document.createElement("a")
-            volverBtn.setAttribute("href","../../html/GestionPersonas/buscapersona.html")
+            volverBtn.setAttribute("href","../../html/GestionPersonas/gestionpersona.html")
             volverBtn.setAttribute("class","button")
             volverBtn.textContent="Volver"
             telefono.at(1).addEventListener("input", e=>{
