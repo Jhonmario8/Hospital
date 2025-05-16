@@ -17,8 +17,8 @@ function crearFila(ser){
             <td>${ser.codServicio}</td>
             <td>${ser.nomServicio}</td>
             <td>${ser.precioServicio}</td>
-            <td>${ser.detallesServicio}</td>
-            <td class="td"><button class="editar">Editar</button><button class="borrar">Borrar</button></td>
+            <td style="padding: 10px 20px;">${ser.detallesServicio}</td>
+            <td class="td" style="margin-top: 60px; padding-bottom: 50px;"><button class="editar">Editar</button><button class="borrar">Borrar</button></td>
             `
     row.querySelector(".editar").addEventListener("click",async e=>{
         e.preventDefault()
@@ -48,7 +48,7 @@ function crearFila(ser){
 
             const volverBtn=document.createElement("a")
             volverBtn.textContent="Volver"
-            volverBtn.setAttribute("href","../../html/GestionServicios/buscaservicio.html")
+            volverBtn.setAttribute("href","../../html/GestionServicios/gestionservicios.html")
             volverBtn.setAttribute("class","button")
 
             actualizarBtn.addEventListener("click",async e=>{
@@ -140,6 +140,7 @@ document.getElementById("id").addEventListener("input",async e=>{
     try{
         if (id===""){
             mostrar()
+            return
         }
         let res=await fetch(`http://localhost:8080/servicios/buscar/${id}`)
         if (res.status===404){

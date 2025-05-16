@@ -1,64 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <title>Hospital</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital</title>
     <link rel="stylesheet" href="../../estilos/estilo.css">
     <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <img src="../../Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
-        </div>
-    </header>
+<div class="login-container">
+    <h2>Buscar Servicio</h2>
 
-<div class="sidebar">
-    <nav>
-        <ul class="nav-list">
-            <li><a class="salir">Salir</a></li>
-            <li><a href="../index.html" id="home">Inicio</a></li>
-            <li><a href="../GestionPersonas/gestionpersona.html">Personas</a></li>
-            <li><a href="../GestionHabitaciones/gestionhabitaciones.html">Habitaciones</a></li>
-            <li><a href="../GestionCitas/gestioncitas.html">Citas</a></li>
-            <li><a href="../GestionArticulos/gestionarticulos.html">Artículos</a></li>
-            <li><a href="../GestionServicios/gestionservicios.html">Servicios</a></li>
-            <li><a href="../GestionIngresos/gestioningresos.html">Ingresos</a></li>
-            <li><a href="../Reportes/reportes.html">Reportes</a></li>
-            <li><a href="../Catalogo/catalogo.html">Catálogo</a></li>
-            <li><a href="../QuienesSomos.html">Quienes somos</a></li>
-        </ul>
-    </nav>
+    <form action="/buscarservicio" method="post">
+        <div class="error-message">
+            <p id="error"></p>
+        </div>
+
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" placeholder="Ingrese el ID" required>
+            <p id="info-servicio"></p>
+        </div>
+
+        <div>
+            <button type="button" onclick="location.href='guardaservicio.html'">Nuevo Servicio</button>
+            <button type="button" onclick="location.href='../index.html'">Volver</button>
+        </div>
+    </form>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Detalles</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody id="servicios-tabla">
+
+        </tbody>
+    </table>
 </div>
-
-<main class="main-content">
-    <section class="welcome-section">
-        <div class="welcome-container">
-            <h1>Gestion Servicios</h1>
-            <div class="welcome-text">
-                <div class="options">
-                    <button class="button" onclick="location.href='guardaservicio.html'">Guardar</button>
-                    <button class="button" onclick="location.href='buscaservicio.html'">Buscar</button>
-                    <button class="button" onclick="location.href='actualizaservicio.html'">Actualizar</button>
-                    <button class="button" onclick="location.href='eliminaservicio.html'">Eliminar</button>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer class="footer">
-    <hr>
-    <p>© Todos los derechos reservados 2024</p>
-    <hr>
-</footer>
-<script>
-    document.querySelector(".salir").addEventListener("click",()=>{
-        if(confirm("Seguro que desdeas cerrar sesion?")){
-            window.location.href="../InicioSesion/inicioSesion.html"
-        }
-    })
-</script>
+<script src="../../Scripts/Servicios/gestionServicios.js"></script>
 </body>
 </html>

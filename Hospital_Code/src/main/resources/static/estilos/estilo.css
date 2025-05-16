@@ -343,7 +343,6 @@ body::before {
 }
 
 .styled-table thead tr {
-    width: 100%;
     background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
     color: var(--text-color);
     text-align: center;
