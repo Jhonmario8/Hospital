@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Hospital</title>
-    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="stylesheet" href="../../estilos/estilo.css">
     <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
 </head>
 <body>
@@ -14,8 +14,23 @@
         <div>
             <label for="id">Nro. Documento Paciente:</label>
             <input type="text"  id="id" placeholder="Ingrese el ID" required>
+            <p id="info"></p>
         </div>
+        <div id="div" style="display: none">
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Telefono</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
 
+                </tbody>
+            </table>
+        </div>
         <div>
             <button type="submit" id="registrarBtn">Registrar</button>
             <button type="button" onclick="location.href='gestioningresos.html'">Volver</button>

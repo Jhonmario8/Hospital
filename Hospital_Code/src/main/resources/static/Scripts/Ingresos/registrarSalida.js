@@ -1,4 +1,49 @@
 const form=document.querySelector("form")
+const div=document.getElementById("div")
+const tbody=document.getElementById("tbody")
+const info=document.getElementById("info")
+document.getElementById("id").addEventListener("input",async e=>{
+    e.preventDefault()
+    div.style.display="block"
+    const idPac=e.target.value
+    tbody.innerHTML=""
+    info.textContent=""
+    if (idPac===""){
+        div.style.display="none"
+        return
+    }
+    try{
+        let res=await fetch(`http://localhost:8080/personas/containing/${idPac}`)
+        if (res.status===404){
+            let mensaje=await res.text()
+            info.textContent=mensaje
+            info.style.color="red"
+            div.style.display="none"
+            return
+        }
+        if (!res.ok){
+            throw new Error("Error al obtener los pacientes")
+        }
+        let pacientes=await res.json()
+        pacientes.forEach(pac=>{
+            let row=document.createElement("tr")
+            row.innerHTML=`
+            <td>${pac.idPersona}</td>
+            <td>${pac.nomPersona}</td>
+            <td>${pac.edadPersona}</td>
+            <td>${pac.telefonoPersona}</td>
+            `
+            row.addEventListener("click",ev=>{
+                ev.preventDefault()
+                e.target.value=pac.idPersona
+                tbody.innerHTML=row.innerHTML
+            })
+            tbody.appendChild(row)
+        })
+    }catch (e){
+        console.error(e)
+    }
+})
 document.getElementById("registrarBtn").addEventListener("click",async e=>{
     e.preventDefault()
     if (!form.checkValidity()) {
@@ -35,13 +80,16 @@ document.getElementById("registrarBtn").addEventListener("click",async e=>{
                 throw new Error("Error la obtener los servicios")
             }
             let servicios=await reser.json()
-            console.log(servicios)
-            servicios.forEach(ser=>{
-                p.innerHTML+=`______________________<br>
+            if (servicios.length==0){
+                p.innerHTML="No hay"
+            }else {
+                servicios.forEach(ser => {
+                    p.innerHTML += `______________________<br>
             ${ser.nomServicio}<br>
             ${ser.precioServicio} $<br>
 `
-            })
+                })
+            }
 
         let response=await fetch(`http://localhost:8080/servicios/cuenta/${id}`)
         if (!response.ok){
