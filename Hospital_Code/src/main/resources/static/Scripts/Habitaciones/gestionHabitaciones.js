@@ -7,7 +7,7 @@ function crearFila(hab){
     <td>${hab.numHabitacion}</td>
     <td>${hab.tipoHabitacion}</td>
     <td>${hab.capacidad}</td>
-    <td ><button class="editar">Editar</button> <button class="borrar">Borrar</button></td>
+    <td class="td"><button class="editar">Editar</button> <button class="borrar">Borrar</button></td>
     `
     row.querySelector(".editar").addEventListener("click",async e=>{
         e.preventDefault()
