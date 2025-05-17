@@ -29,7 +29,7 @@ function crearFila(cita){
             <td>${cita.motivo}</td>
             <td>${paciente ? paciente.idPersona : "No hay"}: ${paciente.nomPersona}</td>
             <td>${empleado ? empleado.idPersona : "No hay"}: ${empleado.nomPersona}</td>
-            <td class="td"><button class="editar">Editar</button> <button class="borrar">Borrar</button></td>
+            <td class="td" style="margin-top: 50px; padding-bottom: 50px;"><button class="editar">Editar</button> <button class="borrar">Borrar</button></td>
             `
     row.querySelector(".editar").addEventListener("click",async e=>{
         e.preventDefault()
