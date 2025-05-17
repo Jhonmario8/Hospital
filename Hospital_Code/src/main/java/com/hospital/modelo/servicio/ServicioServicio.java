@@ -14,10 +14,16 @@ import java.util.List;
 
 @Service
 public class ServicioServicio implements  IServicioServicio{
-    @Autowired
-    private ServicioRepositorio servicioRepositorio;
-    @Autowired
-    private PersonaRepositorio personaRepositorio;
+
+    private  final ServicioRepositorio servicioRepositorio;
+
+    private  final PersonaRepositorio personaRepositorio;
+
+    public ServicioServicio(ServicioRepositorio servicioRepositorio, PersonaRepositorio personaRepositorio) {
+        this.servicioRepositorio = servicioRepositorio;
+        this.personaRepositorio = personaRepositorio;
+    }
+
     @Override
     public List<ServicioDto> listarTodos(){
         return servicioRepositorio.listarServiciosDto();

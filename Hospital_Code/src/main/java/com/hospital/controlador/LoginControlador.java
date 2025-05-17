@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class LoginControlador {
-    @Autowired
-    private IUsuarioSesionServicio servicio;
+
+    private final IUsuarioSesionServicio servicio;
+
+    public LoginControlador(IUsuarioSesionServicio servicio) {
+        this.servicio = servicio;
+    }
 
     @PostMapping("/usuario/guardar")
     public void guardar(@RequestBody UsuarioSesion usuario){

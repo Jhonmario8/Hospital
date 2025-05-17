@@ -11,8 +11,12 @@ import java.util.List;
 @Service
 public class HabitacionServicio implements IHabitacionServicio {
 
-    @Autowired
-    private HabitacionRepositorio habitacionRepositorio;
+
+    private final HabitacionRepositorio habitacionRepositorio;
+
+    public HabitacionServicio(HabitacionRepositorio habitacionRepositorio) {
+        this.habitacionRepositorio = habitacionRepositorio;
+    }
 
     @Override
     public List<HabitacionDto> listarTodos() {

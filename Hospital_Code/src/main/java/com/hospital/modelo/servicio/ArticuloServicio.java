@@ -14,11 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class ArticuloServicio implements IArticuloServicio{
-    @Autowired
-    private ArticuloRepositorio articuloRepositorio;
 
-    @Autowired
-    private HabitacionRepositorio habitacionRepositorio;
+    private final ArticuloRepositorio articuloRepositorio;
+
+
+    private final HabitacionRepositorio habitacionRepositorio;
+
+    public ArticuloServicio(ArticuloRepositorio articuloRepositorio, HabitacionRepositorio habitacionRepositorio) {
+        this.articuloRepositorio = articuloRepositorio;
+        this.habitacionRepositorio = habitacionRepositorio;
+    }
+
     @Override
     public List<Articulo> listarTodos(){
         return (List<Articulo>)articuloRepositorio.findAll();

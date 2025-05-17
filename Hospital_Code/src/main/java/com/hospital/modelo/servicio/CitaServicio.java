@@ -15,11 +15,17 @@ import java.util.List;
 
 @Service
 public class CitaServicio implements ICitaServicio {
-    @Autowired
-    private CitaRepositorio citaRepositorio;
 
-    @Autowired
-    private PersonaRepositorio personaRepositorio;
+    private final CitaRepositorio citaRepositorio;
+
+
+    private final PersonaRepositorio personaRepositorio;
+
+    public CitaServicio(CitaRepositorio citaRepositorio, PersonaRepositorio personaRepositorio) {
+        this.citaRepositorio = citaRepositorio;
+        this.personaRepositorio = personaRepositorio;
+    }
+
     @Override
     public List<CitaDto> listarTodos(){
         List<CitaDto> citas=new ArrayList<>();

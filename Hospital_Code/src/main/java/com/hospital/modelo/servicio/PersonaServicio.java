@@ -18,9 +18,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PersonaServicio implements IPersonaServicio {
-    @Autowired
-    private PersonaRepositorio personaRepositorio;
-    
+
+    private final PersonaRepositorio personaRepositorio;
+
+    public PersonaServicio(PersonaRepositorio personaRepositorio) {
+        this.personaRepositorio = personaRepositorio;
+    }
+
     @Override
     public List<PersonaDto> listarTodos(){
         return personaRepositorio.findAllPersonaDto();

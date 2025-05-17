@@ -15,8 +15,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/ingresos")
 public class IngresoControlador {
-    @Autowired
-    private IIngresosServicio servicio;
+
+    private final IIngresosServicio servicio;
+
+    public IngresoControlador(IIngresosServicio servicio) {
+        this.servicio = servicio;
+    }
 
     @GetMapping("/mostrar")
     public List<IngresoDto> mostrar() {

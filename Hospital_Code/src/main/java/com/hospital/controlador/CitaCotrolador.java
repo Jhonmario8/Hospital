@@ -15,8 +15,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/citas")
 public class CitaCotrolador {
-    @Autowired
-    private ICitaServicio servicio;
+
+    private final ICitaServicio servicio;
+
+    public CitaCotrolador(ICitaServicio servicio) {
+        this.servicio = servicio;
+    }
 
     @GetMapping("/mostrar")
     public List<CitaDto> mostrar() {

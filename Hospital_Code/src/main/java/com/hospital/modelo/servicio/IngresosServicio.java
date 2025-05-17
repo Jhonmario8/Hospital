@@ -17,12 +17,19 @@ import java.util.Optional;
 
 @Service
 public class IngresosServicio implements IIngresosServicio {
-    @Autowired
-    private IngresosRepositorio ingresosRepositorio;
-    @Autowired
-    private HabitacionRepositorio habitacionRepositorio;
-    @Autowired
-    private PersonaRepositorio personaRepositorio;
+
+    private final IngresosRepositorio ingresosRepositorio;
+
+    private final HabitacionRepositorio habitacionRepositorio;
+
+    private final PersonaRepositorio personaRepositorio;
+
+    public IngresosServicio(IngresosRepositorio ingresosRepositorio, HabitacionRepositorio habitacionRepositorio, PersonaRepositorio personaRepositorio) {
+        this.ingresosRepositorio = ingresosRepositorio;
+        this.habitacionRepositorio = habitacionRepositorio;
+        this.personaRepositorio = personaRepositorio;
+    }
+
     @Override
     public List<IngresoDto> listarTodos(){
         List<IngresoDto> ingresoDtos=new ArrayList<>();

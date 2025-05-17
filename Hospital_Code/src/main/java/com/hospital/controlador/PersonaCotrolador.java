@@ -14,8 +14,12 @@ import java.util.List;
 
 @RestController
 public class PersonaCotrolador {
-    @Autowired
-    private IPersonaServicio servicio;
+
+    private final IPersonaServicio servicio;
+
+    public PersonaCotrolador(IPersonaServicio servicio) {
+        this.servicio = servicio;
+    }
 
     @GetMapping("personas/mostrar")
     public List<PersonaDto> mostrar() {
