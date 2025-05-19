@@ -8,7 +8,6 @@ import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.repositorio.HabitacionRepositorio;
 import com.hospital.modelo.repositorio.IngresosRepositorio;
 import com.hospital.modelo.repositorio.PersonaRepositorio;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -3,7 +3,6 @@ package com.hospital.modelo.servicio;
 import com.hospital.modelo.dto.HabitacionDto;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.repositorio.HabitacionRepositorio;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

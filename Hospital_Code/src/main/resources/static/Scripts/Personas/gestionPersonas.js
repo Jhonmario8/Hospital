@@ -20,7 +20,7 @@ function crearFila(per){
             <td>${per.direccion}</td>
             <td>${per.telefonoPersona}</td>
             <td>${per.tipoPersona?"Medico":"Paciente"}</td>
-            <td class="td"><button class="editar">Editar</button> <button class="borrar">Borrar</button></td>
+            <td class="td"><button class="editar">Editar</button> <button class="borrar">Inactivar</button></td>
             `
     row.querySelector(".editar").addEventListener("click",async e=>{
             e.preventDefault()

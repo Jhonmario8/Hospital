@@ -6,7 +6,6 @@ import com.hospital.modelo.entidad.Persona;
 import com.hospital.modelo.entidad.Servicio;
 import com.hospital.modelo.repositorio.PersonaRepositorio;
 import com.hospital.modelo.repositorio.ServicioRepositorio;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

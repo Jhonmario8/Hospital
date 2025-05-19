@@ -4,8 +4,6 @@ package com.hospital.controlador;
 import com.hospital.modelo.dto.ServicioDto;
 import com.hospital.modelo.entidad.Servicio;
 import com.hospital.modelo.servicio.IServicioServicio;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
