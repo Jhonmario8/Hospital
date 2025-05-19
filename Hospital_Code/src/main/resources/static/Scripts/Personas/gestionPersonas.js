@@ -85,6 +85,10 @@ function crearFila(per){
                 e.preventDefault()
 
                 try {
+                    if(telefono.at(1).value.length!=10){
+                        alert("Ingrese un numero valido")
+                        throw new Error("Error: envie un numero valido")
+                    }
                     let res=await fetch("http://localhost:8080/personas/actualizar",{
                         method:"PUT",
                         headers:{"Content-Type":"application/json"},

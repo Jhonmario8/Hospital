@@ -42,6 +42,10 @@ boton.addEventListener("click",async e=>{
     const telefono=document.getElementById("telefono").value
     let tipo=document.getElementById("tipo").value === "true"
     try{
+        if(telefono.length!=10){
+            alert("Ingrese un numero valido")
+            throw new Error("Error: envie un numero valido")
+        }
         let response=await fetch( `http://localhost:8080/personas/inactivo/${id}`)
         if (!response.ok && response.status!==404){
             throw new Error("Error al buscar la persona")
