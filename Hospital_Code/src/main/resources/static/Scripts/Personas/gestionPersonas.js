@@ -36,8 +36,8 @@ function crearFila(per){
                 throw new Error("Error al buscar la persona")
             }
             let persona=await response.json()
+            form.style.width="500px"
             form.innerHTML=""
-
             let nombre=crearInput("nombre","Nombre: ",persona.nomPersona)
             let edad=crearInput("edad","Edad: ",persona.edadPersona)
             let direccion= crearInput("direccion","Direccion: ",persona.direccion)
@@ -140,15 +140,15 @@ function crearFila(per){
             if (!response.ok){
                 throw  new Error("Error al buscar la persona")
             }
-            let conf=confirm("Estas seguro que deseas eliminar la persona?")
+            let conf=confirm("Estas seguro que deseas inactivar la persona?")
             if (conf) {
                 let res = await fetch(`http://localhost:8080/personas/borrar/${id}`,{
                     method:"DELETE"
                 })
                 if (!res.ok){
-                    throw new Error("Error al elimina la persona")
+                    throw new Error("Error al inactivar la persona")
                 }
-                alert("Persona eliminada correctamente")
+                alert("Persona inactivada correctamente")
                 window.location.reload()
             }
         }catch (e){
