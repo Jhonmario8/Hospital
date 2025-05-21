@@ -149,6 +149,7 @@ document.getElementById("id").addEventListener("input",async e=>{
     const id=e.target.value
 
     let info=document.getElementById("infoCita")
+    info.innerHTML=""
     try{
         if (id===""){
             mostrar()

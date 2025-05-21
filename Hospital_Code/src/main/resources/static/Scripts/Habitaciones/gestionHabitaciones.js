@@ -132,6 +132,7 @@ document.getElementById("id").addEventListener("input",async e=>{
     try {
         if (id===""){
             mostrar()
+            return
         }
         let res=await fetch(`http://localhost:8080/habitaciones/buscar/${id}`)
         if (res.status===404){
