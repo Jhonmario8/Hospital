@@ -2,9 +2,12 @@ package com.hospital.modelo.dto;
 
 
 
+import com.hospital.modelo.entidad.Persona;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CitaDto {
     private  int idCita;
@@ -13,6 +16,15 @@ public class CitaDto {
     private String motivo;
     private List<PersonaDto> personas;
 
+    public CitaDto() {
+    }
+    public CitaDto(int idCita, LocalDate fechaCita, LocalTime horaCita, String motivo, List<Persona> personas) {
+        this.idCita = idCita;
+        this.fechaCita = fechaCita;
+        this.horaCita = horaCita;
+        this.motivo = motivo;
+        this.personas = personas.stream().map(p -> new PersonaDto(p.getIdPersona(),p.getNomPersona(),p.getEdadPersona(),p.getDireccion(),p.getTelefonoPersona(),p.isTipoPersona())).collect(Collectors.toList());
+    }
 
     public int getIdCita() {
         return idCita;

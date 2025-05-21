@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/citas")
@@ -48,9 +49,9 @@ public class CitaCotrolador {
     }
     @GetMapping("/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id) {
-        Cita cita= servicio.buscarPorId(id);
-        if (cita!=null){
-            return ResponseEntity.ok(cita);
+       Optional<CitaDto> cita= servicio.findDtoById(id);
+        if (cita.isPresent()){
+            return ResponseEntity.ok(cita.get());
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cita no encontrada");
         }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CitaServicio implements ICitaServicio {
@@ -75,6 +76,21 @@ public class CitaServicio implements ICitaServicio {
     @Override
     public Cita buscarPorId(Integer id){
         return citaRepositorio.findById(id).orElse(null);
+    }
+    @Override
+    public  Optional<CitaDto> findDtoById(Integer id){
+        Optional<Cita> citaOpt=citaRepositorio.findById(id);
+        CitaDto citaDto=new CitaDto();
+        if (citaOpt.isPresent()){
+            Cita c=citaOpt.get();
+            citaDto.setIdCita(c.getIdCita());
+            citaDto.setFechaCita(c.getFechaCita());
+            citaDto.setHoraCita(c.getHoraCita());
+            citaDto.setMotivo(c.getMotivo());
+            citaDto.setPersonas(mapPersonaToDto(c.getPersonas()));
+            return Optional.of(citaDto);
+        }
+        return Optional.empty();
     }
     @Override
     public void eliminar(Integer id){
