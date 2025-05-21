@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary-color: #6a11cb;
-    --secondary-color: #2575fc;
-    --accent-color: #ffeb3b;
+    --primary-color: #00b894;
+    --secondary-color: #4cd3a9;
+    --accent-color: #e0faf1;
     --text-color: #ffffff;
-    --hover-color: #2980b9;
-    --bg-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    --hover-color: #008e76;
+    --bg-gradient: linear-gradient(135deg, #f5fdfb, #e0faf1);
     --input-border-color: rgba(255, 255, 255, 0.2);
     --input-hover-color: rgba(255, 255, 255, 0.4);
     --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
@@ -123,7 +123,7 @@ body::before {
 .login-container input:focus {
     outline: none;
     border-color: var(--secondary-color);
-    box-shadow: 0 0 8px rgba(37, 117, 252, 0.5);
+    box-shadow: 0 0 8px rgba(76, 211, 169, 0.5);
     background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -176,8 +176,8 @@ body::before {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #b43cd1;
-    background-color: #e6b5ef;
+    border: 1px solid var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 @media (max-width: 400px) {

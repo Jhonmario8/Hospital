@@ -248,7 +248,7 @@ body::before {
     padding: 40px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 15px 30px rgba(0, 184, 148, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 184, 148, 0.3);
     animation: fadeIn 1s ease-in-out;
     border: 1px solid var(--accent-color);
 }

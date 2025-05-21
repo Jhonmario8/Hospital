@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary-color: #6a11cb;
-    --secondary-color: #2575fc;
-    --accent-color: #e74c3c;
-    --text-color: #ecf0f1;
-    --hover-color: #ffeb3b;
-    --bg-gradient: linear-gradient(to right, #6a11cb, #2575fc);
-    --transition-speed: 0.3s;
+    /* Variables del primer CSS (login) para unificar la paleta */
+    --primary-color: #00b894; /* Color principal (verde esmeralda) */
+    --secondary-color: #4cd3a9; /* Color secundario (verde claro) */
+    --accent-color: #e0faf1; /* Color de acento (verde muy claro, casi blanco) - Originalmente era para el fondo del login */
+    --text-color: #ffffff; /* Color del texto (blanco) */
+    --hover-color: #008e76; /* Color para hover (verde oscuro) */
+    --bg-gradient: linear-gradient(135deg, #f5fdfb, #e0faf1); /* Gradiente de fondo del login */
+
+    /* Variables específicas de la galería que se adaptan o mantienen */
+    --container-bg: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente para los contenedores */
+    --border-color: rgba(255, 255, 255, 0.1); /* Borde claro semitransparente */
+    --box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Sombra para elementos */
+    --transition-speed: 0.3s; /* Velocidad de transición general */
 }
 
 * {
@@ -18,11 +24,18 @@
 }
 
 body {
+    /* Usamos el gradiente del primer CSS para el fondo */
     background: var(--bg-gradient);
-    color: white;
+    color: var(--text-color); /* Usamos el color de texto unificado */
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
+    /* Centrar el contenido en body como en el login, aunque el container de galería ya tiene margin auto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Añadir padding para pantallas pequeñas */
+    box-sizing: border-box; /* Asegurar que el padding no cause desbordamiento */
 }
 
 body::before {
@@ -32,22 +45,25 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
+    /* Mantener la imagen de fondo de la galería, pero ajustando la opacidad y usando cover */
     background: url('/Media/imagen_hospital-sin-fondo.ico') center/cover;
-    opacity: 0.1;
+    opacity: 0.08; /* Ligeramente más sutil que el original de la galería para unificar */
     pointer-events: none;
     z-index: -1;
 }
 
 .container {
     max-width: 1200px;
-    margin: 50px auto;
+    /* margin: 50px auto; se puede mantener, pero con el display flex de body ya se centra */
     padding: 30px;
     position: relative;
-    background: rgba(0, 0, 0, 0.7);
+    background: var(--container-bg); /* Usar la variable unificada */
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow); /* Usar la variable unificada */
     animation: fadeIn 1s ease-in-out;
+    border: 1px solid var(--border-color); /* Borde unificado */
+    box-sizing: border-box; /* Asegurar que el padding no afecte el ancho máximo */
 }
 
 .container h1 {
@@ -67,32 +83,45 @@ body::before {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
+    /* Usar el gradiente unificado para la línea */
     background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
     border-radius: 10px;
 }
 
 .back-button {
     padding: 12px 25px;
+    /* Usar el gradiente unificado para el botón */
     background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
-    color: white;
+    color: var(--text-color); /* Usar el color de texto unificado */
     border: none;
-    border-radius: 8px;
+    border-radius: 10px; /* Más consistente con los bordes de inputs del login */
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease; /* Usar la variable de transición */
     margin-bottom: 30px;
     display: block;
+    width: fit-content; /* Para que el botón no ocupe todo el ancho */
+    margin-left: auto; /* Para centrarlo si es necesario o alinear a la derecha */
+    margin-right: auto;
 }
 
 .back-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra ligeramente más intensa al hover */
+    /* background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); // Opcional: invertir gradiente al hover como en los botones del login */
 }
 
 .gallery {
+    /* *** CAMBIOS AQUÍ para las 3 columnas mínimo *** */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* Por defecto, intentamos 3 columnas, pero si no hay espacio suficiente para 280px, bajaremos a 2 o 1 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Usamos auto-fit para que las columnas se expandan si hay espacio, o se contraigan hasta el mínimo */
+    /* Para forzar 3 columnas en pantallas grandes, podríamos hacer esto, pero complica la adaptabilidad: */
+    /* grid-template-columns: repeat(3, 1fr); */
+
+    /* La clave está en los media queries para controlar el número de columnas de forma más precisa */
     gap: 25px;
     padding: 20px 0;
     animation: fadeInUp 1.5s ease-in-out;
@@ -102,15 +131,15 @@ body::before {
     position: relative;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Mantener sombra similar */
+    transition: all var(--transition-speed) ease; /* Usar variable de transición */
+    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente claro */
+    border: 1px solid var(--border-color); /* Borde unificado */
 }
 
 .gallery-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow); /* Usar la variable unificada para el hover */
 }
 
 .gallery-item img {
@@ -118,7 +147,7 @@ body::before {
     height: 250px;
     object-fit: cover;
     display: block;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease; /* Usar variable de transición */
 }
 
 .gallery-item:hover img {
@@ -139,16 +168,16 @@ body::before {
 
 .gallery-item .info {
     padding: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    background: var(--container-bg); /* Usar la variable de fondo unificada */
+    color: var(--text-color); /* Usar el color de texto unificado */
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease; /* Usar variable de transición */
 }
 
 .gallery-item h3 {
     margin: 0;
     font-size: 1.3rem;
-    color: var(--text-color);
+    color: var(--text-color); /* Usar el color de texto unificado */
     font-weight: 600;
 }
 
@@ -158,14 +187,14 @@ body::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro para el texto hover */
+    color: var(--text-color); /* Color de texto unificado */
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 10px; /* Más consistente con los bordes de login */
     font-weight: 500;
     z-index: 2;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-speed) ease; /* Usar variable de transición */
 }
 
 .gallery-item:hover .image-button:before {
@@ -179,7 +208,7 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4); /* Overlay oscuro al hover de la imagen */
     z-index: 1;
 }
 
@@ -195,7 +224,21 @@ body::before {
 }
 
 /* Responsive styles */
-@media (max-width: 991.98px) {
+/* Ajustes para garantizar al menos 3 columnas en pantallas grandes */
+@media (min-width: 992px) { /* A partir de pantallas grandes (ej. laptops) */
+    .gallery {
+        grid-template-columns: repeat(3, 1fr); /* Forzar 3 columnas */
+        /* Opcional: si quieres que las columnas crezcan más allá de 3 si hay mucho espacio,
+           puedes usar: grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); y
+           asegurarte de que 280px sea un buen tamaño mínimo para 3 columnas en 1200px.
+           Con 1200px de max-width del container y 25px de gap, (1200 - 2*25)/3 = 383px por columna.
+           Así que minmax(280px, 1fr) ya permitiría 3 columnas.
+           Pero para FORZAR 3, repeat(3, 1fr) es más directo.
+        */
+    }
+}
+
+@media (max-width: 991.98px) { /* Tabletas y pantallas medianas */
     .container {
         margin: 30px 20px;
         padding: 20px;
@@ -206,12 +249,12 @@ body::before {
     }
 
     .gallery {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Permitir 2 o más columnas */
         gap: 20px;
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 767.98px) { /* Teléfonos y pantallas pequeñas */
     .container {
         margin: 20px 10px;
         padding: 15px;
@@ -222,7 +265,7 @@ body::before {
     }
 
     .gallery {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Permitir 1 o 2 columnas */
         gap: 15px;
     }
 
