@@ -24,7 +24,8 @@ document.getElementById("id").addEventListener("input",async e=>{
         if (!res.ok){
             throw new Error("Error al obtener los pacientes")
         }
-        let pacientes=await res.json()
+        let personas=await res.json()
+        let pacientes=personas.filter(p=>!p.tipoPersona)
         pacientes.forEach(pac=>{
             let row=document.createElement("tr")
             row.innerHTML=`

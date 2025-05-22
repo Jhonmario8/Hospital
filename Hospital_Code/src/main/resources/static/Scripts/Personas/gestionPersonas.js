@@ -17,8 +17,8 @@ function crearFila(per){
     row.innerHTML=`<td>${per.idPersona}</td>
             <td>${per.nomPersona}</td>
             <td>${per.edadPersona}</td>
-            <td>${per.direccion}</td>
             <td>${per.telefonoPersona}</td>
+            <td>${per.direccion}</td>
             <td>${per.tipoPersona?"Medico":"Paciente"}</td>
             <td class="td"><button class="editar">Editar</button> <button class="borrar">Inactivar</button></td>
             `
