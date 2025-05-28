@@ -179,7 +179,7 @@ body::before {
     border: 1px solid rgba(0, 184, 148, 0.1);
     transition: all 0.3s ease;
     animation: fadeInUp 1.5s ease-in-out;
-    box-shadow: var(--shadow);
+    box-shadow: 0 20px 40px rgba(0, 184, 148, 0.3);
 }
 
 .welcome-container:hover {
@@ -338,7 +338,7 @@ body::before {
     background: var(--white);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: 0 20px 40px #2d343666;
 }
 
 .styled-table thead tr {
