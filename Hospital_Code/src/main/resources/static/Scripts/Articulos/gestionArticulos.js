@@ -48,6 +48,10 @@ function crearFilaArticulo(art) {
 
             actualizarBtn.addEventListener("click",async e=>{
                 e.preventDefault()
+                if (!form.checkValidity()){
+                    form.reportValidity()
+                    return
+                }
                 try{
                     let res=await fetch("http://localhost:8080/articulos/actualizar",{
                         method:"POST",
@@ -68,7 +72,10 @@ function crearFilaArticulo(art) {
                     console.error(e)
                 }
             })
-
+            cantidad.type="number"
+            cantidad.min="1"
+            cantidad.max="50"
+            cantidad.step="1"
             form.appendChild(labelN)
             form.appendChild(nombre)
             form.appendChild(labelC)

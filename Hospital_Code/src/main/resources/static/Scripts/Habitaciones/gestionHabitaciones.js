@@ -24,7 +24,25 @@ function crearFila(hab){
             }
             let json=await response.json()
             form.innerHTML=""
-            let [labelT,tipo]=crearInput("tipo","Tipo: ",json.tipoHabitacion)
+
+            const labelT=document.createElement("label")
+            labelT.setAttribute("for","tipo")
+            labelT.textContent="Tipo: "
+            const tipo = document.createElement("select");
+            tipo.setAttribute("id", "tipo");
+            tipo.setAttribute("class","styled-select")
+
+            const optionUci = document.createElement("option");
+            optionUci.value = "UCI";
+            optionUci.textContent = "UCI";
+
+            const optionNormal = document.createElement("option");
+            optionNormal.value = "Normal";
+            optionNormal.textContent = "Normal";
+
+            tipo.appendChild(optionNormal);
+            tipo.appendChild(optionUci);
+
             let [labelC,capacidad]=crearInput("capacidad","Capacidad: ",json.capacidad)
 
             const actualizarBtn=document.createElement("button")
@@ -36,6 +54,10 @@ function crearFila(hab){
             volverBtn.setAttribute("href","../../html/GestionHabitaciones/gestionhabitaciones.html")
             actualizarBtn.addEventListener("click",async e=>{
                 e.preventDefault()
+                if (!form.checkValidity()){
+                    form.reportValidity()
+                    return
+                }
                 try {
                     let res=await fetch(`http://localhost:8080/habitaciones/actualizar`,{
                         method:"PUT",
@@ -55,7 +77,10 @@ function crearFila(hab){
                     console.error(e)
                 }
             })
-
+            capacidad.type="number"
+            capacidad.min="1"
+            capacidad.max="4"
+            capacidad.step="1"
             form.appendChild(labelT)
             form.appendChild(tipo)
             form.appendChild(labelC)

@@ -53,6 +53,10 @@ function crearFila(ser){
 
             actualizarBtn.addEventListener("click",async e=>{
                 e.preventDefault()
+                if (!form.checkValidity()){
+                    form.reportValidity()
+                    return
+                }
                 try {
                     let res = await fetch(`http://localhost:8080/servicios/actualizar`, {
                         method: "POST",
@@ -73,6 +77,9 @@ function crearFila(ser){
                     console.error(e)
                 }
             })
+            precio.type="number"
+            precio.min="100"
+            precio.max="10000"
             form.appendChild(labelN)
             form.appendChild(nombre)
             form.appendChild(labelP)

@@ -53,7 +53,7 @@ function crearFila(per){
 
             const optionEmpleado = document.createElement("option");
             optionEmpleado.value = "true";
-            optionEmpleado.textContent = "Empleado";
+            optionEmpleado.textContent = "Medico";
 
             const optionPaciente = document.createElement("option");
             optionPaciente.value = "false";
@@ -83,7 +83,10 @@ function crearFila(per){
 
             actualizarBtn.addEventListener("click",async e=>{
                 e.preventDefault()
-
+                if (!form.checkValidity()){
+                    form.reportValidity();
+                    return
+                }
                 try {
                     if(telefono.at(1).value.length!=10){
                         alert("Ingrese un numero valido")
@@ -110,6 +113,10 @@ function crearFila(per){
                     console.error(e)
                 }
             })
+            edad.at(1).min="0"
+            edad.at(1).max="110"
+            edad.at(1).type="number"
+            telefono.at(1).type="number"
             form.appendChild(nombre.at(0))
             form.appendChild(nombre.at(1))
             form.appendChild(edad.at(0))

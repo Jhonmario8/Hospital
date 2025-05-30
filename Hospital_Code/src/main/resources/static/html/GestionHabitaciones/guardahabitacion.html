@@ -14,12 +14,17 @@
 
         <div>
             <label for="tipo">Tipo:</label>
-            <input type="text" id="tipo" placeholder="Ingrese el tipo" required>
+            <select  id="tipo" class="styled-select" required >
+                <option value="" disabled selected>Tipo Habitación</option>
+                <option value="Normal">Normal</option>
+                <option value="UCI">UCI</option>
+            </select>
         </div>
 
         <div>
             <label for="capacidad">Capacidad:</label>
-            <input type="number" id="capacidad" placeholder="Ingrese la capacidad" required>
+
+            <input type="number" id="capacidad" placeholder="Ingrese la capacidad" required min="1" max="4" step="1">
         </div>
 
         <div class="button-container">

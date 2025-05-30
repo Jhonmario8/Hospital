@@ -22,7 +22,7 @@
         </div>
         <div>
             <label for="edad">Edad:</label>
-            <input type="number" id="edad" placeholder="Ingrese la edad" required>
+            <input type="number" id="edad" placeholder="Ingrese la edad" required min="0" max="110">
         </div>
         <div>
             <label for="direccion">Dirección:</label>
@@ -37,7 +37,7 @@
             <label for="tipo">Tipo:</label>
             <select  id="tipo" class="styled-select" required >
                 <option value="" disabled selected>Tipo de personas</option>
-                <option value="true">Empleado</option>
+                <option value="true">Medico</option>
                 <option value="false">Paciente</option>
             </select>
         </div>
