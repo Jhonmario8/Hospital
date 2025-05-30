@@ -80,6 +80,9 @@ function crearFila(ser){
             precio.type="number"
             precio.min="100"
             precio.max="10000"
+            nombre.minLength="3"
+            nombre.maxLength="20"
+            detalles.maxLength="30"
             form.appendChild(labelN)
             form.appendChild(nombre)
             form.appendChild(labelP)

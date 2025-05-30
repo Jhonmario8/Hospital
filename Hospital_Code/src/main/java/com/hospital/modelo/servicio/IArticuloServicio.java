@@ -10,4 +10,5 @@ public interface IArticuloServicio {
     boolean asignar(int idArt,int idHab,int cantArt);
     Articulo buscarPorId(Integer id);
     void eliminar(Integer id);
+    void activar(Integer id);
 }

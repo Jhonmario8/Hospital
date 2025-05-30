@@ -17,7 +17,7 @@ function crearFilaArticulo(art) {
         <td>${art.nomArticulo}</td>
         <td>${art.cantidad}</td>
         <td>${art.descripcion}</td>
-        <td class="td" style="margin-top: 32px; padding-bottom: 35px;"><button class="editar">Editar</button> <button class="borrar">Borrar</button> <button class="asignar">Asignar</button></td>
+        <td class="td" style="margin-top: 32px; padding-bottom: 35px;"><button class="editar">Editar</button> <button class="borrar">Inactivar</button> <button class="asignar">Asignar</button></td>
         
     `
     row.querySelector(".editar").addEventListener("click",async e=>{
@@ -100,14 +100,14 @@ function crearFilaArticulo(art) {
             if (!res.ok){
                 throw new Error("Error al buscar el articulo")
             }
-            if (confirm("Seguro que desea eliminar el articulo?")) {
+            if (confirm("Seguro que desea inactivar el articulo?")) {
                 let response = await fetch(`http://localhost:8080/articulos/borrar/${id}`, {
                     method: "DELETE"
                 })
                 if (!response.ok) {
                     throw new Error("Error al borrar el articulo")
                 }
-                alert("Articulo eliminado con exito")
+                alert("Articulo inactivado con exito")
                 window.location.reload()
             }
         }catch (e){

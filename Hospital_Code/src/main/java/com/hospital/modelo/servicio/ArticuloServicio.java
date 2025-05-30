@@ -5,6 +5,8 @@ import com.hospital.modelo.entidad.Articulo;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.repositorio.ArticuloRepositorio;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.hospital.modelo.repositorio.HabitacionRepositorio;
 import org.springframework.stereotype.Service;
@@ -26,7 +28,8 @@ public class ArticuloServicio implements IArticuloServicio{
 
     @Override
     public List<Articulo> listarTodos(){
-        return (List<Articulo>)articuloRepositorio.findAll();
+        List<Articulo> articulos=  (List<Articulo>)articuloRepositorio.findAll();
+        return articulos.stream().filter(Articulo::isActivo).toList();
     }
     @Override
     public void guardar(Articulo articulo){
@@ -36,7 +39,7 @@ public class ArticuloServicio implements IArticuloServicio{
     @Override
     public boolean asignar(int idArt,int idHab,int cantArt){
         Habitacion hab=habitacionRepositorio.findById(idHab).orElse(null);
-        Articulo art=articuloRepositorio.findById(idArt).orElse(null);
+        Articulo art=articuloRepositorio.findById(idArt).filter(Articulo::isActivo).orElse(null);
         if (art.getCantidad()>=cantArt) {
             if (hab != null && art != null) {
                 hab.getArticulos().add(art);
@@ -56,6 +59,20 @@ public class ArticuloServicio implements IArticuloServicio{
     }
     @Override
     public void eliminar(Integer id){
-        articuloRepositorio.deleteById(id);
+        Optional<Articulo> articuloOptional=articuloRepositorio.findById(id).filter(Articulo::isActivo);
+        if (articuloOptional.isPresent()){
+            Articulo art= articuloOptional.get();
+            art.setActivo(false);
+            articuloRepositorio.save(art);
+        }
+    }
+    @Override
+    public void activar(Integer id){
+        Optional<Articulo> articuloOptional=articuloRepositorio.findById(id);
+        if (articuloOptional.isPresent()){
+            Articulo art= articuloOptional.get();
+            art.setActivo(true);
+            articuloRepositorio.save(art);
+        }
     }
 }

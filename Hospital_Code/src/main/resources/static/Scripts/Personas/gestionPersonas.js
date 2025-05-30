@@ -87,11 +87,12 @@ function crearFila(per){
                     form.reportValidity();
                     return
                 }
+                if(telefono.at(1).value.length!=10){
+                    telefono.at(1).setCustomValidity("Ingrese un numero de 10 digitos")
+                    return
+                }
                 try {
-                    if(telefono.at(1).value.length!=10){
-                        alert("Ingrese un numero valido")
-                        throw new Error("Error: envie un numero valido")
-                    }
+
                     let res=await fetch("http://localhost:8080/personas/actualizar",{
                         method:"PUT",
                         headers:{"Content-Type":"application/json"},

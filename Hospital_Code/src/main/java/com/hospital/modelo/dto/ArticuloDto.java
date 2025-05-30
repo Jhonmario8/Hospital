@@ -5,6 +5,7 @@ public class ArticuloDto {
     private String nomArticulo;
     private int cantidad;
     private String descripcion;
+    private boolean activo;
 
     public int getIdArticulo() {
         return idArticulo;
@@ -36,5 +37,13 @@ public class ArticuloDto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 }

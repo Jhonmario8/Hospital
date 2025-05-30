@@ -14,7 +14,7 @@
     <form >
         <div>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" placeholder="Ingrese el nombre" required>
+            <input type="text" id="nombre" placeholder="Ingrese el nombre" required minlength="3" maxlength="20">
         </div>
         <div>
             <label for="precio">Precio:</label>
@@ -22,7 +22,7 @@
         </div>
         <div>
             <label for="detalles">Detalles:</label>
-            <input type="text" id="detalles" placeholder="Ingrese los detalles" required>
+            <input type="text" id="detalles" placeholder="Ingrese los detalles" required maxlength="30">
         </div>
         <div class="button-container">
             <button type="submit" id="guardarBtn">Guardar</button>

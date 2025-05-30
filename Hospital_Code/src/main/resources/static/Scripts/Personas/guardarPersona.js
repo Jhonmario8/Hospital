@@ -35,17 +35,21 @@ boton.addEventListener("click",async e=>{
         form.reportValidity();
         return;
     }
+
     const id=parseInt( document.getElementById("id").value)
     const nombre= document.getElementById("nombre").value
     const edad=parseInt(document.getElementById("edad").value)
     const direccion=document.getElementById("direccion").value
     const telefono=document.getElementById("telefono").value
     let tipo=document.getElementById("tipo").value === "true"
+
+    if (telefono.length!==10){
+        let tel=document.getElementById("telefono")
+        tel.setCustomValidity("Ingrese un numero de 10 digitos")
+        form.reportValidity()
+        return
+    }
     try{
-        if(telefono.length!=10){
-            alert("Ingrese un numero valido")
-            throw new Error("Error: envie un numero valido")
-        }
         let response=await fetch( `http://localhost:8080/personas/inactivo/${id}`)
         if (!response.ok && response.status!==404){
             throw new Error("Error al buscar la persona")

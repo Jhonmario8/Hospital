@@ -22,6 +22,7 @@ public class Articulo {
     private String nomArticulo;
     private int cantidad;
     private String descripcion;
+    private boolean activo=true;
     @ManyToMany
     @JoinTable(
             name = "articulo_habitacion",
@@ -71,6 +72,14 @@ public class Articulo {
 
     public void setHabitacion(Set<Habitacion> habitaciones) {
         this.habitaciones = habitaciones;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @Override
