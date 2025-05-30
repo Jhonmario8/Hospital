@@ -1,5 +1,6 @@
 package com.hospital.controlador;
 
+import com.hospital.modelo.dto.ArticuloDto;
 import com.hospital.modelo.dto.HabitacionDto;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.servicio.IHabitacionServicio;
@@ -63,5 +64,10 @@ public class HabitacionCotrolador {
     @DeleteMapping("habitaciones/borrar/{id}")
     public void borrar(@PathVariable int id) {
         servicio.eliminar(id);
+    }
+
+    @GetMapping("habitaciones/getAticulos/{id}")
+    public List<ArticuloDto> getArticulos(@PathVariable int id){
+        return servicio.findArticulosById(id);
     }
 }

@@ -1,6 +1,8 @@
 package com.hospital.modelo.repositorio;
 
+import com.hospital.modelo.dto.ArticuloDto;
 import com.hospital.modelo.dto.HabitacionDto;
+import com.hospital.modelo.entidad.Articulo;
 import com.hospital.modelo.entidad.Habitacion;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -20,5 +22,8 @@ public interface HabitacionRepositorio extends CrudRepository<Habitacion, Intege
             "FROM Habitacion h " +
             "WHERE str(h.numHabitacion) LIKE %:id%")
     List<HabitacionDto> findAllByIdContaining(@Param("id") String id);
+
+    @Query("select new com.hospital.modelo.dto.ArticuloDto(a.idArticulo,a.nomArticulo,a.cantidad,a.descripcion,a.activo) from Habitacion h join h.articulos a where h.numHabitacion=:id")
+    List<ArticuloDto> findArticulosById(@Param("id") int id);
 
 }

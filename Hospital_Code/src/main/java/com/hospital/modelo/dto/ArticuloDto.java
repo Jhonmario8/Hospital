@@ -7,6 +7,18 @@ public class ArticuloDto {
     private String descripcion;
     private boolean activo;
 
+
+    public ArticuloDto() {
+    }
+
+    public ArticuloDto(int idArticulo, String nomArticulo, int cantidad, String descripcion, boolean activo) {
+        this.idArticulo = idArticulo;
+        this.nomArticulo = nomArticulo;
+        this.cantidad = cantidad;
+        this.descripcion = descripcion;
+        this.activo = activo;
+    }
+
     public int getIdArticulo() {
         return idArticulo;
     }

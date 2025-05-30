@@ -1,5 +1,6 @@
 package com.hospital.modelo.servicio;
 
+import com.hospital.modelo.dto.ArticuloDto;
 import com.hospital.modelo.dto.HabitacionDto;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.repositorio.HabitacionRepositorio;
@@ -41,5 +42,8 @@ public class HabitacionServicio implements IHabitacionServicio {
         habitacionRepositorio.deleteById(id);
     }
 
-   
+   @Override
+    public List<ArticuloDto> findArticulosById(Integer id){
+        return habitacionRepositorio.findArticulosById(id);
+   }
 }

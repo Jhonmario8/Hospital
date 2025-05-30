@@ -7,14 +7,25 @@
 </head>
 <body>
 
-<div class="login-container">
+<div class="login-container" style="width: 400px">
 
     <h2>Guardar Articulo</h2>
 
-    <form >
+    <form style="width: auto">
         <div>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nomArticulo" placeholder="Ingrese el nombre" required>
+            <input type="text" id="nombre" name="nomArticulo" placeholder="Ingrese el nombre" required minlength="3" maxlength="20">
+            <table class="styled-table" style="display: none">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                        Articulos eliminados anteriormente
+                        </th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
         </div>
         <div>
             <label for="cantidad">Cantidad:</label>
@@ -22,7 +33,7 @@
         </div>
         <div>
             <label for="descripcion">Descripción:</label>
-            <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese la descripción" required>
+            <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese la descripción" required maxlength="30">
         </div>
         <div class="button-container">
             <button type="submit" id="guardarBtn">Guardar</button>

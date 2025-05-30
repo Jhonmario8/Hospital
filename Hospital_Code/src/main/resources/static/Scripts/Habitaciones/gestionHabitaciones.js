@@ -7,7 +7,7 @@ function crearFila(hab){
     <td>${hab.numHabitacion}</td>
     <td>${hab.tipoHabitacion}</td>
     <td>${hab.capacidad}</td>
-    <td ><button class="editar">Editar</button> <button class="borrar">Borrar</button></td>
+    <td ><button class="editar">Editar</button> <button class="borrar">Borrar</button> <button class="articulos">Articulos</button> </td>
     `
     row.querySelector(".editar").addEventListener("click",async e=>{
         e.preventDefault()
@@ -118,6 +118,11 @@ function crearFila(hab){
         }catch (e){
             console.error(e)
         }
+    })
+    row.querySelector(".articulos").addEventListener("click", async e=>{
+        e.preventDefault()
+        sessionStorage.setItem("idHab",hab.numHabitacion)
+        window.location.href=`../../html/GestionHabitaciones/habitacionArticulos.html`
     })
     return row
 }

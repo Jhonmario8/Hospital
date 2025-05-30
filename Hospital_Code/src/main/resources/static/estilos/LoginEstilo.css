@@ -244,3 +244,20 @@ td a:hover {
     color: var(--hover-color);
     text-decoration: underline;
 }
+
+.login-container .activar-btn {
+    padding: 8px 16px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.login-container .activar-btn:hover {
+    background: var(--hover-color);
+    transform: scale(1.05);
+}
+

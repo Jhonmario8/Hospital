@@ -231,6 +231,7 @@ document.addEventListener("DOMContentLoaded",async e=>{
             throw new Error("Error al obtenero los articulos")
         }
         let json = await response.json()
+        console.log(json)
         let tabla = document.getElementById("articulos-tabla")
         json.forEach(art => {
             let row=crearFilaArticulo(art);

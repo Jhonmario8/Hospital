@@ -1,5 +1,6 @@
 package com.hospital.modelo.servicio;
 
+import com.hospital.modelo.dto.ArticuloDto;
 import com.hospital.modelo.entidad.Articulo;
 
 import com.hospital.modelo.entidad.Habitacion;
@@ -27,9 +28,8 @@ public class ArticuloServicio implements IArticuloServicio{
     }
 
     @Override
-    public List<Articulo> listarTodos(){
-        List<Articulo> articulos=  (List<Articulo>)articuloRepositorio.findAll();
-        return articulos.stream().filter(Articulo::isActivo).toList();
+    public List<ArticuloDto> listarTodos(){
+       return articuloRepositorio.findAllDtoById();
     }
     @Override
     public void guardar(Articulo articulo){
@@ -74,5 +74,9 @@ public class ArticuloServicio implements IArticuloServicio{
             art.setActivo(true);
             articuloRepositorio.save(art);
         }
+    }
+    @Override
+    public List<ArticuloDto> findDtoByNameContaining(String name){
+        return articuloRepositorio.findAllByNomArticuloContainingIgnoreCase(name);
     }
 }
