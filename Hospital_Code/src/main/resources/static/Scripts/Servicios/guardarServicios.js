@@ -1,4 +1,10 @@
 const form=document.querySelector("form")
+
+document.getElementById("precio").addEventListener("input",ev => {
+    if (ev.target.value.length>5){
+        ev.target.value=ev.target.value.slice(0,5)
+    }
+})
 document.getElementById("guardarBtn").addEventListener("click",async e=>{
     e.preventDefault()
     if (!form.checkValidity()) {

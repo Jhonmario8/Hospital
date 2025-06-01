@@ -58,6 +58,11 @@ document.getElementById("nombre").addEventListener("input", async e => {
         console.error(e)
     }
 })
+document.getElementById("cantidad").addEventListener("input",e=>{
+    if (e.target.value.length>2){
+        e.target.value=e.target.value.slice(0,2)
+    }
+})
 document.getElementById("guardarBtn").addEventListener("click", async e => {
 
     e.preventDefault()

@@ -69,28 +69,25 @@ function crearFila(per){
             volverBtn.setAttribute("href","../../html/GestionPersonas/gestionpersona.html")
             volverBtn.setAttribute("class","button")
             volverBtn.textContent="Volver"
-            telefono.at(1).addEventListener("input", e=>{
-                const num=e.target.value
-                if (num.length!==10){
-                    message.textContent="Ingrese un numero valido"
-                    message.style.color="red"
-                    message.style.fontSize="12px"
-                }
-                else{
-                    message.textContent=""
-                }
+            telefono.at(1).addEventListener("input",e=>{
+            if (e.target.value.length>10){
+                e.target.value=e.target.value.slice(0,10)
+            }
             })
-
             actualizarBtn.addEventListener("click",async e=>{
                 e.preventDefault()
+                if(telefono.at(1).value.length<10 ){
+                    telefono.at(1).setCustomValidity("Ingrese un numero de 10 digitos")
+                    form.reportValidity()
+                    return
+                }else {
+                    telefono.at(1).setCustomValidity("")
+                }
                 if (!form.checkValidity()){
                     form.reportValidity();
                     return
                 }
-                if(telefono.at(1).value.length!=10){
-                    telefono.at(1).setCustomValidity("Ingrese un numero de 10 digitos")
-                    return
-                }
+
                 try {
 
                     let res=await fetch("http://localhost:8080/personas/actualizar",{
@@ -118,6 +115,8 @@ function crearFila(per){
             edad.at(1).max="110"
             edad.at(1).type="number"
             telefono.at(1).type="number"
+            direccion.at(1).maxLength="30"
+            nombre.at(1).maxLength="20"
             form.appendChild(nombre.at(0))
             form.appendChild(nombre.at(1))
             form.appendChild(edad.at(0))

@@ -506,6 +506,13 @@ td a:hover {
     .back-button,
     .print-button {
         display: none;
+
+    }
+    .login-container{
+        box-shadow:0 20px 40px #4cd3a933;
+    }
+    .styled-table{
+        box-shadow: none;
     }
 }
 

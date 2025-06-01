@@ -18,7 +18,7 @@ function crearFila(ser){
             <td>${ser.nomServicio}</td>
             <td>${ser.precioServicio}</td>
             <td style="padding: 10px 20px;">${ser.detallesServicio}</td>
-            <td class="td" style="margin-top: 60px; padding-bottom: 50px;"><button class="editar">Editar</button><button class="borrar">Borrar</button></td>
+            <td class="td" style="margin-top: 30px; padding-bottom: 50px;"><button class="editar">Editar</button><button class="borrar">Borrar</button></td>
             `
     row.querySelector(".editar").addEventListener("click",async e=>{
         e.preventDefault()
@@ -50,6 +50,12 @@ function crearFila(ser){
             volverBtn.textContent="Volver"
             volverBtn.setAttribute("href","../../html/GestionServicios/gestionservicios.html")
             volverBtn.setAttribute("class","button")
+
+            precio.addEventListener("input",ev => {
+                if (precio.value.length>5){
+                    precio.value=precio.value.slice(0,5)
+                }
+            })
 
             actualizarBtn.addEventListener("click",async e=>{
                 e.preventDefault()

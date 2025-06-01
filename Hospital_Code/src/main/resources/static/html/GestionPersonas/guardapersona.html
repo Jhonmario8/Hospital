@@ -13,12 +13,12 @@
     <form >
         <div>
             <label for="id">Nro. Documento:</label>
-            <input type="number" id="id" placeholder="Ingrese el id" required>
+            <input type="number" id="id" placeholder="Ingrese el id" required min="0">
             <p id="existeMensaje"></p>
         </div>
         <div>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" placeholder="Ingrese el nombre" required>
+            <input type="text" id="nombre" placeholder="Ingrese el nombre" required maxlength="20">
         </div>
         <div>
             <label for="edad">Edad:</label>
@@ -26,7 +26,7 @@
         </div>
         <div>
             <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" placeholder="Ingrese la dirección" required>
+            <input type="text" id="direccion" placeholder="Ingrese la dirección" required maxlength="30">
         </div>
         <div>
             <label for="telefono">Teléfono:</label>

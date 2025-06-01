@@ -17,7 +17,7 @@ function crearFilaArticulo(art) {
         <td>${art.nomArticulo}</td>
         <td>${art.cantidad}</td>
         <td>${art.descripcion}</td>
-        <td class="td" style="margin-top: 32px; padding-bottom: 35px;"><button class="editar">Editar</button> <button class="borrar">Inactivar</button> <button class="asignar">Asignar</button></td>
+        <td class="td" style="margin-top: 15px; padding-bottom: 35px;"><button class="editar">Editar</button> <button class="borrar">Inactivar</button> <button class="asignar">Asignar</button></td>
         
     `
     row.querySelector(".editar").addEventListener("click",async e=>{
@@ -45,6 +45,13 @@ function crearFilaArticulo(art) {
             volverBtn.textContent="Volver"
             volverBtn.setAttribute("href","../../html/GestionArticulos/gestionarticulos.html")
             volverBtn.setAttribute("class","button")
+
+            cantidad.addEventListener("input",ev => {
+                if (cantidad.value.length>2){
+                    cantidad.value=cantidad.value.slice(0,2)
+                }
+            })
+
 
             actualizarBtn.addEventListener("click",async e=>{
                 e.preventDefault()
@@ -76,6 +83,8 @@ function crearFilaArticulo(art) {
             cantidad.min="1"
             cantidad.max="50"
             cantidad.step="1"
+            nombre.maxLength="20"
+            descripcion.maxLength="30"
             form.appendChild(labelN)
             form.appendChild(nombre)
             form.appendChild(labelC)
