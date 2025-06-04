@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded",async ()=>{
             <td>${cita.fechaCita}</td>
             <td>${horaFormateada}</td>
             <td>${cita.motivo}</td>
-            <td>${paciente.idPersona}</td>
-            <td>${empleado.idPersona}</td>
+            <td>${paciente.nomPersona}: ${paciente.idPersona}</td>
+            <td>${empleado.nomPersona}: ${empleado.idPersona}</td>
             `
             tabla.appendChild(row)
         })
