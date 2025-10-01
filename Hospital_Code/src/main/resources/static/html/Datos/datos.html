@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Hospital - Datos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../estilos/estilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <img src="../../Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <nav>
+            <ul class="nav-list">
+                <li><a class="salir">Salir</a></li>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../GestionPersonas/gestionpersona.html">Personas</a></li>
+                <li><a href="../GestionHabitaciones/gestionhabitaciones.html">Habitaciones</a></li>
+                <li><a href="../GestionCitas/gestioncitas.html">Citas</a></li>
+                <li><a href="../GestionArticulos/gestionarticulos.html">Artículos</a></li>
+                <li><a href="../GestionServicios/gestionservicios.html">Servicios</a></li>
+                <li><a href="../GestionIngresos/gestioningresos.html">Ingresos</a></li>
+                <li><a href="../Reportes/reportes.html">Reportes</a></li>
+                <li><a class="active" href="../Datos/datos.html">Datos</a></li>
+                <li><a href="../Catalogo/catalogo.html">Catálogo</a></li>
+                <li><a href="../QuienesSomos.html">Quienes somos</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <section class="welcome-section">
+            <div class="welcome-container">
+                <div class="welcome-text">
+                    <h1>Analítica de Datos</h1>
+                    <p>Visualiza indicadores clave construidos a partir de la información registrada en el sistema.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+            <article class="dashboard-card">
+                <header class="dashboard-card__header">
+                    <h2>Distribución de Personas</h2>
+                    <p>Comparativo entre pacientes y personal médico activo.</p>
+                </header>
+                <canvas id="personasTipoChart" aria-label="Gráfico de distribución de personas" role="img"></canvas>
+                <p class="chart-empty" data-chart="personasTipoChart" hidden>No se encontraron personas activas registradas.</p>
+            </article>
+
+            <article class="dashboard-card">
+                <header class="dashboard-card__header">
+                    <h2>Estado de Hospitalización</h2>
+                    <p>Resumen de ingresos hospitalizados frente a atenciones ambulatorias.</p>
+                </header>
+                <canvas id="ingresosEstadoChart" aria-label="Gráfico de ingresos por estado" role="img"></canvas>
+                <p class="chart-empty" data-chart="ingresosEstadoChart" hidden>No hay ingresos registrados en el sistema.</p>
+            </article>
+
+            <article class="dashboard-card dashboard-card--wide">
+                <header class="dashboard-card__header">
+                    <h2>Citas mensuales</h2>
+                    <p>Evolución de las citas agendadas en el tiempo.</p>
+                </header>
+                <canvas id="citasMensualesChart" aria-label="Serie temporal de citas" role="img"></canvas>
+                <p class="chart-empty" data-chart="citasMensualesChart" hidden>No existen citas registradas para mostrar.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <hr>
+        <p>© Todos los derechos reservados 2025</p>
+        <hr>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../Scripts/Datos/datos.js"></script>
+    <script>
+        document.querySelector(".salir").addEventListener("click", () => {
+            if (confirm("¿Seguro que deseas cerrar sesión?")) {
+                window.location.href = "../InicioSesion/inicioSesion.html";
+            }
+        });
+    </script>
+</body>
+</html>

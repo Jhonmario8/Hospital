@@ -2,6 +2,7 @@ package com.hospital.modelo.repositorio;
 
 
 
+import com.hospital.modelo.dto.EstadisticaDto;
 import com.hospital.modelo.dto.PersonaDto;
 import com.hospital.modelo.dto.ServicioDto;
 import com.hospital.modelo.entidad.Persona;
@@ -34,5 +35,9 @@ public interface PersonaRepositorio extends CrudRepository<Persona,Integer> {
 
     @Query("SELECT new com.hospital.modelo.dto.ServicioDto(s.codServicio, s.nomServicio, s.precioServicio, s.detallesServicio) FROM Persona p JOIN p.servicios s WHERE p.idPersona = :id")
     List<ServicioDto> serviciosPersona(@Param("id") int id);
+
+    @Query("SELECT new com.hospital.modelo.dto.EstadisticaDto(CASE WHEN p.tipoPersona = true THEN 'Medicos' ELSE 'Pacientes' END, COUNT(p)) " +
+            "FROM Persona p WHERE p.activo = true GROUP BY p.tipoPersona")
+    List<EstadisticaDto> contarPorTipoPersona();
 
 }
