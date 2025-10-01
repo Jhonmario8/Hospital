@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="../../estilos/estilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2>Articulos</h2>
+    <form>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" placeholder="Ingrese el id" required>
+            <p id="info"></p>
+        </div>
+        <div>
+            <button type="button" onclick="location.href='gestionhabitaciones.html'">Volver</button>
+        </div>
+    </form>
+    <table class="styled-table" id="tabla">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+
+    </table>
+</div>
+<script src="../../Scripts/Habitaciones/habitacionArticulos.js"></script>
+</body>
+</html>

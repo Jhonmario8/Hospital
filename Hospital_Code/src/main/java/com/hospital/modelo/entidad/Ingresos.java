@@ -1,18 +1,23 @@
 package com.hospital.modelo.entidad;
 
-import com.hospital.modelo.servicio.PacienteServicio;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "ingresos")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idIngreso"
+)
 public class Ingresos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idIngreso;
-    private int IdPaciente;
-    private String ciudad;
-    private String motivo;
+
+    @OneToOne
+    @JoinColumn(name = "id_persona", referencedColumnName = "idPersona")
+    private Persona persona;
     private Boolean acompañante;
     private Boolean hospitalizado=false;
     @ManyToOne
@@ -30,28 +35,12 @@ public class Ingresos {
         this.idIngreso = idIngreso;
     }
 
-    public int getIdPaciente() {
-        return IdPaciente;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setIdPaciente(int idPaciente) {
-        IdPaciente = idPaciente;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getMotivo() {
-        return motivo;
-    }
-
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public Boolean getAcompañante() {

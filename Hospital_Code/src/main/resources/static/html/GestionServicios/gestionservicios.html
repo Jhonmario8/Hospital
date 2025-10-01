@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="../../estilos/estilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2>Buscar Servicio</h2>
+
+    <form action="/buscarservicio" method="post">
+        <div class="error-message">
+            <p id="error"></p>
+        </div>
+
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" placeholder="Ingrese el ID" required>
+            <p id="info-servicio"></p>
+        </div>
+
+        <div>
+            <button type="button" onclick="location.href='guardaservicio.html'">Nuevo Servicio</button>
+            <button type="button" onclick="location.href='../index.html'">Volver</button>
+        </div>
+    </form>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Detalles</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody id="servicios-tabla">
+
+        </tbody>
+    </table>
+</div>
+<script src="../../Scripts/Servicios/gestionServicios.js"></script>
+</body>
+</html>

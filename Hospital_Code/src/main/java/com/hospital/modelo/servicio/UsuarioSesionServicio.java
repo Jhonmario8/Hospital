@@ -3,13 +3,16 @@ package com.hospital.modelo.servicio;
 
 import com.hospital.modelo.entidad.UsuarioSesion;
 import com.hospital.modelo.repositorio.UsuarioSesionRepositorio;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioSesionServicio implements IUsuarioSesionServicio {
-    @Autowired
-    private UsuarioSesionRepositorio usuariorepositorio;
+
+    private final UsuarioSesionRepositorio usuariorepositorio;
+
+    public UsuarioSesionServicio(UsuarioSesionRepositorio usuariorepositorio){
+        this.usuariorepositorio=usuariorepositorio;
+    }
     
     @Override
     public void guardar(UsuarioSesion usuario){

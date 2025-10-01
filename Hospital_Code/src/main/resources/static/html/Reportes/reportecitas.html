@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital TdeA</title>
+    <link rel="stylesheet" href="../../estilos/estilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h1>Reporte Citas</h1>
+    <table class="styled-table" id="tabla-citas">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Motivo</th>
+            <th>Paciente</th>
+            <th>Medico</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div>
+        <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
+        <button id="imprimir" class="print-button" onclick="window.print()">Imprimir</button>
+    </div>
+</div>
+
+<script src="../../Scripts/Reportes/reporteCitas.js"></script>
+</body>
+</html>
+
+

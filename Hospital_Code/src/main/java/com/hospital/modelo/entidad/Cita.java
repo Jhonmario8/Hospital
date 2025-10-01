@@ -1,9 +1,15 @@
 package com.hospital.modelo.entidad;
 
+
+
+
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "cita")
@@ -11,16 +17,15 @@ public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCita;
-    private String fechaCita;
-    private String horaCita;
+    private LocalDate fechaCita;
+    private LocalTime horaCita;
+    private String motivo;
 
-    @ManyToOne
-    @JoinColumn(name = "cod_paciente", nullable = false)
-    private  Paciente paciente;
+    @ManyToMany(mappedBy = "citas", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Persona> personas = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "citas")
-    private Set<Empleado> empleados=new HashSet<>();
-
+    public Cita() {
+    }
 
     public int getIdCita() {
         return idCita;
@@ -30,36 +35,37 @@ public class Cita {
         this.idCita = codCita;
     }
 
-    public String getFechaCita() {
+    public LocalDate getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(String fechaCita) {
+    public void setFechaCita(LocalDate fechaCita) {
         this.fechaCita = fechaCita;
     }
 
-    public String getHoraCita() {
+    public LocalTime getHoraCita() {
         return horaCita;
     }
 
-    public void setHoraCita(String horaCita) {
+    public void setHoraCita(LocalTime horaCita) {
         this.horaCita = horaCita;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public String getMotivo() {
+        return motivo;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setMotivo(String horaCita) {
+        this.motivo = horaCita;
     }
 
-    public Set<Empleado> getEmpleados() {
-        return empleados;
+
+    public List<Persona> getPersonas() {
+        return personas;
     }
 
-    public void setEmpleados(Set<Empleado> empleados) {
-        this.empleados = empleados;
+    public void setPersonas(List<Persona> personas) {
+        this.personas = personas;
     }
 
     @Override
@@ -67,8 +73,9 @@ public class Cita {
         return "Cita{" +
                 "idCita=" + idCita +
                 ", fechaCita='" + fechaCita + '\'' +
-                ", horaCita='" + horaCita + '\'' +
-                ", paciente=" + paciente +
+                ", horaCita="+horaCita+
+                ", motivo='" + motivo + '\'' +
+                ", personas=" + personas+
                 '}';
     }
 }

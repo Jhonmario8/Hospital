@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="../../estilos/estilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container" style="width: auto;">
+    <h2>Gestion Personas</h2>
+    <form >
+        <div>
+            <label for="id">Nro. Documento:</label>
+            <input type="text"  id="id" placeholder="Ingrese el ID" required>
+        </div>
+
+        <div>
+            <button type="button" onclick="location.href='guardapersona.html'">Nueva Persona</button>
+            <button type="button" onclick="location.href='../index.html'">Volver</button>
+            <p id="info"></p>
+        </div>
+    </form>
+        <table class="styled-table">
+            <thead>
+            <tr>
+                <th >ID</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Teléfono</th>
+                <th>Direccion</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="personas-tabla">
+
+            </tbody>
+        </table>
+
+</div>
+<script src="../../Scripts/Personas/gestionPersonas.js"></script>
+</body>
+</html>

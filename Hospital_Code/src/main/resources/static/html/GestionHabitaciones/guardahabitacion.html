@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Guardar</h2>
+    <form action="/guardarhabitacion" method="post">
+
+        <div>
+            <label for="tipo">Tipo:</label>
+            <select  id="tipo" class="styled-select" required >
+                <option value="" disabled selected>Tipo Habitación</option>
+                <option value="Normal">Normal</option>
+                <option value="UCI">UCI</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="capacidad">Capacidad:</label>
+
+            <input type="number" id="capacidad" placeholder="Ingrese la capacidad" required min="1" max="4" step="1">
+        </div>
+
+        <div class="button-container">
+            <button type="submit" id="guardarBtn">Guardar</button>
+            <button type="button" onclick="location.href='gestionhabitaciones.html'">Volver</button>
+        </div>
+    </form>
+</div>
+<script src="../../Scripts/Habitaciones/guardarHabitacion.js"></script>
+</body>
+</html>

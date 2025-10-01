@@ -1,5 +1,8 @@
 package com.hospital.modelo.entidad;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 
@@ -8,6 +11,10 @@ import java.util.Set;
 
 @Entity
 @Table(name="articulo")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idArticulo"
+)
 public class Articulo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +22,7 @@ public class Articulo {
     private String nomArticulo;
     private int cantidad;
     private String descripcion;
+    private boolean activo=true;
     @ManyToMany
     @JoinTable(
             name = "articulo_habitacion",
@@ -66,13 +74,22 @@ public class Articulo {
         this.habitaciones = habitaciones;
     }
 
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
     @Override
     public String toString() {
         return "Articulo{" +
                 "idArticulo=" + idArticulo +
-                ", nomArticulo='" + nomArticulo + '\'' +
+                ", nomArticulo=" + nomArticulo +
                 ", cantidad=" + cantidad +
-                ", descripcion='" + descripcion + '\'' +
+                ", descripcion=" + descripcion +
+                ", habitaciones="+ habitaciones+
                 '}';
     }
 }

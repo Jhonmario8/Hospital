@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="../../estilos/estilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    
+    <h2>Gestion Artículos</h2>
+    <form>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" placeholder="Ingrese el id" required>
+            <p id="info-articulo"></p>
+        </div>
+        <div>
+            <button type="button" onclick="location.href='guardaarticulo.html'">Nuevo Artículo</button>
+            <button type="button" onclick="location.href='../index.html'">Volver</button>
+        </div>
+    </form>
+    <table class="styled-table" id="tabla">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody id="articulos-tabla">
+
+        </tbody>
+
+    </table>
+</div>
+<script src="../../Scripts/Articulos/gestionArticulos.js"></script>
+</body>
+</html>

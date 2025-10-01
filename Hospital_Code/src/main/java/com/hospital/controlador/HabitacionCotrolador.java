@@ -1,114 +1,73 @@
 package com.hospital.controlador;
 
+import com.hospital.modelo.dto.ArticuloDto;
+import com.hospital.modelo.dto.HabitacionDto;
 import com.hospital.modelo.entidad.Habitacion;
 import com.hospital.modelo.servicio.IHabitacionServicio;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class HabitacionCotrolador {
-    @Autowired
-    private IHabitacionServicio servicio;
 
-    @GetMapping("/gestionhabitaciones")
-    public String gestion() {
-        return "GestionHabitaciones/gestionhabitaciones";
+    private final IHabitacionServicio servicio;
+
+    public HabitacionCotrolador(IHabitacionServicio servicio) {
+        this.servicio = servicio;
     }
 
-    @GetMapping("/guardahabitacion")
-    public String guarda(Model modelo) {
-        Habitacion habitacion=new Habitacion();
-        modelo.addAttribute("titulo","Formulario: Guardar Habitacion");
-        modelo.addAttribute("habitacion",habitacion);
-        return "GestionHabitaciones/guardahabitacion";
+    @GetMapping("habitaciones/mostrar")
+    public List<HabitacionDto> mostrar() {
+        return servicio.listarTodos();
     }
 
-    @PostMapping("/guardarhabitacion")
-    public String guardar(@ModelAttribute Habitacion habitacion, Model modelo){
-        modelo.addAttribute("titulo","Formulario: Nueva Habitacion");
-        modelo.addAttribute("habitacion",habitacion);
-
-        servicio.guardar(habitacion);
-        modelo.addAttribute("mensaje","Habitacion Guardada\n" +
-                "Numero de la habitacion: "+habitacion.getNumHabitacion());
-        return "GestionHabitaciones/guardahabitacion";
-    }
-
-    @GetMapping("/buscahabitacion")
-    public String busca(Model modelo){
-        Habitacion habitacion=new Habitacion();
-        modelo.addAttribute("titulo","Formulario: Buscar Habitacion");
-        modelo.addAttribute("habitacion",habitacion);
-        return "GestionHabitaciones/buscahabitacion";
-    }
-
-    @PostMapping("/buscarhabitacion")
-    public String buscar(@RequestParam(name = "numHabitacion")int numHabitacion,Model modelo){
-        modelo.addAttribute("titulo","Formulario: Buscar Habitacion");
-        Habitacion habitacion=servicio.buscarPorId(numHabitacion);
-        if (habitacion!=null){
-            modelo.addAttribute("tipo",habitacion.getTipoHabitacion());
-            modelo.addAttribute("ocupacion",habitacion.getOcupacion());
-            return "GestionHabitaciones/buscahabitacion";
-        }
-        else {
-            modelo.addAttribute("error","El id ingresado no existe");
-            return "GestionHabitaciones/buscahabitacion";
-        }
-    }
-
-    @GetMapping("/actualizahabitacion")
-    public String actualiza(Model modelo){
-        Habitacion habitacion=new Habitacion();
-        modelo.addAttribute("titulo","Formulario: Actualizar Habitacion");
-        modelo.addAttribute("habitacion",habitacion);
-        return "GestionHabitaciones/actualizahabitacion";
-    }
-
-    @PostMapping("/actualizarhabitacion")
-    public String actualizar(@RequestParam(name = "numHabitacion")int numHabitacion,Model modelo){
-        Habitacion habitacion=null;
-        if (numHabitacion > 0){
-            habitacion=servicio.buscarPorId(numHabitacion);
-            if (habitacion==null){
-                modelo.addAttribute("error","El id ingresado no existe");
-                return "GestionHabitaciones/actualizahabitacion";
-            }
+    @GetMapping("/habitaciones/containing/{id}")
+    public ResponseEntity<?> findByIdContainig(@PathVariable String id){
+        List<HabitacionDto> habitacionDtos= servicio.findByIdContaining(id);
+        if (habitacionDtos.size()>0){
+            return ResponseEntity.ok(habitacionDtos);
         }
         else{
-            modelo.addAttribute("error","ERROR!!, formato invalido");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se ha encontrado ninguna habitacion");
         }
-        modelo.addAttribute("titulo","Editar Habitacion");
-        modelo.addAttribute("habitacion",habitacion);
-        return "GestionHabitaciones/actualizarhabitacion";
     }
-    @GetMapping("/eliminahabitacion")
-    public String elimina(Model modelo){
-        Habitacion habitacion=new Habitacion();
-        modelo.addAttribute("titulo","Formulario: Eliminar Habitacion");
-        modelo.addAttribute("habitacion",habitacion);
-        return "GestionHabitaciones/eliminahabitacion";
+
+    @PostMapping("habitaciones/guardar")
+    public Habitacion guardar(@RequestBody HabitacionDto habitacion) {
+        Habitacion hab=new Habitacion();
+        hab.setTipoHabitacion(habitacion.getTipoHabitacion());
+        hab.setCapacidad(habitacion.getCapacidad());
+       return servicio.guardar(hab);
     }
-    @PostMapping("eliminarhabitacion")
-    public String eliminar(@RequestParam(name="numHabitacion")int numHabitacion,Model modelo){
-        Habitacion habitacion = null;
-        if (numHabitacion > 0) {
-            habitacion = servicio.buscarPorId(numHabitacion);
-            if (habitacion == null) {
-                modelo.addAttribute("error", "El id ingresado no existe");
-                return "GestionHabitaciones/eliminahabitacion";
-            }
-        } else {
-            modelo.addAttribute("error", "Error: formato invalido");
-            return "GestionHabitaciones/eliminahabitacion";
+
+    @PutMapping("habitaciones/actualizar")
+    public void actualizar(@RequestBody HabitacionDto habitacion) {
+        Habitacion hab=new Habitacion();
+        hab.setNumHabitacion(habitacion.getNumHabitacion());
+        hab.setTipoHabitacion(habitacion.getTipoHabitacion());
+        hab.setCapacidad(habitacion.getCapacidad());
+        servicio.guardar(hab);
+    }
+    @GetMapping("habitaciones/buscar/{id}")
+    public ResponseEntity<?> buscar(@PathVariable int id) {
+        Habitacion hab= servicio.buscarPorId(id);
+        if (hab!=null){
+            return ResponseEntity.ok(hab);
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Habitacion no encontrada");
         }
-        servicio.eliminar(habitacion.getNumHabitacion());
-        modelo.addAttribute("error", "Habitacion Eliminada");
-        return "GestionHabitaciones/eliminahabitacion";
+    }
+
+    @DeleteMapping("habitaciones/borrar/{id}")
+    public void borrar(@PathVariable int id) {
+        servicio.eliminar(id);
+    }
+
+    @GetMapping("habitaciones/getAticulos/{id}")
+    public List<ArticuloDto> getArticulos(@PathVariable int id){
+        return servicio.findArticulosById(id);
     }
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital TdeA</title>
+    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2>Guardar Persona</h2>
+
+    <form >
+        <div>
+            <label for="id">Nro. Documento:</label>
+            <input type="number" id="id" placeholder="Ingrese el id" required min="0">
+            <p id="existeMensaje"></p>
+        </div>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingrese el nombre" required maxlength="20">
+        </div>
+        <div>
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" placeholder="Ingrese la edad" required min="0" max="110">
+        </div>
+        <div>
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" placeholder="Ingrese la dirección" required maxlength="30">
+        </div>
+        <div>
+            <label for="telefono">Teléfono:</label>
+            <input type="number" id="telefono" placeholder="Ingrese el teléfono" required>
+            <p id="lengthMsg"></p>
+        </div>
+        <div>
+            <label for="tipo">Tipo:</label>
+            <select  id="tipo" class="styled-select" required >
+                <option value="" disabled selected>Tipo de personas</option>
+                <option value="true">Medico</option>
+                <option value="false">Paciente</option>
+            </select>
+        </div>
+        <div class="button-container">
+            <button type="submit" id="guardarBtn">Guardar</button>
+            <button type="button" onclick="location.href='gestionpersona.html'">Volver</button>
+        </div>
+    </form>
+</div>
+<script src="../../Scripts/Personas/guardarPersona.js"></script>
+</body>
+</html>

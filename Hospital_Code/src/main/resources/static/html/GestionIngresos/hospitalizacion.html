@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="../../estilos/estilo.css">
+    <link rel="shortcut icon" href="/Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2>Registro Hospitalización</h2>
+
+    <form >
+        <div>
+            <label for="id">Nro. Documento Paciente:</label>
+            <input type="text"  id="id" placeholder="Ingrese el ID" required>
+            <p id="info"></p>
+        </div>
+        <div id="div" style="display: none">
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Telefono</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <button type="submit" id="hospitalizarBtn">Hospitalizar</button>
+            <button type="button" onclick="location.href='gestioningresos.html'">Volver</button>
+        </div>
+    </form>
+</div>
+<script src="../../Scripts/Ingresos/hospitalizarBtn.js"></script>
+</body>
+</html>

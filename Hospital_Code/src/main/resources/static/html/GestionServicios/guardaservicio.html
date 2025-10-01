@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital TdeA</title>
+    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+  
+    <h2>Guardar</h2>
+
+    <form >
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingrese el nombre" required minlength="3" maxlength="20">
+        </div>
+        <div>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" placeholder="Ingrese el precio" required min="100" max="10000">
+        </div>
+        <div>
+            <label for="detalles">Detalles:</label>
+            <input type="text" id="detalles" placeholder="Ingrese los detalles" required maxlength="30">
+        </div>
+        <div class="button-container">
+            <button type="submit" id="guardarBtn">Guardar</button>
+            <button type="button" onclick="location.href='gestionservicios.html'">Volver</button>
+        </div>
+    </form>
+</div>
+<script src="../../Scripts/Servicios/guardarServicios.js"></script>
+</body>
+</html>

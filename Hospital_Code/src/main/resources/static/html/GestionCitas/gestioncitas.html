@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital</title>
+  <link rel="stylesheet" href="../../estilos/estilo.css">
+  <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+  <h2>Gestion Citas</h2>
+  <form>
+    <div>
+      <label for="id">ID Cita:</label>
+      <input type="text"  id="id" placeholder="Ingrese el id" required>
+    </div>
+    <p id="infoCita"></p>
+    <div>
+      <button type="button" onclick="location.href='guardacita.html'">Nueva Cita</button>
+      <button type="button" onclick="location.href='../index.html'">Volver</button>
+    </div>
+  </form>
+  <table class="styled-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Motivo</th>
+      <th>Paciente</th>
+      <th>Medico</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody id="citas-tabla">
+
+    </tbody>
+  </table>
+</div>
+<script src="../../Scripts/Citas/gestionCitas.js"></script>
+</body>
+</html>

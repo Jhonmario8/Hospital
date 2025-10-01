@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital TdeA</title>
+    <link rel="stylesheet" href="../../estilos/estilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<div class="login-container">
+    <h2>Reporte Habitaciones</h2>
+    <hr>
+    <table class="styled-table" id="tabla-habitaciones">
+        <thead>
+        <tr>
+            <th>Número</th>
+            <th>Tipo</th>
+            <th>Capacidad</th>
+        </tr>
+        </thead>
+
+    </table>
+    <div>
+        <button type="button" class="back-button" onclick="location.href='reportes.html'">Volver</button>
+        <button id="imprimir" class="print-button" onclick="window.print()">Imprimir</button>
+    </div>
+</div>
+<script src="../../Scripts/Reportes/reporteHabitaciones.js"></script>
+</body>
+</html>

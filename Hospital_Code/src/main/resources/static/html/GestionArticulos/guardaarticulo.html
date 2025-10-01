@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="../../estilos/LoginEstilo.css">
+</head>
+<body>
+
+<div class="login-container" style="width: 400px">
+
+    <h2>Guardar Articulo</h2>
+
+    <form style="width: auto">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nomArticulo" placeholder="Ingrese el nombre" required minlength="3" maxlength="20">
+            <table class="styled-table" style="display: none">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                        Articulos eliminados anteriormente
+                        </th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+        <div>
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad" required min="0" max="50" step="1">
+        </div>
+        <div>
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese la descripción" required maxlength="30">
+        </div>
+        <div class="button-container">
+            <button type="submit" id="guardarBtn">Guardar</button>
+            <a href="gestionarticulos.html" class="button"> Volver</a>
+        </div>
+    </form>
+</div>
+<script src="../../Scripts/Articulos/guardarArticulos.js"></script>
+</body>
+</html>
