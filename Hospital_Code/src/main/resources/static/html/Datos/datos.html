@@ -39,6 +39,7 @@
                 <div class="welcome-text">
                     <h1>Analítica de Datos</h1>
                     <p>Visualiza indicadores clave construidos a partir de la información registrada en el sistema.</p>
+                    <p class="welcome-user" data-user-greeting hidden></p>
                 </div>
             </div>
         </section>
@@ -81,9 +82,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../../Scripts/Datos/datos.js"></script>
+    <script src="../../Scripts/common/session.js"></script>
     <script>
         document.querySelector(".salir").addEventListener("click", () => {
             if (confirm("¿Seguro que deseas cerrar sesión?")) {
+                localStorage.removeItem("usuarioActual");
                 window.location.href = "../InicioSesion/inicioSesion.html";
             }
         });
