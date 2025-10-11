@@ -8,6 +8,7 @@ public class PersonaDto {
     private String direccion;
     private String telefonoPersona;
     private boolean tipoPersona;
+    private boolean activo;
 
     public PersonaDto() {
     }
@@ -19,6 +20,7 @@ public class PersonaDto {
         this.direccion = direccion;
         this.telefonoPersona = telefonoPersona;
         this.tipoPersona = tipoPersona;
+        this.activo = true;
     }
     public PersonaDto(int idPersona, String nomPersona, int edadPersona, String telefonoPersona, boolean tipoPersona) {
         this.idPersona = idPersona;
@@ -26,6 +28,26 @@ public class PersonaDto {
         this.edadPersona = edadPersona;
         this.telefonoPersona = telefonoPersona;
         this.tipoPersona= tipoPersona;
+        this.activo = true;
+    }
+
+    public PersonaDto(int idPersona, String nomPersona, int edadPersona, String direccion, String telefonoPersona, boolean tipoPersona, boolean activo) {
+        this.idPersona = idPersona;
+        this.nomPersona = nomPersona;
+        this.edadPersona = edadPersona;
+        this.direccion = direccion;
+        this.telefonoPersona = telefonoPersona;
+        this.tipoPersona = tipoPersona;
+        this.activo = activo;
+    }
+
+    public PersonaDto(int idPersona, String nomPersona, int edadPersona, String telefonoPersona, boolean tipoPersona, boolean activo) {
+        this.idPersona = idPersona;
+        this.nomPersona = nomPersona;
+        this.edadPersona = edadPersona;
+        this.telefonoPersona = telefonoPersona;
+        this.tipoPersona = tipoPersona;
+        this.activo = activo;
     }
     public PersonaDto(int idPersona, String nomPersona, int edadPersona, String telefonoPersona) {
         this.idPersona = idPersona;
@@ -80,5 +102,13 @@ public class PersonaDto {
 
     public void setTipoPersona(boolean tipoPersona) {
         this.tipoPersona = tipoPersona;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 }

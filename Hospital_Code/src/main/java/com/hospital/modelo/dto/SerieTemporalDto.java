@@ -10,6 +10,11 @@ public class SerieTemporalDto {
         this.total = total;
     }
 
+    public SerieTemporalDto(String periodo, Long total) {
+        this.periodo = periodo;
+        this.total = total != null ? total : 0L;
+    }
+
     public SerieTemporalDto() {
     }
 
