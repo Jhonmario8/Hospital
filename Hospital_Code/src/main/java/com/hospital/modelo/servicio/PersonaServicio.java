@@ -27,7 +27,10 @@ public class PersonaServicio implements IPersonaServicio {
 
     @Override
     public List<PersonaDto> listarTodos(){
-        return personaRepositorio.findAllPersonaDto();
+        return personaRepositorio.findAllPersonaDto()
+                .stream()
+                .filter(PersonaDto::isActivo)
+                .toList();
     }
     @Override
     public void guardar(Persona persona){
@@ -35,11 +38,15 @@ public class PersonaServicio implements IPersonaServicio {
     }
     @Override
     public List<PersonaDto> listarEmpleados(){
-        return personaRepositorio.findAllPersonaDto().stream().filter(PersonaDto::isTipoPersona).toList();
+        return personaRepositorio.findAllPersonaDto().stream()
+                .filter(PersonaDto::isTipoPersona)
+                .toList();
     }
     @Override
     public List<PersonaDto> listarPacientes(){
-        return personaRepositorio.findAllPersonaDto().stream().filter(personaDto -> !personaDto.isTipoPersona()).toList();
+        return personaRepositorio.findAllPersonaDto().stream()
+                .filter(personaDto -> !personaDto.isTipoPersona() && personaDto.isActivo())
+                .toList();
     }
     @Override
     public List<PersonaDto> findByIdContaining(String id){

@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded",async ()=>{
             <td>${emp.nomPersona}</td>
             <td>${emp.edadPersona}</td>
             <td>${emp.telefonoPersona}</td>
+            <td>${emp.activo?"Disponible":"No disponible"}</td>
             `
             tabla.appendChild(row)
         })

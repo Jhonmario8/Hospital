@@ -23,6 +23,7 @@ iniciarBtn.addEventListener("click", async e => {
         }
         let json = await res.json()
         console.log("Usuario autenticado:", json);
+        localStorage.setItem("usuarioActual", json.usuario);
         window.location.href = "../../html/index.html"
     } catch (e) {
         console.error(e)

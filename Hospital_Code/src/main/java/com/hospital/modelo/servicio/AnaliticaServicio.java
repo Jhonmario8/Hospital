@@ -5,6 +5,7 @@ import com.hospital.modelo.dto.SerieTemporalDto;
 import com.hospital.modelo.repositorio.CitaRepositorio;
 import com.hospital.modelo.repositorio.IngresosRepositorio;
 import com.hospital.modelo.repositorio.PersonaRepositorio;
+import com.hospital.modelo.repositorio.proyeccion.SerieTemporalProjection;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +37,9 @@ public class AnaliticaServicio implements IAnaliticaServicio {
 
     @Override
     public List<SerieTemporalDto> citasPorMes() {
-        return citaRepositorio.contarCitasPorMes();
+        List<SerieTemporalProjection> resultados = citaRepositorio.contarCitasPorMes();
+        return resultados.stream()
+                .map(proyeccion -> new SerieTemporalDto(proyeccion.getPeriodo(), proyeccion.getTotal()))
+                .toList();
     }
 }
