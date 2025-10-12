@@ -13,7 +13,13 @@ import java.util.List;
 @Repository
 public interface CitaRepositorio extends CrudRepository<Cita,Integer> {
 
-    @Query("SELECT new com.hospital.modelo.dto.SerieTemporalDto(FUNCTION('FORMAT', c.fechaCita, 'yyyy-MM'), COUNT(c)) " +
-            "FROM Cita c GROUP BY FUNCTION('FORMAT', c.fechaCita, 'yyyy-MM') ORDER BY FUNCTION('FORMAT', c.fechaCita, 'yyyy-MM')")
-    List<SerieTemporalDto> contarCitasPorMes();
+   @Query("SELECT new com.hospital.modelo.dto.SerieTemporalDto(" +
+       "FUNCTION('FORMAT', c.fechaCita, 'yyyy-MM'), CAST(COUNT(c) AS long)) " +
+       "FROM Cita c " +
+       "GROUP BY FUNCTION('FORMAT', c.fechaCita, 'yyyy-MM') " +
+       "ORDER BY FUNCTION('FORMAT', c.fechaCita, 'yyyy-MM')")
+List<SerieTemporalDto> contarCitasPorMes();
+
+
+
 }
