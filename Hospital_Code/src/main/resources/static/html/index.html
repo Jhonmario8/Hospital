@@ -28,6 +28,7 @@
             <li><a href="GestionIngresos/gestioningresos.html">Ingresos</a></li>
             <li><a href="Analisis/analisis.html">Análisis de datos</a></li>
             <li><a href="Reportes/reportes.html">Reportes</a></li>
+            <li><a href="Datos/datos.html">Datos</a></li>
             <li><a href="Catalogo/catalogo.html">Catálogo</a></li>
             <li><a href="QuienesSomos.html">Quienes somos</a></li>
         </ul>
@@ -42,6 +43,7 @@
                 <h1>Bienvenidos al Hospital</h1>
                 <p>En el Hospital, estamos comprometidos a ofrecer atención de salud de excelencia para nuestra comunidad.</p>
                 <p>Fundado con la misión de promover la salud y el bienestar de nuestros pacientes, nuestro hospital se ha destacado como un referente en atención médica, innovación y tecnología.</p>
+                <p class="welcome-user" data-user-greeting hidden></p>
             </div>
         </div>
     </section>
@@ -59,21 +61,13 @@
     <hr>
 </footer>
 <script>
-    const saludo = document.getElementById("saludoUsuario");
-    const usuarioActivo = localStorage.getItem("usuarioActivo");
-    if (saludo) {
-        if (usuarioActivo) {
-            saludo.textContent = `Hola, ${usuarioActivo}`;
-        } else {
-            saludo.textContent = "Hola, invitado";
-        }
-    }
-    document.querySelector(".salir").addEventListener("click", () => {
-        if (confirm("Seguro que desdeas cerrar sesion?")) {
-            localStorage.removeItem("usuarioActivo");
-            window.location.href = "InicioSesion/inicioSesion.html";
+    document.querySelector(".salir").addEventListener("click",()=>{
+        if(confirm("¿Seguro que deseas cerrar sesión?")){
+            localStorage.removeItem("usuarioActual");
+            window.location.href="InicioSesion/inicioSesion.html"
         }
     })
 </script>
+<script src="../Scripts/common/session.js"></script>
 </body>
 </html>

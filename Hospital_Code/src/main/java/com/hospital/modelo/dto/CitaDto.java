@@ -23,7 +23,9 @@ public class CitaDto {
         this.fechaCita = fechaCita;
         this.horaCita = horaCita;
         this.motivo = motivo;
-        this.personas = personas.stream().map(p -> new PersonaDto(p.getIdPersona(),p.getNomPersona(),p.getEdadPersona(),p.getDireccion(),p.getTelefonoPersona(),p.isTipoPersona(),p.isActivo())).collect(Collectors.toList());
+        this.personas = personas.stream()
+                .map(p -> new PersonaDto(p.getIdPersona(), p.getNomPersona(), p.getEdadPersona(), p.getDireccion(), p.getTelefonoPersona(), p.isTipoPersona(), p.isActivo()))
+                .collect(Collectors.toList());
     }
 
     public int getIdCita() {

@@ -69,7 +69,7 @@ public class PersonaCotrolador {
         per.setTipoPersona(persona.isTipoPersona());
         per.setDireccion(persona.getDireccion());
         per.setEdadPersona(persona.getEdadPersona());
-        servicio.guardar(per);
+        servicio.actualizar(per);
     }
 
     @GetMapping("personas/buscar/{id}")
