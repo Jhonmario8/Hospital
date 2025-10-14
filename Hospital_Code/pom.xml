@@ -51,7 +51,6 @@
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
-			<version>12.4.2.jre11</version> <!-- Versión compatible con Java 17 -->
 			<scope>runtime</scope>
 		</dependency>
 
