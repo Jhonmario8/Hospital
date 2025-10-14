@@ -26,6 +26,7 @@
             <li><a href="GestionArticulos/gestionarticulos.html">Artículos</a></li>
             <li><a href="GestionServicios/gestionservicios.html">Servicios</a></li>
             <li><a href="GestionIngresos/gestioningresos.html">Ingresos</a></li>
+            <li><a href="Analisis/analisis.html">Análisis de datos</a></li>
             <li><a href="Reportes/reportes.html">Reportes</a></li>
             <li><a href="Catalogo/catalogo.html">Catálogo</a></li>
             <li><a href="QuienesSomos.html">Quienes somos</a></li>
@@ -37,6 +38,7 @@
     <section class="welcome-section">
         <div class="welcome-container">
             <div class="welcome-text">
+                <h2 id="saludoUsuario" class="saludo-usuario"></h2>
                 <h1>Bienvenidos al Hospital</h1>
                 <p>En el Hospital, estamos comprometidos a ofrecer atención de salud de excelencia para nuestra comunidad.</p>
                 <p>Fundado con la misión de promover la salud y el bienestar de nuestros pacientes, nuestro hospital se ha destacado como un referente en atención médica, innovación y tecnología.</p>
@@ -57,9 +59,19 @@
     <hr>
 </footer>
 <script>
-    document.querySelector(".salir").addEventListener("click",()=>{
-        if(confirm("Seguro que desdeas cerrar sesion?")){
-            window.location.href="InicioSesion/inicioSesion.html"
+    const saludo = document.getElementById("saludoUsuario");
+    const usuarioActivo = localStorage.getItem("usuarioActivo");
+    if (saludo) {
+        if (usuarioActivo) {
+            saludo.textContent = `Hola, ${usuarioActivo}`;
+        } else {
+            saludo.textContent = "Hola, invitado";
+        }
+    }
+    document.querySelector(".salir").addEventListener("click", () => {
+        if (confirm("Seguro que desdeas cerrar sesion?")) {
+            localStorage.removeItem("usuarioActivo");
+            window.location.href = "InicioSesion/inicioSesion.html";
         }
     })
 </script>

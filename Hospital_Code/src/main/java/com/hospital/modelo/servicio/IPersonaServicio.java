@@ -14,6 +14,7 @@ public interface IPersonaServicio {
     void guardar(Persona persona);
     PersonaDto buscarPorId(Integer id);
     List<PersonaDto> listarEmpleados();
+    List<PersonaDto> listarEmpleadosConEstado();
     List<PersonaDto> listarPacientes();
     List<PersonaDto> findByIdContaining(String id);
     void eliminar(Integer id);

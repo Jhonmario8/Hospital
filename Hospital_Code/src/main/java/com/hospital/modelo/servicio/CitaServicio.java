@@ -50,7 +50,8 @@ public class CitaServicio implements ICitaServicio {
             personaDto.setEdadPersona(persona.getEdadPersona());
             personaDto.setTelefonoPersona(persona.getTelefonoPersona());
             personaDto.setTipoPersona(persona.isTipoPersona());
-            personaDto.setDireccion(personaDto.getDireccion());
+            personaDto.setDireccion(persona.getDireccion());
+            personaDto.setActivo(persona.isActivo());
             personasDto.add(personaDto);
         }
         return personasDto;

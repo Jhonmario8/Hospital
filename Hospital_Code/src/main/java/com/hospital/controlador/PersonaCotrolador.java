@@ -29,6 +29,11 @@ public class PersonaCotrolador {
         return servicio.listarEmpleados();
     }
 
+    @GetMapping("personas/empleados/disponibilidad")
+    public List<PersonaDto> empleadosConDisponibilidad(){
+        return servicio.listarEmpleadosConEstado();
+    }
+
     @GetMapping("persona/pacientes")
     public List<PersonaDto> pacientes(){
         return servicio.listarPacientes();

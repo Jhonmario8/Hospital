@@ -38,6 +38,10 @@ public class PersonaServicio implements IPersonaServicio {
         return personaRepositorio.findAllPersonaDto().stream().filter(PersonaDto::isTipoPersona).toList();
     }
     @Override
+    public List<PersonaDto> listarEmpleadosConEstado(){
+        return personaRepositorio.findAllEmpleadosConEstado();
+    }
+    @Override
     public List<PersonaDto> listarPacientes(){
         return personaRepositorio.findAllPersonaDto().stream().filter(personaDto -> !personaDto.isTipoPersona()).toList();
     }

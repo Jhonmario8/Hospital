@@ -15,14 +15,32 @@ import java.util.List;
 @Repository
 public interface PersonaRepositorio extends CrudRepository<Persona,Integer> {
 
-    @Query("select new com.hospital.modelo.dto.PersonaDto(p.idPersona,p.nomPersona,p.edadPersona,p.direccion,p.telefonoPersona,p.tipoPersona) from Persona p where p.activo=true")
+    @Query("select new com.hospital.modelo.dto.PersonaDto(p.idPersona,p.nomPersona,p.edadPersona,p.direccion,p.telefonoPersona,p.tipoPersona,p.activo) from Persona p where p.activo=true")
     List<PersonaDto> findAllPersonaDto();
 
-    @Query("select new com.hospital.modelo.dto.PersonaDto(p.idPersona,p.nomPersona,p.edadPersona,p.direccion,p.telefonoPersona,p.tipoPersona) from Persona p where p.activo=true and p.idPersona=:id")
+    @Query("select new com.hospital.modelo.dto.PersonaDto(p.idPersona,p.nomPersona,p.edadPersona,p.direccion,p.telefonoPersona,p.tipoPersona,p.activo) from Persona p where p.activo=true and p.idPersona=:id")
     PersonaDto findByIdDto(@Param("id") int id);
-    @Query("select new com.hospital.modelo.dto.PersonaDto(p.idPersona,p.nomPersona,p.edadPersona,p.telefonoPersona,p.tipoPersona)" +
+    @Query("select new com.hospital.modelo.dto.PersonaDto(p.idPersona,p.nomPersona,p.edadPersona,p.telefonoPersona,p.tipoPersona,p.activo)" +
            "from Persona p where p.activo=true and str(p.idPersona) LIKE %:id%")
     List<PersonaDto> findAllByIdPersonaContaining(String id);
+
+    @Query("select new com.hospital.modelo.dto.PersonaDto(p.idPersona,p.nomPersona,p.edadPersona,p.direccion,p.telefonoPersona,p.tipoPersona,p.activo) from Persona p where p.tipoPersona=true")
+    List<PersonaDto> findAllEmpleadosConEstado();
+
+    @Query("select count(p) from Persona p")
+    long contarPersonas();
+
+    @Query("select count(p) from Persona p where p.tipoPersona=true")
+    long contarEmpleados();
+
+    @Query("select count(p) from Persona p where p.tipoPersona=true and p.activo=true")
+    long contarEmpleadosActivos();
+
+    @Query("select count(p) from Persona p where p.tipoPersona=true and p.activo=false")
+    long contarEmpleadosInactivos();
+
+    @Query("select count(p) from Persona p where p.tipoPersona=false")
+    long contarPacientes();
 
     @Query(value = """
      SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END

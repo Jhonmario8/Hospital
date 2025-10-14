@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Análisis de datos - Hospital</title>
+    <link rel="stylesheet" href="../../estilos/estilo.css">
+    <link rel="shortcut icon" href="../../Media/imagen_hospital-sin-fondo.ico" type="image/x-icon">
+</head>
+<body>
+<header class="header">
+    <div class="header-container">
+        <img src="../../Media/imagen_hospital-sin-fondo.ico" alt="Logo del hospital" class="logo" />
+    </div>
+</header>
+
+<div class="sidebar">
+    <nav>
+        <ul class="nav-list">
+            <li><a class="salir">Salir</a></li>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../GestionPersonas/gestionpersona.html">Personas</a></li>
+            <li><a href="../GestionHabitaciones/gestionhabitaciones.html">Habitaciones</a></li>
+            <li><a href="../GestionCitas/gestioncitas.html">Citas</a></li>
+            <li><a href="../GestionArticulos/gestionarticulos.html">Artículos</a></li>
+            <li><a href="../GestionServicios/gestionservicios.html">Servicios</a></li>
+            <li><a href="../GestionIngresos/gestioningresos.html">Ingresos</a></li>
+            <li><a href="analisis.html" class="active">Análisis de datos</a></li>
+            <li><a href="../Reportes/reportes.html">Reportes</a></li>
+            <li><a href="../Catalogo/catalogo.html">Catálogo</a></li>
+            <li><a href="../QuienesSomos.html">Quienes somos</a></li>
+        </ul>
+    </nav>
+</div>
+
+<main class="main-content">
+    <section class="analysis-header">
+        <div class="analysis-title">
+            <h1>Panel de análisis</h1>
+            <p id="saludoUsuario" class="saludo-usuario"></p>
+            <p class="analysis-description">Revisa las métricas clave del hospital en tiempo real para tomar decisiones informadas.</p>
+        </div>
+        <div class="analysis-actions">
+            <button id="actualizar-analisis" class="btn-primary">Actualizar datos</button>
+        </div>
+    </section>
+
+    <section class="analysis-status">
+        <div id="analisis-loader" class="analysis-loader" role="status" aria-live="polite">
+            <div class="spinner"></div>
+            <span>Cargando información...</span>
+        </div>
+        <p id="analisis-error" class="analysis-error" role="alert"></p>
+    </section>
+
+    <section class="analysis-grid">
+        <article class="analysis-card">
+            <h3>Total de personas registradas</h3>
+            <p id="total-personas" class="analysis-value">0</p>
+            <span class="analysis-subtitle">Pacientes y personal en la base de datos</span>
+        </article>
+        <article class="analysis-card">
+            <h3>Total de empleados</h3>
+            <p id="total-empleados" class="analysis-value">0</p>
+            <span class="analysis-subtitle">Incluye médicos y personal asistencial</span>
+        </article>
+        <article class="analysis-card">
+            <h3>Empleados disponibles</h3>
+            <p id="empleados-disponibles" class="analysis-value">0</p>
+            <span class="analysis-subtitle">Personal activo para asignaciones</span>
+        </article>
+        <article class="analysis-card">
+            <h3>Empleados no disponibles</h3>
+            <p id="empleados-no-disponibles" class="analysis-value">0</p>
+            <span class="analysis-subtitle">Personal fuera de servicio</span>
+        </article>
+        <article class="analysis-card">
+            <h3>Total de pacientes</h3>
+            <p id="total-pacientes" class="analysis-value">0</p>
+            <span class="analysis-subtitle">Pacientes registrados</span>
+        </article>
+        <article class="analysis-card">
+            <h3>Pacientes hospitalizados</h3>
+            <p id="pacientes-hospitalizados" class="analysis-value">0</p>
+            <span class="analysis-subtitle">Actualmente en hospitalización</span>
+        </article>
+        <article class="analysis-card">
+            <h3>Total de habitaciones</h3>
+            <p id="total-habitaciones" class="analysis-value">0</p>
+            <span class="analysis-subtitle">Habitaciones registradas</span>
+        </article>
+        <article class="analysis-card">
+            <h3>Habitaciones ocupadas</h3>
+            <p id="habitaciones-ocupadas" class="analysis-value">0</p>
+            <span class="analysis-subtitle">Habitaciones en uso</span>
+        </article>
+    </section>
+
+    <section class="analysis-progress-container">
+        <div class="analysis-progress">
+            <div class="analysis-progress__header">
+                <h3>Disponibilidad del personal</h3>
+                <span id="porcentaje-personal-disponible" class="analysis-progress__value">0%</span>
+            </div>
+            <div class="analysis-progress__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <div id="barra-personal" class="analysis-progress__fill"></div>
+            </div>
+        </div>
+        <div class="analysis-progress">
+            <div class="analysis-progress__header">
+                <h3>Ocupación hospitalaria</h3>
+                <span id="porcentaje-ocupacion" class="analysis-progress__value">0%</span>
+            </div>
+            <div class="analysis-progress__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <div id="barra-ocupacion" class="analysis-progress__fill"></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <hr>
+    <p>© Todos los derechos reservados 2025</p>
+    <hr>
+</footer>
+
+<script src="../../Scripts/Analisis/analisisDatos.js"></script>
+<script>
+    const saludo = document.getElementById("saludoUsuario");
+    const usuarioActivo = localStorage.getItem("usuarioActivo");
+    if (saludo) {
+        if (usuarioActivo) {
+            saludo.textContent = `Hola, ${usuarioActivo}`;
+        } else {
+            saludo.textContent = "Hola, invitado";
+        }
+    }
+    document.querySelector(".salir").addEventListener("click", () => {
+        if (confirm("Seguro que desdeas cerrar sesion?")) {
+            localStorage.removeItem("usuarioActivo");
+            window.location.href = "../InicioSesion/inicioSesion.html";
+        }
+    });
+</script>
+</body>
+</html>

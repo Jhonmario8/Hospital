@@ -48,6 +48,7 @@ document.getElementById("guardarBtn").addEventListener("click", async e => {
               <th>Documento</th>
               <th>Nombre</th>
              <th>Edad</th>
+             <th>Disponibilidad</th>
         </thead>
         <tbody></tbody>
         `
@@ -63,32 +64,43 @@ document.getElementById("guardarBtn").addEventListener("click", async e => {
                     tabla.style.display="none"
                     return
                 }
-                let res = await fetch(`http://localhost:8080/personas/containing/${id}`)
-                if (res.status===404){
-                    tabla.style.display="none"
-                    info.textContent="No se encontro ningun empleado"
-                    info.style.color="red"
-                }
+                let res = await fetch(`http://localhost:8080/personas/empleados/disponibilidad`)
                 if (!res.ok) {
                     throw new Error("Error al buscar las personas")
                 }
                 let personas = await res.json();
-                let medicos = personas.filter(p => p.tipoPersona)
+                let medicos = personas.filter(p => p.idPersona.toString().includes(id))
+                if (medicos.length === 0){
+                    tabla.style.display="none"
+                    info.textContent="No se encontro ningun empleado"
+                    info.style.color="red"
+                    return
+                }
                 medicos.forEach(m => {
                     let row = document.createElement("tr")
+                    const disponible = m.activo
                     row.innerHTML = `
               <td>${m.idPersona}</td>
               <td>${m.nomPersona}</td>
               <td>${m.edadPersona}</td>
+              <td>${disponible ? "Disponible" : "No disponible"}</td>
         `
-                    row.addEventListener("click", ()=>{
-                        e.target.value=m.idPersona
-                        tabla.style.display="none"
-                    })
+                    if (disponible){
+                        row.addEventListener("click", ()=>{
+                            e.target.value=m.idPersona
+                            tabla.style.display="none"
+                            info.textContent=""
+                        })
+                    }else {
+                        row.classList.add("fila-no-disponible")
+                        row.title="El médico no se encuentra disponible"
+                    }
                     tbody.appendChild(row)
                 })
             } catch (e) {
                 console.error(e)
+                info.textContent="Ocurrió un error al cargar los empleados"
+                info.style.color="red"
             }
         })
 
@@ -99,6 +111,24 @@ document.getElementById("guardarBtn").addEventListener("click", async e => {
         asignarBtn.addEventListener("click", async e => {
             e.preventDefault()
             try {
+                if (!idEmp.value){
+                    alert("Selecciona un médico antes de continuar")
+                    return
+                }
+                let medicosRespuesta = await fetch(`http://localhost:8080/personas/empleados/disponibilidad`)
+                if (!medicosRespuesta.ok){
+                    throw new Error("No se pudo validar la disponibilidad del médico")
+                }
+                let medicos = await medicosRespuesta.json()
+                let medicoSeleccionado = medicos.find(m => m.idPersona === parseInt(idEmp.value))
+                if (!medicoSeleccionado){
+                    alert("El médico seleccionado no existe")
+                    return
+                }
+                if (!medicoSeleccionado.activo){
+                    alert("El médico seleccionado no está disponible")
+                    return
+                }
                 let rsp = await fetch(`http://localhost:8080/citas/mostrar`)
                 let json = await rsp.json()
                 let cita = json.at(json.length - 1)
