@@ -40,7 +40,7 @@ public class HabitacionCotrolador {
         Habitacion hab=new Habitacion();
         hab.setTipoHabitacion(habitacion.getTipoHabitacion());
         hab.setCapacidad(habitacion.getCapacidad());
-       return servicio.guardar(hab);
+        return servicio.guardar(hab);
     }
 
     @PutMapping("habitaciones/actualizar")

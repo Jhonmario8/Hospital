@@ -22,7 +22,8 @@ public class Articulo {
     private String nomArticulo;
     private int cantidad;
     private String descripcion;
-    private boolean activo=true;
+    @Column(nullable = false)
+    private Boolean activo=true;
     @ManyToMany
     @JoinTable(
             name = "articulo_habitacion",
@@ -74,11 +75,11 @@ public class Articulo {
         this.habitaciones = habitaciones;
     }
 
-    public boolean isActivo() {
+    public Boolean isActivo() {
         return activo;
     }
 
-    public void setActivo(boolean activo) {
+    public void setActivo(Boolean activo) {
         this.activo = activo;
     }
 

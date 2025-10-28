@@ -37,7 +37,8 @@
     <section class="welcome-section">
         <div class="welcome-container">
             <div class="welcome-text">
-                <h1>Bienvenidos al Hospital</h1>
+                <h1 id="saludo-usuario"></h1>
+                <h1>, bienvenido al Hospital</h1>
                 <p>En el Hospital, estamos comprometidos a ofrecer atención de salud de excelencia para nuestra comunidad.</p>
                 <p>Fundado con la misión de promover la salud y el bienestar de nuestros pacientes, nuestro hospital se ha destacado como un referente en atención médica, innovación y tecnología.</p>
             </div>
@@ -57,8 +58,14 @@
     <hr>
 </footer>
 <script>
+     const saludo = document.getElementById("saludo-usuario");
+    const usuarioActual = localStorage.getItem("usuarioActual");
+    if (saludo && usuarioActual) {
+        saludo.textContent = `Hola, ${usuarioActual}`;
+    }
     document.querySelector(".salir").addEventListener("click",()=>{
         if(confirm("Seguro que desdeas cerrar sesion?")){
+            localStorage.removeItem("usuarioActual");
             window.location.href="InicioSesion/inicioSesion.html"
         }
     })

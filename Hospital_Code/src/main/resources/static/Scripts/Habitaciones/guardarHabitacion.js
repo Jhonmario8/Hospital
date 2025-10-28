@@ -1,5 +1,6 @@
 const guardarBtn=document.getElementById("guardarBtn")
 const form=document.querySelector("form")
+
 guardarBtn.addEventListener("click",async e=>{
     e.preventDefault()
     if (!form.checkValidity()) {
@@ -22,8 +23,10 @@ guardarBtn.addEventListener("click",async e=>{
             throw new Error("Error al guardar la habitacion")
         }
         let json=await res.json()
+        console.log(json);
         alert(`Habitacion creada con exito, ID asignado: ${json.numHabitacion}`)
     }catch (e){{
         console.error(e)
     }}
+    console.log("Formulario enviado")
 })
