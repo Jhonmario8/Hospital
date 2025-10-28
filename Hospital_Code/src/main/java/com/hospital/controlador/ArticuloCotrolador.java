@@ -34,13 +34,13 @@ public class ArticuloCotrolador {
     }
     @PostMapping("/actualizar")
     public void actualizar(@RequestBody ArticuloDto articulo){
-        Articulo art=new Articulo();
-        art.setIdArticulo(articulo.getIdArticulo());
-        art.setNomArticulo(articulo.getNomArticulo());
-        art.setCantidad(articulo.getCantidad());
-        art.setDescripcion(articulo.getDescripcion());
-        art.setActivo(articulo.isActivo());
-        servicio.guardar(art);
+        Articulo art = servicio.buscarPorId(articulo.getIdArticulo());
+        if (art != null) {
+            art.setNomArticulo(articulo.getNomArticulo());
+            art.setCantidad(articulo.getCantidad());
+            art.setDescripcion(articulo.getDescripcion());
+            servicio.guardar(art);
+        }
     }
     @GetMapping("/buscar/{id}")
     public ResponseEntity<?> buscar(@PathVariable int id){
