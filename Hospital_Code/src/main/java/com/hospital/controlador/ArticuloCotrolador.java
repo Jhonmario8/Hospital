@@ -34,7 +34,7 @@ public class ArticuloCotrolador {
     }
     @PostMapping("/actualizar")
     public void actualizar(@RequestBody ArticuloDto articulo){
-        Articulo art = servicio.buscarPorId(articulo.getIdArticulo());
+            Articulo art = servicio.buscarPorId(articulo.getIdArticulo());
         if (art != null) {
             art.setNomArticulo(articulo.getNomArticulo());
             art.setCantidad(articulo.getCantidad());
